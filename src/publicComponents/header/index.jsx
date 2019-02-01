@@ -37,7 +37,7 @@ class Header extends Component {
         <Menu.Item key="alipay">
           <a href="/">Link</a>
         </Menu.Item>
-        <Menu.Item key="searchBox" style={{ marginLeft: 150 }}>
+        <Menu.Item key="searchBox" style={{ marginLeft: 200 }}>
           <Search placeholder="search" style={{ width: 250 }} />
         </Menu.Item>
         <Menu.Item key="Post">
@@ -48,16 +48,12 @@ class Header extends Component {
           <Icon type="setting" />
           Setting
         </Menu.Item>
-        <Menu.Item key="Msg">
-          <span>
-            <Badge count={1}>
-              <Icon type="wechat" />
-              Message
+        <Menu.Item key="Avatar">
+          <span style={{ marginRight: 24 }}>
+            <Badge count={10}>
+              <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
             </Badge>
           </span>
-        </Menu.Item>
-        <Menu.Item key="Avatar">
-          <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
         </Menu.Item>
       </Menu>
     );
