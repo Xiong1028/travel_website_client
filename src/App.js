@@ -1,14 +1,23 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "./App.css";
 import { Provider } from "react-redux";
 import store from "./store";
 import Header from "./publicComponents/header";
+import { BrowserRouter, Route } from "react-router-dom";
+import Home from "./pageComponents/home/";
+import Login from "./pageComponents/login/";
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Header />
+        <BrowserRouter>
+          <Fragment>
+            <Header />
+            <Route path="/" exact component={Home} />
+            <Route path="/login" exact component={Login} />
+          </Fragment>
+        </BrowserRouter>
       </Provider>
     );
   }
