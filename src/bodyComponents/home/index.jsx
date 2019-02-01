@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Carousel } from 'react-bootstrap';
-
-
+import { Carousel } from "react-bootstrap";
 
 class Home extends Component {
   render() {
@@ -11,7 +9,7 @@ class Home extends Component {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://pixabay.com/photo-1499171/"
+            src="https://cdn.pixabay.com/photo/2016/07/05/18/35/aircraft-1499171_960_720.jpg"
             alt="First slide"
           />
           <Carousel.Caption>
@@ -22,7 +20,7 @@ class Home extends Component {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://pixabay.com/photo-1365387/"
+            src="https://cdn.pixabay.com/photo/2016/07/05/18/35/aircraft-1499171_960_720.jpg"
             alt="Third slide"
           />
 
@@ -34,17 +32,19 @@ class Home extends Component {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://pixabay.com/photo-569315/"
+            src="https://cdn.pixabay.com/photo/2016/07/05/18/35/aircraft-1499171_960_720.jpg"
             alt="Third slide"
           />
 
           <Carousel.Caption>
             <h3>Third slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            <p>
+              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            </p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-    ); 
+    );
   }
 }
 const mapStateToProps = state => ({});
