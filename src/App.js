@@ -4,8 +4,8 @@ import { Provider } from "react-redux";
 import store from "./store";
 import Header from "./publicComponents/header";
 import { BrowserRouter, Route } from "react-router-dom";
-import Home from "./pageComponents/home/";
-import Login from "./pageComponents/login/";
+import Home from "./bodyComponents/home/";
+import Login from "./bodyComponents/login/";
 
 class App extends Component {
   render() {
