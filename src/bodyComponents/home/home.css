@@ -1,0 +1,25 @@
+.home_ps_img{
+    width: 100%;
+    max-height: 530px;   
+}
+
+.home_ps_caption{
+    position: absolute;
+    top: 2%;
+    left: 1%;
+}
+
+.home_ps_caption h3{
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.home_ps_caption p{
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+}
+
