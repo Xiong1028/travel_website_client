@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./header.css";
-import { Menu, Icon, Input, Avatar, Badge, Spin } from "antd";
+import { Menu, Icon, Input, Avatar, Badge, Spin, Divider } from "antd";
 import { Logo } from "./style";
 
 const SubMenu = Menu.SubMenu;
@@ -10,6 +10,8 @@ const Search = Input.Search;
 
 class Header extends Component {
   render() {
+    const { isLogin } = this.props;
+    console.log(isLogin);
     return (
       <Menu mode="horizontal">
         <Menu.Item key="logo">
@@ -37,8 +39,8 @@ class Header extends Component {
         <Menu.Item key="alipay">
           <a href="/">Link</a>
         </Menu.Item>
-        <Menu.Item key="searchBox" style={{ marginLeft: 200 }}>
-          <Search placeholder="search" style={{ width: 250 }} />
+        <Menu.Item key="searchBox" style={{ marginLeft: 150 }}>
+          <Search placeholder="search" style={{ width: 200 }} />
         </Menu.Item>
         <Menu.Item key="Post">
           <Icon type="edit" />
@@ -48,20 +50,30 @@ class Header extends Component {
           <Icon type="setting" />
           Setting
         </Menu.Item>
-        <Menu.Item key="Avatar">
-          <span style={{ marginRight: 24 }}>
-            <Badge count={10}>
-              <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-            </Badge>
-          </span>
-        </Menu.Item>
+        {!isLogin ? (
+          <Menu.Item key="signUp">
+            <span>Sign In</span>
+            <Divider type="vertical" />
+            <span>Sign Up</span>
+          </Menu.Item>
+        ) : (
+          <Menu.Item key="Avatar">
+            <span style={{ marginRight: 24 }}>
+              <Badge count={8}>
+                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+              </Badge>
+            </span>
+          </Menu.Item>
+        )}
       </Menu>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    isLogin: state.getIn(["header", "isLogin"])
+  };
 };
 
 const mapDispatchToProps = dispatch => {};

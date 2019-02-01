@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import  PhotoSlide  from './components/photoSlide';
-
+import PhotoSlide from "./components/photoSlide";
 
 class Home extends Component {
   render() {
-    return (
-      <PhotoSlide />
-    ); 
+    return <PhotoSlide />;
   }
 }
 const mapStateToProps = state => {
