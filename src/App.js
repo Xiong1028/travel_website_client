@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import "./App.css";
 import { Provider } from "react-redux";
 import store from "./store";
+
 import Header from "./publicComponents/header";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./bodyComponents/home/";

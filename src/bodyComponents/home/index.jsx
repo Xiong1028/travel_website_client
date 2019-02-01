@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import  PhotoSlide  from './components/photoSlide';
 
 
-
 class Home extends Component {
   render() {
     return (
@@ -13,7 +12,6 @@ class Home extends Component {
 }
 const mapStateToProps = state => {
   return {};
-
 };
 
 const mapDispatchToProps = dispatch => {};
