@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import "./header.css";
+import { Link } from "react-router-dom";
 import { Menu, Icon, Input, Avatar, Badge, Spin, Divider } from "antd";
 import { Logo } from "./style";
 
@@ -17,12 +18,14 @@ class Header extends Component {
         <Menu.Item key="logo">
           <Logo>
             <span style={{ fontSize: 20, color: "red", marginRight: 5 }}>
-              Travel
+              <Link to="/">Travel</Link>
             </span>
             <Spin size="small" />
           </Logo>
         </Menu.Item>
-        <Menu.Item key="home">Home</Menu.Item>
+        <Menu.Item key="home">
+          <Link to="/">Home</Link>
+        </Menu.Item>
         <Menu.Item key="car">Book Car</Menu.Item>
         <SubMenu
           title={<span className="submenu-title-wrapper">Navigation</span>}
@@ -36,9 +39,7 @@ class Header extends Component {
             <Menu.Item key="setting:4">Option 4</Menu.Item>
           </MenuItemGroup>
         </SubMenu>
-        <Menu.Item key="alipay">
-          <a href="/">Link</a>
-        </Menu.Item>
+        <Menu.Item key="alipay">Link</Menu.Item>
         <Menu.Item key="searchBox" style={{ marginLeft: 150 }}>
           <Search placeholder="search" style={{ width: 200 }} />
         </Menu.Item>
@@ -51,10 +52,10 @@ class Header extends Component {
           Setting
         </Menu.Item>
         {!isLogin ? (
-          <Menu.Item key="signUp">
-            <span>Sign In</span>
-            <Divider type="vertical" />
-            <span>Sign Up</span>
+          <Menu.Item key="login">
+            <Link to="/login">
+              <span>Login</span>
+            </Link>
           </Menu.Item>
         ) : (
           <Menu.Item key="Avatar">
