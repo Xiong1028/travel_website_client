@@ -1,0 +1,2 @@
+export const MODIFY_LOGIN_STATUS = "LOGIN/MODIFY_LOGIN_STATUS";
+export const LOG_OUT = "LOGIN/LOG_OUT";

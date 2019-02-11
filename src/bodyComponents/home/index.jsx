@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
+
 import PhotoSlide from "./components/photoSlide";
 import DiaryCard from "./components/diaryCard";
 

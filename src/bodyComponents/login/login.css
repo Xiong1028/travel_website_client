@@ -1,0 +1,21 @@
+.loginWrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 8%;
+    background: grey;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.loginForm {
+    width: 28%;
+    height: 70%;
+    padding: 20px 50px;
+    background: #eee;
+    box-shadow: 0 0 8x regba(0, 0, 0, 1);
+    border-radius: 4px;
+    margin: 50px auto;
+    border: 1px solid grey;
+}
