@@ -48,6 +48,7 @@ class PhotoSlide extends Component {
     );
   }
 }
+
 const mapStateToProps = state => {
   return {};
 };

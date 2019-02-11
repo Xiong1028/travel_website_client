@@ -1,10 +1,16 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PhotoSlide from "./components/photoSlide";
+import DiaryCard from "./components/diaryCard";
 
 class Home extends Component {
   render() {
-    return <PhotoSlide />;
+    return (
+      <Fragment>
+        <PhotoSlide />
+        <DiaryCard />
+      </Fragment>     
+    );
   }
 }
 const mapStateToProps = state => {
