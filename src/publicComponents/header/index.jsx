@@ -13,7 +13,6 @@ const Search = Input.Search;
 class Header extends Component {
   render() {
     const { isLogin, showAccessModal } = this.props;
-    console.log(isLogin);
     return (
       <Menu mode="horizontal">
         <Menu.Item key="logo">

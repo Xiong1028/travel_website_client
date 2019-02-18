@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import RichText from "./RichText";
 
 class PostArticle extends Component {
   render() {
     return (
       <div>
-        <h1>Post Your Story</h1>
+        <RichText />
       </div>
     );
   }
