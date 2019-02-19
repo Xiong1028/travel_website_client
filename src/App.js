@@ -7,6 +7,7 @@ import Header from "./publicComponents/header";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./bodyComponents/home/";
 import Login from "./bodyComponents/login/";
+import Post from "./bodyComponents/post";
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
             <Header />
             <Route path="/" exact component={Home} />
             <Route path="/login" exact component={Login} />
+            <Route path="/post" exact component={Post} />
           </Fragment>
         </BrowserRouter>
       </Provider>

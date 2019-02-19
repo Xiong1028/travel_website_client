@@ -1,5 +1,6 @@
 import { fromJS } from "immutable";
 import { constants } from ".";
+import { constants as postConstants } from "../../../bodyComponents/post";
 
 const defaultHeaderState = fromJS({
   isLogin: false

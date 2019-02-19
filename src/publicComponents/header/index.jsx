@@ -1,9 +1,10 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./header.css";
 import { Link } from "react-router-dom";
-import { Menu, Icon, Input, Avatar, Badge, Spin, Divider } from "antd";
+import { Menu, Icon, Input, Avatar, Badge, Spin } from "antd";
 import { Logo } from "./style";
+import { actionCreators } from "./store";
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
@@ -11,8 +12,7 @@ const Search = Input.Search;
 
 class Header extends Component {
   render() {
-    const { isLogin } = this.props;
-    console.log(isLogin);
+    const { isLogin, showAccessModal } = this.props;
     return (
       <Menu mode="horizontal">
         <Menu.Item key="logo">
@@ -43,9 +43,11 @@ class Header extends Component {
         <Menu.Item key="searchBox" style={{ marginLeft: 150 }}>
           <Search placeholder="search" style={{ width: 200 }} />
         </Menu.Item>
-        <Menu.Item key="Post">
-          <Icon type="edit" />
-          Post
+        <Menu.Item key="Post" onClick={showAccessModal}>
+          <Link to="/post">
+            <Icon type="edit" />
+            Post
+          </Link>
         </Menu.Item>
         <Menu.Item key="setting">
           <Icon type="setting" />
@@ -73,11 +75,18 @@ class Header extends Component {
 
 const mapStateToProps = state => {
   return {
-    isLogin: state.getIn(["header", "isLogin"])
+    isLogin: state.getIn(["header", "isLogin"]),
+    accessModalVisible: state.getIn(["post", "accessModalVisible"])
   };
 };
 
-const mapDispatchToProps = dispatch => {};
+const mapDispatchToProps = dispatch => {
+  return {
+    showAccessModal() {
+      dispatch(actionCreators.showAccessModal());
+    }
+  };
+};
 
 export default connect(
   mapStateToProps,
