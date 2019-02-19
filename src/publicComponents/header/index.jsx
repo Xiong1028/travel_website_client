@@ -40,7 +40,7 @@ class Header extends Component {
           </MenuItemGroup>
         </SubMenu>
         <Menu.Item key="alipay">Link</Menu.Item>
-        <Menu.Item key="searchBox" style={{ marginLeft: 150 }}>
+        <Menu.Item key="searchBox" style={{ marginLeft: 500 }}>
           <Search placeholder="search" style={{ width: 200 }} />
         </Menu.Item>
         <Menu.Item key="Post" onClick={showAccessModal}>
