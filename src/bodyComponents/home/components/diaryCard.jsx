@@ -1,36 +1,47 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Card, Icon, Avatar } from 'antd';
+import { MDBMask, MDBView, MDBIcon, MDBBtn } from "mdbreact";
 
 const { Meta } = Card;
 
 class DiaryCard extends Component {
-    render(){
-        return(
+    render() {
+        return (
             <Card
-                style={{ width: 300 }}
-                cover={<img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />}
-                actions={[<Icon type="setting" />, <Icon type="edit" />, <Icon type="ellipsis" />]}
+                hoverable
+                style={{ width: 350, height: 350, padding: '2.5%', borderRadius: '8px'}}
+                cover={ <MDBView hover zoom >
+                            <img alt="diary pic" src={require("../../../assets/images/diary1.jpg")} style={{height: 250}}/> 
+                            <MDBMask overlay="stylish-light">
+                                <MDBBtn color="danger" rounded size="xl">
+                                    <MDBIcon fas icon="thumbtack" className="left" /><b>     Save</b>
+                                </MDBBtn>
+                            </MDBMask>
+                        </MDBView>}
             >
                 <Meta
-                    avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                    title="Card title"
-                    description="This is the description"
-                />
+                    avatar={ <img src="https://pic.qyer.com/avatar/003/10/69/98/200?v=1545986595" alt="" className="rounded-circle" style={{width: '50px'}}/> }
+                    style={{fontFamily:"'Indie Flower', cursive", fontSize:'18px', fontWeight:700, color:'black'}}                           
+                    description={<p style={{color:'black'}}>European Streest Beat - 12/05/2017</p>}         
+                    
+               />
             </Card>
-
-
+            
+            
+            
+            
         );
     }
 }
 
 const mapStateToProps = state => {
     return {};
-  };
-  
-const mapDispatchToProps = dispatch => {};
+};
+
+const mapDispatchToProps = dispatch => { };
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(DiaryCard);
+)(DiaryCard);
