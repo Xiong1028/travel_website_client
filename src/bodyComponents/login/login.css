@@ -10,7 +10,7 @@
 }
 
 .loginForm {
-    width: 28%;
+    width: 25%;
     height: 60%;
     padding: 20px 50px;
     background: #eee;
@@ -29,5 +29,9 @@
 }
 
 .signInForm {
-    margin-top: 30px;
+    margin-top: 15%;
+}
+
+.signUpForm{
+    margin-top:10%;
 }
