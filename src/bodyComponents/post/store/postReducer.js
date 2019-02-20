@@ -18,3 +18,4 @@ export default (state = defaultPostState, action) => {
       return state;
   }
 };
+

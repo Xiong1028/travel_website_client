@@ -41,7 +41,7 @@ class Home extends Component {
           </Row>
 
           <Row style={{marginBottom: 36, textAlign: "center"}}>
-            <Button variant="outline-success">More Diaries</Button>            
+            <Button className="btn btn-outline-success">More Diaries</Button>
           </Row>
   </div>        
       </Fragment>     

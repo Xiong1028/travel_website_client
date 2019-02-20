@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { Tabs } from "antd";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
@@ -7,7 +6,7 @@ import "./login.css";
 
 const TabPane = Tabs.TabPane;
 
-class Login extends Component {
+export default class Login extends Component {
   render() {
     return (
       <div className="loginWrapper">
@@ -25,8 +24,3 @@ class Login extends Component {
     );
   }
 }
-
-export default connect(
-  state => ({}),
-  {}
-)(Login);
