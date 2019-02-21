@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 
 import PhotoSlide from "./components/photoSlide";
 import DiaryCard from "./components/diaryCard";
-import "./home.css";
+
 
 class Home extends Component {
   render() {
@@ -14,8 +14,11 @@ class Home extends Component {
         <PhotoSlide />    
         
         <div>
-          <Row className="textRow">
-            Most Popular Diaries
+          <Row className="titleRow">
+            Most Popular Diaries                  
+          </Row>
+          <Row style={{marginBottom: 28}}>
+            <Button className="btn btn btn-outline-info" style={{display: 'block', margin: '0 auto'}}>More Diaries</Button>
           </Row>
           <Row style={{marginBottom: 28}}>
             <Col className="gutter-row" span={6} offset={3}>
@@ -40,9 +43,9 @@ class Home extends Component {
             </Col>
           </Row>
 
-          <Row style={{marginBottom: 36, textAlign: "center"}}>
-            <Button variant="outline-success">More Diaries</Button>            
-          </Row>
+          
+                        
+          
   </div>        
       </Fragment>     
     );

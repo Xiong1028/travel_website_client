@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "./header.css";
 import { Link } from "react-router-dom";
 import { Menu, Icon, Input, Avatar, Badge, Spin } from "antd";
 import { Logo } from "./style";
@@ -17,10 +16,10 @@ class Header extends Component {
       <Menu mode="horizontal">
         <Menu.Item key="logo">
           <Logo>
-            <span style={{ fontSize: 20, color: "red", marginRight: 5 }}>
-              <Link to="/">Travel</Link>
+            <span >
+              <Link to="/"></Link>
             </span>
-            <Spin size="small" />
+            
           </Logo>
         </Menu.Item>
         <Menu.Item key="home">
