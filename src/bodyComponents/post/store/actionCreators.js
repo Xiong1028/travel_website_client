@@ -7,13 +7,13 @@ import axios from 'axios';
 
 export const handleOkAction = () => {
   return {
-    type: constants.REGISTER_OK
+    type: constants.POST_OK
   };
 };
 
 export const handleCancelAction = () => {
   return {
-    type: constants.REGISTER_CANCEL
+    type: constants.POST_CANCEL
   };
 };
 

@@ -10,9 +10,9 @@ export default (state = defaultPostState, action) => {
   switch (action.type) {
     case constants.ACCESS_DENIED_MODAL:
       return state.set("accessModalVisible", true);
-    case constants.REGISTER_OK:
+    case constants.POST_OK:
       return state.set("accessModalVisible", false);
-    case constants.REGISTER_CANCEL:
+    case constants.POST_CANCEL:
       return state.set("accessModalVisible", false);
     default:
       return state;

@@ -91,7 +91,6 @@ class RichText extends Component {
           onOk={() => this.handlePostOk(draftjs(this.state.editorContent))}
         >
           Are you ready to post?
-          {/* {draftjs(this.state.editorContent)} */}
         </Modal>
         <div className="postBtn">
           <Button type="primary" onClick={this.handleClearContent}>
