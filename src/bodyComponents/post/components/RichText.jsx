@@ -6,6 +6,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "../post.css";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import EditableTagGroup from './postTags';
 
 class RichText extends Component {
   state = {
@@ -71,6 +72,7 @@ class RichText extends Component {
           className="title"
           onChange={this.handleTitleInput.bind(this)}
         />
+        <EditableTagGroup/>
         <Editor
           editorState={editorState}
           onEditorStateChange={this.onEditorStateChange}

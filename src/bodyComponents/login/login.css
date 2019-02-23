@@ -3,7 +3,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    top: 7%;
+    top: 5%;
     background: grey;
     z-index: 0;
     overflow: hidden;
@@ -34,4 +34,11 @@
 
 .signUpForm{
     margin-top:10%;
+}
+
+.err-msg{
+    color:red;
+    text-align: center;
+    font-size: 120%;
+    font-family: sans-serif;
 }

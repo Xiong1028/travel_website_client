@@ -12,7 +12,7 @@ const Search = Input.Search;
 
 class Header extends Component {
 	render() {
-		const {isLogin, showAccessModal} = this.props;
+		const {isLogin, showAccessModal,handleLogout} = this.props;
 		return (
 			<Menu mode="horizontal">
 				<Menu.Item key="logo">
@@ -40,7 +40,7 @@ class Header extends Component {
 					</MenuItemGroup>
 				</SubMenu>
 				<Menu.Item key="alipay">Link</Menu.Item>
-				<Menu.Item key="searchBox" style={{marginLeft: 500}}>
+				<Menu.Item key="searchBox" style={{marginLeft: 600}}>
 					<Search placeholder="search" style={{width: 200}}/>
 				</Menu.Item>
 				<Menu.Item key="Post" onClick={showAccessModal}>
@@ -60,13 +60,23 @@ class Header extends Component {
 						</Link>
 					</Menu.Item>
 				) : (
-					<Menu.Item key="Avatar">
-            <span style={{marginRight: 24}}>
+					<SubMenu
+						title={<span style={{marginRight: 24}}>
               <Badge count={8}>
                 <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
               </Badge>
-            </span>
-					</Menu.Item>
+            </span>}
+					>
+						<MenuItemGroup title="Article">
+							<Menu.Item key="setting:1">My Article</Menu.Item>
+							<Menu.Item key="setting:2">My Favorite</Menu.Item>
+						</MenuItemGroup>
+						<MenuItemGroup title="Comment">
+							<Menu.Item key="setting:3">Likes</Menu.Item>
+							<Menu.Item key="setting:4">@Me</Menu.Item>
+							<Menu.Item key="setting:5" onClick={handleLogout}>Logout</Menu.Item>
+						</MenuItemGroup>
+					</SubMenu>
 				)}
 			</Menu>
 		);
@@ -84,6 +94,9 @@ const mapDispatchToProps = dispatch => {
 	return {
 		showAccessModal() {
 			dispatch(actionCreators.showAccessModal());
+		},
+		handleLogout(){
+			dispatch(actionCreators.handleLogoutAction());
 		}
 	};
 };

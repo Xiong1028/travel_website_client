@@ -7,16 +7,35 @@ const errMsg = (msg) => ({
 	data: msg
 })
 
+const errLoginMsg = (msg) => ({
+	type: constants.ERROR_LOGINMSG,
+	data: msg
+})
+
 const modifyLoginStatus = () => ({
 	type: constants.MODIFY_LOGIN_STATUS,
 	data: true
 })
 
-const authSucess = (user) => ({
+const authSuccess = (user) => ({
 	type: constants.AUTH_SUCCESS,
 	data: user
 })
 
+const loginSuccess = (user) => ({
+	type: constants.LOGIN_SUCCESS,
+	data: user
+})
+
+const clearMsg = () => ({
+	type: constants.CLEAR_MSG
+})
+
+export const handleClearMsgAction = () => {
+	return dispatch => {
+		dispatch(clearMsg());
+	}
+}
 
 export const handleRegisterAction = (user) => {
 	const {username, password1, password2, email} = user;
@@ -33,9 +52,8 @@ export const handleRegisterAction = (user) => {
 				email: email
 			}).then((res) => {
 				const result = res.data;
-				console.log(result);
 				if (result.code) {
-					dispatch(authSucess(result.data));
+					dispatch(authSuccess(result.data));
 					dispatch(modifyLoginStatus());
 				} else {
 					dispatch(errMsg(result.registerMsg));
@@ -43,4 +61,31 @@ export const handleRegisterAction = (user) => {
 			})
 		}
 	}
+}
+
+export const handleLoginAction = (user) => {
+	const {username, password} = user;
+
+	return dispatch => {
+		if (!username) {
+			dispatch(errLoginMsg('username can not be empty'));
+		} else if (!password) {
+			dispatch(errLoginMsg('Password can not be empty'));
+		} else {
+			axios.post('/login', {
+				username: username,
+				password: password
+			}).then((res) => {
+				const result = res.data;
+				console.log(result);
+				if (result.code) {
+					dispatch(loginSuccess(result.data));
+					dispatch(modifyLoginStatus());
+				} else {
+					dispatch(errLoginMsg(result.loginMsg));
+				}
+			})
+		}
+	}
+
 }

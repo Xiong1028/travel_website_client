@@ -16,6 +16,11 @@ class SignUp extends Component {
 		}
 	}
 
+	componentWillUnmount() {
+		this.props.clearMsg();
+	}
+
+
 	handleChange = (name, e) => {
 		this.setState({
 			[name]: e.target.value
@@ -97,6 +102,9 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		handleRegister(user) {
 			dispatch(actionCreators.handleRegisterAction(user))
+		},
+		clearMsg() {
+			dispatch(actionCreators.handleClearMsgAction())
 		}
 	}
 }

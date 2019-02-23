@@ -5,9 +5,9 @@ import {constants} from ".";
 const defaultLoginUser = fromJS({
 	username: '',
 	email: '',
-	registerMsg: ''
+	registerMsg: '',
+	loginMsg:''
 })
-
 
 export default (state = defaultLoginUser, action) => {
 	switch (action.type) {
@@ -18,11 +18,22 @@ export default (state = defaultLoginUser, action) => {
 		case constants.AUTH_SUCCESS:
 			return state.merge({
 				username: action.data.username,
-				email: action.data.email,
-				registerMsg: 'Success to register'
+				email: action.data.email
 			})
+		case constants.CLEAR_MSG:
+			return state.merge({
+				registerMsg:'',
+				loginMsg: ''
+			});
+		case constants.LOGIN_SUCCESS:
+			return state.merge({
+				username:action.data.username,
+				email:action.data.email
+			})
+		case constants.ERROR_LOGINMSG:
+			return state.set('loginMsg',action.data);
+
 		default:
 			return state;
 	}
-
 }
