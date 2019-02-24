@@ -49,13 +49,4 @@ class PhotoSlide extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {};
-};
-
-const mapDispatchToProps = dispatch => {};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PhotoSlide);
+export default PhotoSlide;

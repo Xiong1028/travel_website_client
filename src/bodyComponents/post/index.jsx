@@ -28,7 +28,7 @@ class Post extends Component {
 						onOk={this.clickOk}
 						onCancel={this.clickCancel}
 					>
-						<p>Only for registered users. Are you going to login now ?</p>
+						<p>Only for registered users. Are you going to Register now ?</p>
 					</Modal>
 				</div>
 			);

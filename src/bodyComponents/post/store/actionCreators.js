@@ -3,10 +3,11 @@ import {fromJS} from "immutable";
 import axios from 'axios';
 
 
-export const handleOk= () => {
-	return {
-		type: constants.POST_OK
-	};
+export const handleOkAction = () => {
+	return dispatch =>
+		dispatch({
+			type: constants.POST_OK
+		})
 };
 
 export const handleCancelAction = () => {
