@@ -7,6 +7,7 @@ import "../post.css";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import EditableTagGroup from './postTags';
+import {actionCreators} from "../store";
 
 class RichText extends Component {
   state = {
@@ -54,6 +55,7 @@ class RichText extends Component {
     });
     this.props.handlePostOk({
       title: this.state.postTitle,
+      tags:this.props.tagsList,
       content: this.state.postContent
     });
     this.props.history.replace("/");
@@ -86,11 +88,12 @@ class RichText extends Component {
           title="Your story on your trip"
           visible={this.state.showRichText}
           onCancel={() => {
+            console.log(this.state.postContent);
             this.setState({
               showRichText: false
             });
           }}
-          onOk={() => this.handlePostOk(draftjs(this.state.editorContent))}
+          onOk={this.handlePostOk}
         >
           Are you ready to post?
         </Modal>
@@ -111,11 +114,17 @@ class RichText extends Component {
   }
 }
 
+const mapStateToProps = (state)=>({
+  tagsList:state.getIn(['post','tagsList'])
+})
+
 const mapDispatchToProps = dispatch => ({
-  handlePostOk(postData) {}
+  handlePostOk(postData) {
+    dispatch(actionCreators.handleOkAction(postData));
+  }
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(withRouter(RichText));

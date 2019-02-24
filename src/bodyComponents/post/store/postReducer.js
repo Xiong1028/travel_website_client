@@ -3,7 +3,8 @@ import { constants } from ".";
 
 //set the access Modal state as false, when click the Post menu
 const defaultPostState = fromJS({
-  accessModalVisible: false
+  accessModalVisible: false,
+  tagsList:[]
 });
 
 export default (state = defaultPostState, action) => {
@@ -14,6 +15,8 @@ export default (state = defaultPostState, action) => {
       return state.set("accessModalVisible", false);
     case constants.POST_CANCEL:
       return state.set("accessModalVisible", false);
+    case constants.RENEW_TAGSLIST:
+      return state.set("tagsList",action.data);
     default:
       return state;
   }

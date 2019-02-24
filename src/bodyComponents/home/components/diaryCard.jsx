@@ -35,10 +35,12 @@ class DiaryCard extends Component {
     }
 }
 
+// data transfer from reducer to component
 const mapStateToProps = state => {
     return {};
 };
 
+// data transfer from component to reducer
 const mapDispatchToProps = dispatch => { };
 
 export default connect(

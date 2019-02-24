@@ -2,10 +2,12 @@ import React,{Component} from 'react';
 import {
 	Tag, Input, Tooltip, Icon,
 } from 'antd';
+import {connect} from 'react-redux';
+import {actionCreators} from '../store';
 
 class EditableTagGroup extends Component {
 	state = {
-		tags: ['Tag 1', 'Tag 2','Tag 3'],
+		tags: [],
 		inputVisible: false,
 		inputValue: '',
 	};
@@ -36,6 +38,8 @@ class EditableTagGroup extends Component {
 			inputVisible: false,
 			inputValue: '',
 		});
+
+		this.props.renewTagsList(tags);
 	}
 
 	saveInputRef = input => this.input = input
@@ -78,4 +82,13 @@ class EditableTagGroup extends Component {
 	}
 }
 
-export default EditableTagGroup;
+
+const mapDispatchToProps = (dispatch)=>{
+	return {
+		renewTagsList(tags){
+			dispatch(actionCreators.handleRenewTagsListAction(tags));
+		}
+	}
+}
+
+export default connect(null,mapDispatchToProps)(EditableTagGroup);

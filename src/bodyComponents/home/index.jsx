@@ -5,9 +5,10 @@ import {Button} from 'react-bootstrap';
 
 import PhotoSlide from "./components/photoSlide";
 import DiaryCard from "./components/diaryCard";
-import "./home.css";
+
 
 class Home extends Component {
+<<<<<<< HEAD
 	render() {
 		return (
 			<Fragment>
@@ -46,6 +47,50 @@ class Home extends Component {
 			</Fragment>
 		);
 	}
+=======
+  render() {
+    return (
+      <Fragment>               
+        <PhotoSlide />    
+        
+        <div>
+          <Row className="titleRow">
+            Most Popular Diaries                  
+          </Row>
+          <Row style={{marginBottom: 28}}>
+            <Button className="btn btn btn-outline-info" style={{display: 'block', margin: '0 auto'}}>More Diaries</Button>
+          </Row>
+          <Row style={{marginBottom: 28}}>
+            <Col className="gutter-row" span={6} offset={3}>
+              <div className="gutter-box"><DiaryCard /></div>
+            </Col>
+            <Col className="gutter-row" span={6} offset={0.8}>
+              <div className="gutter-box"><DiaryCard /></div>
+            </Col>
+            <Col className="gutter-row" span={6} offset={0.8}>
+              <div className="gutter-box"><DiaryCard /></div>
+            </Col>
+          </Row>
+          <Row style={{marginBottom: 36}}>
+            <Col className="gutter-row" span={6} offset={3}>
+              <div className="gutter-box"><DiaryCard /></div>
+            </Col>
+            <Col className="gutter-row" span={6} offset={0.8}>
+              <div className="gutter-box"><DiaryCard /></div>
+            </Col>
+            <Col className="gutter-row" span={6} offset={0.8}>
+              <div className="gutter-box"><DiaryCard /></div>
+            </Col>
+          </Row>
+
+          
+                        
+          
+  </div>        
+      </Fragment>     
+    );
+  }
+>>>>>>> 4a30c9387fab44906b8cde2efb252f32894257a6
 }
 
 const mapStateToProps = state => {
