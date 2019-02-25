@@ -4,7 +4,8 @@ import {constants} from ".";
 const defaultHomeState = fromJS({
 	diaryCardList: [],
 	page: 0,
-	totalPage: 1
+	totalPage: 1,
+	photoSlideList: []
 })
 
 export default (state = defaultHomeState, action) => {
@@ -16,6 +17,8 @@ export default (state = defaultHomeState, action) => {
 			})
 		case constants.RENEW_PAGE:
 			return state.set('page',action.data);
+		case constants.RENEW_PHOTO_SLIDE_LIST:
+			return state.set('photoSlideList', action.data);
 		default:
 			return state;
 	}
