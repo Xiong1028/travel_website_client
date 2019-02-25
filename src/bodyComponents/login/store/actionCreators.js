@@ -43,8 +43,8 @@ export const handleRegisterAction = (user) => {
 	return dispatch => {
 		if (!username) {
 			dispatch(errMsg('username can not be empty'));
-		} else if (password1 != password2) {
-			dispatch(errMsg('passwords are not matched'));
+		} else if (password1 !== password2) {
+			dispatch(errMsg('passwords do not match'));
 		} else {
 			axios.post('/register', {
 				username: username,

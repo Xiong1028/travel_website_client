@@ -15,7 +15,7 @@ class Header extends Component {
 	render() {
 		const {isLogin, showAccessModal, handleLogout} = this.props;
 		return (
-			<Menu mode="horizontal">
+			<Menu mode="horizontal" theme="dark" className="header_menu">
 				<Menu.Item key="logo">
 					<Link to='/'>
 						<Logo/>
