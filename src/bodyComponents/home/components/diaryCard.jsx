@@ -56,7 +56,7 @@ class DiaryCard extends Component {
 		return (
 			<div>
 				<Row className="titleRow">
-					Most Popular Diaries
+					Most Recent Diaries
 				</Row>
 				<Row style={{marginBottom: 28}}>
 					<
