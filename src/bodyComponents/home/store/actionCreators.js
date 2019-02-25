@@ -28,3 +28,6 @@ export const pageChangeAction = (page)=>{
 		data:page
 	}
 }
+
+
+

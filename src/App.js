@@ -8,6 +8,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./bodyComponents/home/";
 import Login from "./bodyComponents/login/";
 import Post from "./bodyComponents/post";
+import Detail from "./bodyComponents/detail";
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/login" exact component={Login} />
             <Route path="/post" exact component={Post} />
+            <Route path="/detail/:id" exact component={Detail} />
           </Fragment>
         </BrowserRouter>
       </Provider>

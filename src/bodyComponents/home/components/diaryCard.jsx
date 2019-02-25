@@ -4,6 +4,7 @@ import {Card, Icon, Avatar, Row, Col} from 'antd';
 import {MDBMask, MDBView, MDBIcon, MDBBtn} from "mdbreact";
 import {Button} from "react-bootstrap";
 import {actionCreators} from "../store";
+import {Link} from "react-router-dom";
 
 const {Meta} = Card;
 
@@ -21,27 +22,29 @@ class DiaryCard extends Component {
 				if (newDiaryCardList[i]) {
 					cardPerPageList.push(
 						<Col className="gutter-row" span={5} offset={2} key={i}>
-							<Card
-								hoverable
-								style={{width: 350, height: 350, padding: '2.5%', borderRadius: '8px', margin: 10}}
-								cover={<MDBView hover zoom>
-									<img alt="diary pic" src={newDiaryCardList[i]['cover_imgUrl']}
-											 style={{height: 250}}/>
-									<MDBMask overlay="stylish-light">
-										<MDBBtn color="danger" rounded size="xl">
-											<MDBIcon fas='true' icon="thumbtack" className="left"/><b> Save</b>
-										</MDBBtn>
-									</MDBMask>
-								</MDBView>}
-							>
-								<Meta
-									avatar={<img src={newDiaryCardList[i]['user_imgUrl']} alt="userAvatar"
-															 className="rounded-circle"
-															 style={{width: '50px'}}/>}
-									style={{fontFamily: "'Indie Flower', cursive", fontSize: '18px', fontWeight: 700, color: 'black'}}
-									description={<p style={{color: 'black'}}>{newDiaryCardList[i]['title']}</p>}
-								/>
-							</Card>
+							<Link to={'/detail/' + newDiaryCardList[i]['id']}>
+								<Card
+									hoverable
+									style={{width: 350, height: 350, padding: '2.5%', borderRadius: '8px', margin: 10}}
+									cover={<MDBView hover zoom>
+										<img alt="diary pic" src={newDiaryCardList[i]['cover_imgUrl']}
+												 style={{height: 250}}/>
+										<MDBMask overlay="stylish-light">
+											<MDBBtn color="danger" rounded size="xl">
+												<MDBIcon fas='true' icon="thumbtack" className="left"/><b> Save</b>
+											</MDBBtn>
+										</MDBMask>
+									</MDBView>}
+								>
+									<Meta
+										avatar={<img src={newDiaryCardList[i]['user_imgUrl']} alt="userAvatar"
+																 className="rounded-circle"
+																 style={{width: '50px'}}/>}
+										style={{fontFamily: "'Indie Flower', cursive", fontSize: '18px', fontWeight: 700, color: 'black'}}
+										description={<p style={{color: 'black'}}>{newDiaryCardList[i]['title']}</p>}
+									/>
+								</Card>
+							</Link>
 						</Col>
 					)
 				}
@@ -51,7 +54,7 @@ class DiaryCard extends Component {
 	}
 
 	render() {
-		const {page,totalPage,handlePageChange} = this.props;
+		const {page, totalPage, handlePageChange} = this.props;
 		return (
 			<div>
 				<Row className="titleRow">
@@ -62,7 +65,7 @@ class DiaryCard extends Component {
 						Button
 						className="btn btn btn-outline-info"
 						style={{display: 'block', margin: '0 auto'}}
-						onClick={()=>handlePageChange(page,totalPage)}
+						onClick={() => handlePageChange(page, totalPage)}
 					>
 						More Diaries
 					</Button>
