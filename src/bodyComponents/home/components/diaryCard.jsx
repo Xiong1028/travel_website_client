@@ -52,7 +52,7 @@ class DiaryCard extends Component {
 	}
 
 	render() {
-		const {page,totalPage,handlePageChange} = this.props;
+		const {page, totalPage, handlePageChange} = this.props;
 		return (
 			<div>
 				<Row className="titleRow">
@@ -63,7 +63,7 @@ class DiaryCard extends Component {
 						Button
 						className="btn btn btn-outline-info"
 						style={{display: 'block', margin: '0 auto'}}
-						onClick={()=>handlePageChange(page,totalPage)}
+						onClick={() => handlePageChange(page, totalPage)}
 					>
 						More Diaries
 					</Button>

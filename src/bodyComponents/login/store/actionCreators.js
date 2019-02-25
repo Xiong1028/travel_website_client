@@ -77,7 +77,6 @@ export const handleLoginAction = (user) => {
 				password: password
 			}).then((res) => {
 				const result = res.data;
-				console.log(result);
 				if (result.code) {
 					dispatch(loginSuccess(result.data));
 					dispatch(modifyLoginStatus());

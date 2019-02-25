@@ -49,6 +49,17 @@ class RichText extends Component {
     });
   };
 
+  // getImgUrl = (contentStr)=>{
+  //   const imgUrlList = contentStr.match(/<img.*src=[\s]*\"([^\"]*?)\"/gi);
+  //   let  newImgURLArr = [];
+  //   imgUrlList.map((item,index)=>{
+  //     newImgURLArr.push(item.substring(item.indexOf('http'),item.length-1));
+  //   })
+  //   return newImgURLArr;
+  // }
+
+
+
   handlePostOk = () => {
     this.setState({
       showRichText: false
@@ -120,6 +131,7 @@ const mapStateToProps = (state)=>({
 
 const mapDispatchToProps = dispatch => ({
   handlePostOk(postData) {
+    console.log(postData);
     dispatch(actionCreators.handleOkAction(postData));
   }
 });
