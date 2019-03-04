@@ -9,6 +9,7 @@ import Home from "./bodyComponents/home/";
 import Login from "./bodyComponents/login/";
 import Post from "./bodyComponents/post";
 import Detail from "./bodyComponents/detail";
+import Setting from "./bodyComponents/setting";
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             <Route path="/login" exact component={Login} />
             <Route path="/post" exact component={Post} />
             <Route path="/detail/:id" exact component={Detail} />
+            <Route path="/setting" exact component={Setting} />
           </Fragment>
         </BrowserRouter>
       </Provider>
