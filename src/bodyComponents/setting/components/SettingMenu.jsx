@@ -15,12 +15,12 @@ class SettingMenu extends Component {
 					</Link>
 				</Menu.Item>
 				<Menu.Item key="2">
-					<Link to="/setting/reset">
+					<Link to="/reset">
 						<span><Icon type="lock"/><span>Reset Password</span></span>
 					</Link>
 				</Menu.Item>
 				<Menu.Item key="3">
-					<Link to="/setting/deleteuser">
+					<Link to="/deleteuser">
 						<span><Icon type="user-delete"/><span>Delete Account</span></span>
 					</Link>
 				</Menu.Item>

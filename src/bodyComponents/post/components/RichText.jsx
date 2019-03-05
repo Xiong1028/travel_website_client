@@ -55,9 +55,11 @@ class RichText extends Component {
       /<img[\s]*src=[\s]*[\'\"]?([^\'\"]*)\.(jpg|png|gif|svg|webp|bmp)/gi
     );
     let newImgURLArr = [];
-    imgUrlList.map((item, index) => {
-      newImgURLArr.push(item.substring(item.indexOf("http"), item.length));
-    });
+    if(!imgUrlList){
+      imgUrlList.map((item, index) => {
+        newImgURLArr.push(item.substring(item.indexOf("http"), item.length));
+      });
+    }
     return newImgURLArr;
   };
 
