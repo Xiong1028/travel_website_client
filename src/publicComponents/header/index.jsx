@@ -44,7 +44,7 @@ class Header extends Component {
           </MenuItemGroup>
         </SubMenu>
         <Menu.Item key="alipay">Link</Menu.Item>
-        <Menu.Item key="searchBox" style={{ marginLeft: "25%" }}>
+        <Menu.Item key="searchBox" style={{marginLeft:'50%'}}>
           <Search placeholder="search" style={{ width: 200 }} />
         </Menu.Item>
         <Menu.Item key="Post" onClick={showAccessModal}>
@@ -53,12 +53,6 @@ class Header extends Component {
             Post
           </Link>
         </Menu.Item>
-
-        <Menu.Item key="setting">
-          <Icon type="setting" />
-          Setting
-        </Menu.Item>
-
         {!isLogin ? (
           <Menu.Item key="login">
             <Link to="/login">
@@ -82,7 +76,14 @@ class Header extends Component {
             <MenuItemGroup title="Comment">
               <Menu.Item key="setting:3">Likes</Menu.Item>
               <Menu.Item key="setting:4">@Me</Menu.Item>
-              <Menu.Item key="setting:5" onClick={handleLogout}>
+            </MenuItemGroup>
+            <MenuItemGroup title="Setting">
+              <Menu.Item key="setting:5">
+                  <Link to="/setting">
+                  Setting
+                  </Link>
+              </Menu.Item>
+              <Menu.Item key="setting:6" onClick={handleLogout}>
                 Logout
               </Menu.Item>
             </MenuItemGroup>
@@ -92,7 +93,6 @@ class Header extends Component {
     );
   }
 }
-
 const mapStateToProps = state => {
   return {
     isLogin: state.getIn(["header", "isLogin"]),
