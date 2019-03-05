@@ -15,6 +15,8 @@ export default (state = defaultHeaderState, action) => {
 			return state.set("isLogin", true);
 		case headerConstants.LOG_OUT:
 			return state.set("isLogin",false);
+		case headerConstants.LOGIN_SET:
+			return state.set("isLogin", true);
 		default:
 			return state;
 	}

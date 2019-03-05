@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Cookies from 'js-cookie';
 import "./header.css";
 import { Link } from "react-router-dom";
 import { Menu, Icon, Input, Avatar, Badge } from "antd";
@@ -11,6 +12,12 @@ const MenuItemGroup = Menu.ItemGroup;
 const Search = Input.Search;
 
 class Header extends Component {
+  componentWillMount() {
+    if (Cookies.get('userid')) {
+      this.props.setLogin();
+    }
+  }
+
   render() {
     const { isLogin, showAccessModal, handleLogout } = this.props;
     return (
@@ -95,6 +102,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    setLogin() {
+      dispatch(actionCreators.setLoginAction());
+    },
     showAccessModal() {
       dispatch(actionCreators.showAccessModal());
     },

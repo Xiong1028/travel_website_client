@@ -14,4 +14,10 @@ export const handleLogoutAction =() =>{
   }
 }
 
+export const setLoginAction = () => {
+  return {
+    type: headerconstants.LOGIN_SET
+  }
+}
+
 
