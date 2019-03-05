@@ -6,8 +6,8 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "../post.css";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import EditableTagGroup from './postTags';
-import {actionCreators} from "../store";
+import EditableTagGroup from "./postTags";
+import { actionCreators } from "../store";
 
 class RichText extends Component {
   state = {
@@ -15,9 +15,9 @@ class RichText extends Component {
     editorContent: "",
     editorState: "",
     postTitle: "",
-    postContent: ""
+    postContent: "",
+    postImgUrl: []
   };
-
   handleClearContent = () => {
     //clear content
     this.setState({
@@ -28,7 +28,8 @@ class RichText extends Component {
     //get the content
     this.setState({
       showRichText: true,
-      postContent: draftjs(this.state.editorContent)
+      postContent: draftjs(this.state.editorContent),
+      postImgUrl: this.getImgUrl(draftjs(this.state.editorContent))
     });
   };
   onEditorStateChange = editorState => {
@@ -49,16 +50,16 @@ class RichText extends Component {
     });
   };
 
-  // getImgUrl = (contentStr)=>{
-  //   const imgUrlList = contentStr.match(/<img.*src=[\s]*\"([^\"]*?)\"/gi);
-  //   let  newImgURLArr = [];
-  //   imgUrlList.map((item,index)=>{
-  //     newImgURLArr.push(item.substring(item.indexOf('http'),item.length-1));
-  //   })
-  //   return newImgURLArr;
-  // }
-
-
+  getImgUrl = contentStr => {
+    const imgUrlList = contentStr.match(
+      /<img[\s]*src=[\s]*[\'\"]?([^\'\"]*)\.(jpg|png|gif|svg|webp|bmp)/gi
+    );
+    let newImgURLArr = [];
+    imgUrlList.map((item, index) => {
+      newImgURLArr.push(item.substring(item.indexOf("http"), item.length));
+    });
+    return newImgURLArr;
+  };
 
   handlePostOk = () => {
     this.setState({
@@ -66,14 +67,15 @@ class RichText extends Component {
     });
     this.props.handlePostOk({
       title: this.state.postTitle,
-      tags:this.props.tagsList,
-      content: this.state.postContent
+      tags: this.props.tagsList,
+      content: this.state.postContent,
+      postImgUrl: this.state.postImgUrl
     });
     this.props.history.replace("/");
   };
 
   render() {
-    const { editorState, editorContent } = this.state;
+    const { editorState } = this.state;
     return (
       <div className="postArticle">
         <h3 className="postTitle">
@@ -83,9 +85,9 @@ class RichText extends Component {
           type="text"
           placeholder="Title"
           className="title"
-          onChange={this.handleTitleInput.bind(this)}
+          onChange={this.handleTitleInput}
         />
-        <EditableTagGroup/>
+        <EditableTagGroup />
         <Editor
           editorState={editorState}
           onEditorStateChange={this.onEditorStateChange}
@@ -93,7 +95,6 @@ class RichText extends Component {
           toolbarClassName="toolbarClassName"
           wrapperClassName="wrapperClassName"
           editorClassName="editorClassName editor"
-          onEditorStateChange={this.onEditorStateChange}
         />
         <Modal
           title="Your story on your trip"
@@ -125,14 +126,13 @@ class RichText extends Component {
   }
 }
 
-const mapStateToProps = (state)=>({
-  tagsList:state.getIn(['post','tagsList'])
-})
+const mapStateToProps = state => ({
+  tagsList: state.getIn(["post", "tagsList"])
+});
 
 const mapDispatchToProps = dispatch => ({
   handlePostOk(postData) {
-    console.log(postData);
-    dispatch(actionCreators.handleOkAction(postData));
+    dispatch(actionCreators.handlePostOkAction(postData));
   }
 });
 
