@@ -1,34 +1,31 @@
 import React, {Component} from "react";
-import { Tab, TabContainer, TabContent, TabPane, Row, Col, Nav } from 'react-bootstrap';
+import { Tab, ListGroup, Row, Col } from 'react-bootstrap';
+
+import PicturesWall from './components/profile';
 
 class Setting extends Component {
     render() {
         return (
-            <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+            <Tab.Container id="list-group-tabs-example" defaultActiveKey="#profile">
                 <Row>
-                    <Col sm={3}>
-                    <Nav variant="pills" className="flex-column">
-                        <Nav.Item>
-                        <Nav.Link eventKey="first">Tab 1</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                        <Nav.Link eventKey="second">Tab 2</Nav.Link>
-                        </Nav.Item>
-                    </Nav>
+                    <Col sm={4}>
+                        <ListGroup>
+                            <ListGroup.Item action href="#profile">Profile</ListGroup.Item>
+                            <ListGroup.Item action href="#password">Password</ListGroup.Item>
+                        </ListGroup>
                     </Col>
-                    <Col sm={9}>
-                    <Tab.Content>
-                        <Tab.Pane eventKey="first">
-                            <div>hello world</div>
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="second">
-                            <div>hello world</div>
-                        </Tab.Pane>
-                    </Tab.Content>
+                    <Col sm={8}>
+                        <Tab.Content>
+                            <Tab.Pane eventKey="#profile">
+                                <PicturesWall />
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="#password">
+                            
+                            </Tab.Pane>
+                        </Tab.Content>
                     </Col>
                 </Row>
-            </Tab.Container>
-            
+            </Tab.Container>            
         );
     }
 }
