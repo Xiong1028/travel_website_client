@@ -9,7 +9,7 @@ import Home from "./bodyComponents/home/";
 import Login from "./bodyComponents/login/";
 import Post from "./bodyComponents/post";
 import Detail from "./bodyComponents/detail";
-import Setting from "./bodyComponents/setting";
+import Setting from "./publicComponents/setting";
 
 class App extends Component {
   render() {
