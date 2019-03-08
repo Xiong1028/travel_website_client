@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { Tab, ListGroup, Row, Col } from 'react-bootstrap';
 
-import PicturesWall from './components/profile';
+import Avatar from './components/profile';
 
 class Setting extends Component {
     render() {
@@ -17,7 +17,7 @@ class Setting extends Component {
                     <Col sm={8}>
                         <Tab.Content>
                             <Tab.Pane eventKey="#profile">
-                                <PicturesWall />
+                                <Avatar />
                             </Tab.Pane>
                             <Tab.Pane eventKey="#password">
                             
