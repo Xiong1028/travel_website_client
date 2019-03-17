@@ -26,6 +26,16 @@ class Profile extends Component {
         this.setState({ scale: value });
     }
 
+    onClickSave = () => {
+        if (this.editor) {
+            // This returns a HTMLCanvasElement, it can be made into a data URL or a blob,
+            // drawn on another canvas, or added to the DOM.
+            const canvas = this.editor.getImage().toDataURL();
+            let blob = this.dataURItoBlob(canvas);
+            this.props.handleOnClickSave(blob);    
+        }
+    }
+
     dataURItoBlob(dataURI) {
         // convert base64 to raw binary data held in a string
         // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
@@ -47,17 +57,8 @@ class Profile extends Component {
       
         // write the ArrayBuffer to a blob, and you're done
         var blob = new Blob([ab], {type: mimeString});
+        console.log(blob);
         return blob;
-    }
-
-    onClickSave = () => {
-        if (this.editor) {
-            // This returns a HTMLCanvasElement, it can be made into a data URL or a blob,
-            // drawn on another canvas, or added to the DOM.
-            const canvas = this.editor.getImage().toDataURL();
-            let blob = this.dataURItoBlob(canvas);
-            console.log(blob);     
-        }
     }
     
     setEditorRef = (editor) => this.editor = editor;  
@@ -104,8 +105,7 @@ class Profile extends Component {
                         onChange={this.onChange}
                     />
                 </Col>
-                <Button variant="outline-primary" onClick={this.onClickSave}>Save</Button>
-
+                <Button variant="outline-primary" onClick={this.handleOnClickSave.bind(this)}>Save</Button>
             </div>
         );
     }
@@ -119,126 +119,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-
-    };
-};
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Profile);
-
-// Use Antd Upload Component to upload avatar
-/*
-function beforeUpload(file) {
-    const isType = (file.type === 'image/jpeg') || (file.type === 'image/png');
-    if (!isType) {
-        message.error('You can only upload JPG or PNG file!');
-    }
-    const isLt4M = file.size / 1024 / 1024 < 4;
-    if (!isLt4M) {
-        message.error('Image must smaller than 4MB!');
-    }
-    return isType && isLt4M;
-}
-
-
-class Profile extends Component {
-    state = {
-        previewVisible: false,
-        previewImage: '',
-        file: [{
-            uid: '-1',
-            name: 'xxx.png',
-            status: 'done',
-            url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-        }],
-        imgUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-    };
-
-    handlePreview = (file) => {
-        console.log(file);
-        console.log(file.thumbUrl);
-        this.setState({
-            previewImage: file.url || file.thumbUrl,
-            previewVisible: true
-        });
-    }
-
-    handleCancel = () => this.setState({ previewVisible: false });
-
-    handleChange = (info) => {
-        this.setState({
-            file: info.file.originFileObj
-        });
-
-        this.getBase64(info.file.originFileObj, imageUrl => this.setState({
-            imageUrl: imageUrl
-        }));
-    }
-
-    getBase64(img, callback) {
-        const reader = new FileReader();
-        reader.addEventListener('load', () => callback(reader.result));
-        reader.readAsDataURL(img);
-    }
-
-    render() {
-        const { previewVisible, previewImage } = this.state;
-        const { handleUpload } = this.props;
-
-        const uploadButton = (
-            <div>
-                <Icon type='plus' />
-                <div className="ant-upload-text">Upload</div>
-            </div>
-        );
-
-
-
-        return (
-            <div className="clearfix">
-                <Upload
-                    name="avatar"
-                    className="avatar-uploader"
-                    listType="picture-card"
-                    action={(file) => handleUpload(file)}
-                    beforeUpload={beforeUpload}
-                    onPreview={this.handlePreview}
-                    onChange={this.handleChange}
-                >
-                {uploadButton}
-                </Upload>
-                <Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
-                    <img alt="example" style={{ width: '100%' }} src={previewImage} />
-                </Modal>
-            </div>
-        );
-    }
-}
-
-const mapStateToProps = state => {
-    return {
-
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        handleUpload(file) {
+        handleOnClickSave(blob){
             let formData = new FormData();
-            formData.append('avatar', file);
+            formData.append('avatar', blob);
 
-            // retrieve formData
-
-            let formKeys    = formData.keys();
-            var formEntries = formData.entries();
-            do {
-                console.log(formEntries.next().value);
-            } while (!formKeys.next().done)
-
-
-//            dispatch(actionCreators.handleUploadAction(formData));
+            dispatch(actionCreators.handleOnClickSaveAction(formData));
         }
     };
 };
@@ -247,4 +132,3 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(Profile);
-*/

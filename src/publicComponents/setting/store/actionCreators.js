@@ -1,10 +1,19 @@
 import axios from 'axios';
+import {constants} from ".";
+import {fromJS} from "immutable";
 
-export const handleUploadAction = (formData) => {
-    return (dispatch) => {
-        
-/*        axios.post('/', formData).then( response => {
-            dispatch(formData);  
-        }) */
+const profileUploadMsg = (data) => ({
+    type: constants.PROFILE_UPLOAD_MSG,
+    data: fromJS(data)
+})
+
+export const handleOnClickSaveAction = (formData) => {
+    return (dispatch) => {       
+        axios.post('/profile', formData).then((res)=>{
+			const data = res.data.data;
+			dispatch(profileUploadMsg(data));
+		}).catch((err)=>{
+			console.log(err);
+		})
     }
 }

@@ -4,6 +4,9 @@ import { Carousel } from "react-bootstrap";
 import "../home.css";
 import { actionCreators } from "../store";
 
+//import logo from './logo.png' // relative path to image 
+import slide from '../../../assets/images/slide1.jpg';
+
 class PhotoSlide extends Component {
   
   getPhotoSlideList() {
@@ -13,7 +16,20 @@ class PhotoSlide extends Component {
     let photoSlidePageList = [];
 
     if (newPhotoSlideList.length){
-      for (let i=0; i<3; i++){
+      photoSlidePageList.push(
+        <Carousel.Item>
+              <img
+                className="d-block w-100 home_ps_img"
+                src={slide}
+                alt="photo slide"
+              />
+              <Carousel.Caption className="home_ps_caption">
+                <h3>{newPhotoSlideList[0]['slide_title']}</h3>
+                <p>{newPhotoSlideList[0]['user_name']}</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+      )
+      for (let i=1; i<3; i++){
         if(newPhotoSlideList[i]){
           photoSlidePageList.push(
             <Carousel.Item>

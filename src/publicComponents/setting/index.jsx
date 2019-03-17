@@ -17,7 +17,7 @@ class Setting extends Component {
                         <Col sm={4}>
                             <ListGroup style={{fontSize: "17px"}}>
                                 <ListGroup.Item action href="#profile"><Icon type="user" style={{float: 'left', margin:'2.5%'}} />Update Profile</ListGroup.Item>
-                                <ListGroup.Item action href="#password"><Icon type="unlock" style={{float: 'left', margin:'2.5%'}} />Change Password</ListGroup.Item>
+                                <ListGroup.Item action href="#password"><Icon type="unlock" style={{float: 'left', margin:'2.5%'}} />Reset Password</ListGroup.Item>
                             </ListGroup>
                         </Col>
                         <Col sm={8}>
