@@ -4,7 +4,8 @@ import {constants as loginConstants} from "../../../bodyComponents/login/store";
 
 
 const defaultHeaderState = fromJS({
-	isLogin: false
+	isLogin: false,
+	searchVal:''
 });
 
 export default (state = defaultHeaderState, action) => {
@@ -17,6 +18,8 @@ export default (state = defaultHeaderState, action) => {
 			return state.set("isLogin",false);
 		case headerConstants.LOGIN_SET:
 			return state.set("isLogin", true);
+		case headerConstants.RENEW_SEARCH_VAL:
+			return state.set("searchVal",action.data);
 		default:
 			return state;
 	}
