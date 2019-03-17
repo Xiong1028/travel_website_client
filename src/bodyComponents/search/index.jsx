@@ -27,7 +27,6 @@ class Search extends Component {
 		} else {
 			this.props.history.push('/');
 		}
-		console.log(searchResultList);
 
 		return (
 			<Container className="searchInfo">

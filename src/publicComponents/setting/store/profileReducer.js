@@ -7,6 +7,7 @@ const defaultProfileState = fromJS({
 
 export default (state = defaultProfileState, action) => {
     switch (action.type) {
-        
+        default:
+            return state;
     }
 }

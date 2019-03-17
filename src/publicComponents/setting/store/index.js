@@ -1,3 +1,5 @@
+import profileReducer from "./profileReducer";
 import * as actionCreators from "./actionCreators";
+import * as constants from "./actionTypes";
 
-export { actionCreators };
+export { profileReducer, actionCreators, constants };
