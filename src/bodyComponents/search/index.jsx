@@ -1,70 +1,95 @@
 import React, {Component} from 'react';
-import {ListGroup, Figure,Row,Col,Container} from 'react-bootstrap';
+import {ListGroup, Figure, Row, Col, Container, Image} from 'react-bootstrap';
 import {Icon} from 'antd';
+import {connect} from "react-redux";
+import {Link} from 'react-router-dom';
+import {toJS} from 'immutable';
+import {ListItem, ListInfo, ListNote} from "./style";
 import "./search.css";
 
 
 class Search extends Component {
 	render() {
+		const {searchVal, diaryCardList} = this.props;
+		const searchList = diaryCardList.toJS();
+		const searchResultList = [];
+
+		if (searchVal) {
+			searchList.filter((value, index) => {
+				var re = new RegExp(searchVal, 'g');
+				if (re.test(value.title) || re.test(value.author) || re.test(value.desc)) {
+					value.title = value.title.replace(re, `<span class="keyword">${searchVal}</span>`);
+					value.author = value.author.replace(re, `<span class="keyword">${searchVal}</span>`);
+					value.desc = value.desc.replace(re, `<span class="keyword">${searchVal}</span>`);
+					searchResultList.push(value);
+				}
+			})
+		} else {
+			this.props.history.push('/');
+		}
+		console.log(searchResultList);
+
 		return (
 			<Container className="searchInfo">
+				<span className="feedbackMsg">About {searchResultList.length} results</span>
 				<ListGroup variant="flush">
-					<ListGroup.Item>
-						<Row>
-								<Col sm={3}>
-									<Figure.Image
-										width={120}
-										height={80}
-										alt="171x180"
-										src="https://pic.qyer.com/avatar/001/77/30/64/200?v=1449832271"
-									/>
-								</Col>
-								<Col sm={9}>
-									<div>
-											<span>Tom</span>&nbsp;&nbsp;<span>2019-03-17</span>
-									</div>
-									<h5>title</h5>
-									<p>
-										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1500s
-									</p>
-									<div>
-										<Icon type="eye" />988 &nbsp;&nbsp;<Icon type="message" />1089 &nbsp;&nbsp; <Icon type="like" />2389
-									</div>
-								</Col>
-						</Row>
-					</ListGroup.Item>
-
-					<ListGroup.Item>
-						<Row>
-							<Col sm={3}>
-								<Figure.Image
-									width={120}
-									height={80}
-									alt="171x180"
-									src="https://pic.qyer.com/avatar/001/77/30/64/200?v=1449832271"
-								/>
-							</Col>
-							<Col sm={9}>
-								<div>
-									<span>Tom</span>&nbsp;&nbsp;<span>2019-03-17</span>
-								</div>
-								<h5>title</h5>
-								<p>
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1500s
-								</p>
-								<div>
-									<Icon type="eye" />988 &nbsp;&nbsp;<Icon type="message" />1089 &nbsp;&nbsp; <Icon type="like" />2389
-								</div>
-							</Col>
-						</Row>
-					</ListGroup.Item>
-
+					{searchResultList.map((value, key) => {
+						return (
+							<ListGroup.Item key={value + key}>
+								<Row>
+									<Col sm={3}>
+										<Link to={'/detail/' + value.id}>
+											<Figure.Image
+												width={120}
+												height={80}
+												alt="171x180"
+												src={value.cover_imgUrl}
+											/>
+										</Link>
+									</Col>
+									<Col sm={9}>
+										<div>
+											<Image src={value.user_imgUrl} roundedCircle style={{width: 30, height: 30}}/>
+											<span
+												dangerouslySetInnerHTML={{__html: value.author}}
+											/>&nbsp;&nbsp;<span>{value.postTime}</span>
+										</div>
+										<Link to={'/detail/' + value.id}>
+											<h5
+												dangerouslySetInnerHTML={{__html: value.title}}
+											/>
+										</Link>
+										<ListInfo>
+											<p
+												dangerouslySetInnerHTML={{__html: value.desc.length > 200 ? value.desc : value.desc.substr(0, 300) + "..."}}
+											/>
+										</ListInfo>
+										<ListNote>
+											<span><Icon type="eye"/>{value.views}</span>
+											<span><Icon type="message"/>{value.comments}</span>
+											<span><Icon type="like"/>{value.likes}</span>
+										</ListNote>
+									</Col>
+								</Row>
+							</ListGroup.Item>
+						)
+					})}
 				</ListGroup>
 			</Container>
-
 		)
 	}
 }
 
+const mapStateToProps = (state) => {
+	return {
+		searchVal: state.getIn(['header', 'searchVal']),
+		diaryCardList: state.getIn(['home', 'diaryCardList'])
+	}
+}
 
-export default Search;
+const mapDispatchToProps = (dispatch) => {
+	return {}
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
