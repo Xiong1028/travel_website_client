@@ -20,4 +20,11 @@ export const setLoginAction = () => {
   }
 }
 
+export const handleSearchValAction = (val)=>{
+  return{
+    type:headerconstants.RENEW_SEARCH_VAL,
+    data:val
+  }
+}
+
 
