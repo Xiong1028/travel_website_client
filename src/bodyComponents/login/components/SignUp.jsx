@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import {actionCreators} from '../store';
 import {withRouter} from "react-router-dom";
 
-
 class SignUp extends Component {
 	constructor(props) {
 		super(props);
@@ -19,7 +18,6 @@ class SignUp extends Component {
 	componentWillUnmount() {
 		this.props.clearMsg();
 	}
-
 
 	handleChange = (name, e) => {
 		this.setState({

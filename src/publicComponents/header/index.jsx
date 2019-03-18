@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import Cookies from 'js-cookie';
 import "./header.css";
-import {Link,withRouter} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import {Menu, Icon, Input, Avatar, Badge} from "antd";
 import {Logo} from "./style";
 import {actionCreators} from "./store";
@@ -12,24 +12,30 @@ const MenuItemGroup = Menu.ItemGroup;
 const Search = Input.Search;
 
 class Header extends Component {
-	state={
-		searchVal:''
+	state = {
+		searchVal: ''
 	}
+
 	componentWillMount() {
 		if (Cookies.get('userid')) {
 			this.props.setLogin();
 		}
 	}
 
-	handleSearch =function(value){
-		console.log(value);
-		const {handleSearch}= this.props;
+	handleSearch = function (value) {
+		const {handleSearch} = this.props;
 		handleSearch(value);
 		this.props.history.push('/search');
 	}
 
+	handleLogout = function () {
+		const {handleLogout} = this.props;
+		handleLogout();
+		this.props.history.push('/login');
+	}
+
 	render() {
-		const {isLogin, showAccessModal, avatar,handleLogout} = this.props;
+		const {isLogin, showAccessModal, avatar} = this.props;
 		return (
 			<Menu mode="horizontal" theme="dark" className="header_menu">
 				<Menu.Item key="logo">
@@ -79,7 +85,7 @@ class Header extends Component {
 						title={
 							<span style={{marginRight: 24}}>
                 <Badge count={8}>
-                  <Avatar src={avatar} />
+                  <Avatar src={avatar}/>
                 </Badge>
               </span>
 						}
@@ -98,7 +104,7 @@ class Header extends Component {
 									Setting
 								</Link>
 							</Menu.Item>
-							<Menu.Item key="setting:6" onClick={handleLogout}>
+							<Menu.Item key="setting:6" onClick={this.handleLogout.bind(this)}>
 								Logout
 							</Menu.Item>
 						</MenuItemGroup>
@@ -113,7 +119,7 @@ const mapStateToProps = state => {
 	return {
 		isLogin: state.getIn(["header", "isLogin"]),
 		accessModalVisible: state.getIn(["post", "accessModalVisible"]),
-		avatar:state.getIn(['profile',"avatar"])
+		avatar: state.getIn(['profile', "avatar"])
 	};
 };
 
@@ -128,7 +134,7 @@ const mapDispatchToProps = dispatch => {
 		handleLogout() {
 			dispatch(actionCreators.handleLogoutAction());
 		},
-		handleSearch(value){
+		handleSearch(value) {
 			dispatch(actionCreators.handleSearchValAction(value));
 		}
 	};

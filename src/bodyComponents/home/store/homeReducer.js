@@ -1,5 +1,6 @@
-import {fromJS} from "immutable";
+import {fromJS, toJS} from "immutable";
 import {constants} from ".";
+import {constants as postConstants} from '../../post/store';
 
 const defaultHomeState = fromJS({
 	diaryCardList: [],
@@ -16,9 +17,12 @@ export default (state = defaultHomeState, action) => {
 				totalPage: action.totalPage
 			})
 		case constants.RENEW_PAGE:
-			return state.set('page',action.data);
+			return state.set('page', action.data);
 		case constants.RENEW_PHOTO_SLIDE_LIST:
 			return state.set('photoSlideList', action.data);
+		case postConstants.RENEW_CARDLIST:
+			console.log(action.data);
+			return state.set('diaryCardList', action.data);
 		default:
 			return state;
 	}
