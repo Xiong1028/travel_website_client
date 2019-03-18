@@ -19,6 +19,7 @@ export const handleGetCardsAction = ()=>{
 	return (dispatch) =>{
 		axios.get('api/diaryCard.json').then((res)=>{
 			const data = res.data.data;
+			console.log(data);
 			dispatch(renewDiaryCardList(data));
 		}).catch((err)=>{
 			console.log(err);

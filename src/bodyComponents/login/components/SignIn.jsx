@@ -81,7 +81,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		handleLogin(user){
+		handleLogin(user) {
 			dispatch(actionCreators.handleLoginAction(user));
 		},
 		clearMsg() {
