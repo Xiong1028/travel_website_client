@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Slider, Upload, Icon, message, Modal, Col } from 'antd';
+import { Slider, Upload, Icon, message, Col } from 'antd';
 import AvatarEditor from 'react-avatar-editor';
 import { Button } from 'react-bootstrap';
 import Divider from '@material-ui/core/Divider';
 import { actionCreators } from '../store';
+import {withRouter} from 'react-router-dom';
 
 import '../setting.css';
 
@@ -16,7 +17,6 @@ class Profile extends Component {
     };
     
     handleUpload = (file) => {
-        console.log(file);
         this.setState({ file: file });
     }
 
@@ -57,6 +57,19 @@ class Profile extends Component {
         var blob = new Blob([ab], {type: mimeString});
         console.log(blob);
         return blob;
+    }
+
+    onClickSave = () => {
+        if (this.editor) {
+            // This returns a HTMLCanvasElement, it can be made into a data URL or a blob,
+            // drawn on another canvas, or added to the DOM.
+            const canvas = this.editor.getImage().toDataURL();
+            let blob = this.dataURItoBlob(canvas);
+            this.props.handleUploadImage(blob);
+
+            message.info("Success to update profile ");
+            this.props.history.push("/setting");
+        }
     }
     
     setEditorRef = (editor) => this.editor = editor;  
@@ -103,7 +116,8 @@ class Profile extends Component {
                         onChange={this.onChange}
                     />
                 </Col>
-                <Button variant="outline-primary" onClick={this.props.handleOnClickSave(this)}>Save</Button>
+                <Button variant="outline-primary" onClick={this.onClickSave}>Save</Button>
+
             </div>
         );
     }
@@ -117,11 +131,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        handleOnClickSave(blob){
-            let formData = new FormData();
-            formData.append('avatar', blob);
-
-            dispatch(actionCreators.handleOnClickSaveAction(formData));
+        handleUploadImage(blob){
+            dispatch(actionCreators.handleUploadAction(blob));
         }
     };
 };
@@ -129,4 +140,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Profile);
+)(withRouter(Profile));

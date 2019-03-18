@@ -44,7 +44,7 @@ export const handlePostOkAction = (postData) => {
 			post_content:content,
 			post_imgURL:postImgUrl
 		}).then(response => {
-//			console.log(response);
+			console.log(response);
 			/**
 			 * 
 				response.data = {code: 1

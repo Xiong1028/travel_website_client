@@ -1,4 +1,5 @@
+import settingReducer from "./settingReducer";
 import * as actionCreators from "./actionCreators";
 import * as constants from "./actionTypes";
 
-export { actionCreators, constants };
+export { settingReducer, actionCreators, constants };

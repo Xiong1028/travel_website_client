@@ -6,6 +6,7 @@ import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
 import Profile from './components/profile';
+import PassReset from "./components/passRst";
 
 // react-bootstrap list group
 class Setting extends Component {
@@ -26,7 +27,7 @@ class Setting extends Component {
                                     <Profile />
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="#password">
-                                
+                                    <PassReset />
                                 </Tab.Pane>
                             </Tab.Content>
                         </Col>

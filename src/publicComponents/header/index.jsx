@@ -29,7 +29,7 @@ class Header extends Component {
 	}
 
 	render() {
-		const {isLogin, showAccessModal, handleLogout} = this.props;
+		const {isLogin, showAccessModal, avatar,handleLogout} = this.props;
 		return (
 			<Menu mode="horizontal" theme="dark" className="header_menu">
 				<Menu.Item key="logo">
@@ -79,7 +79,7 @@ class Header extends Component {
 						title={
 							<span style={{marginRight: 24}}>
                 <Badge count={8}>
-                  <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
+                  <Avatar src={avatar} />
                 </Badge>
               </span>
 						}
@@ -112,7 +112,8 @@ class Header extends Component {
 const mapStateToProps = state => {
 	return {
 		isLogin: state.getIn(["header", "isLogin"]),
-		accessModalVisible: state.getIn(["post", "accessModalVisible"])
+		accessModalVisible: state.getIn(["post", "accessModalVisible"]),
+		avatar:state.getIn(['profile',"avatar"])
 	};
 };
 
