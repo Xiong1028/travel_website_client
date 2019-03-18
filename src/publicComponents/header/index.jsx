@@ -19,7 +19,10 @@ class Header extends Component {
 		if (Cookies.get('userid')) {
 			this.props.setLogin();
 		}
+
+		this.props.handleUpdateAvatar(Cookies.get('userid'));
 	}
+
 
 	handleSearch =function(value){
 		console.log(value);
@@ -30,6 +33,7 @@ class Header extends Component {
 
 	render() {
 		const {isLogin, showAccessModal, avatar,handleLogout} = this.props;
+		console.log(avatar);
 		return (
 			<Menu mode="horizontal" theme="dark" className="header_menu">
 				<Menu.Item key="logo">
@@ -113,7 +117,7 @@ const mapStateToProps = state => {
 	return {
 		isLogin: state.getIn(["header", "isLogin"]),
 		accessModalVisible: state.getIn(["post", "accessModalVisible"]),
-		avatar:state.getIn(['profile',"avatar"])
+		avatar:state.getIn(['setting',"avatar"])
 	};
 };
 
@@ -130,6 +134,9 @@ const mapDispatchToProps = dispatch => {
 		},
 		handleSearch(value){
 			dispatch(actionCreators.handleSearchValAction(value));
+		},
+		handleUpdateAvatar(userid) {
+			dispatch(actionCreators.handleUpdateAvatarAction(userid));
 		}
 	};
 };

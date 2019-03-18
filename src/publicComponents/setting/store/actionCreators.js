@@ -47,7 +47,7 @@ export const handleUploadAction = (blob) => {
             console.log(res);
             const user_imgUrl = res.data.secure_url;
             axios.post("/profile",{user_imgUrl:user_imgUrl}).then(response=>{
-                const resResult = response.data.data;
+               const resResult = response.data.data;
                dispatch(renewUserImage(resResult.avatar));
             })
         })

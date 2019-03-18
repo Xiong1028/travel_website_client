@@ -1,5 +1,6 @@
 import {fromJS} from "immutable";
 import {constants as settingConstants} from ".";
+import {constants as headerConstants} from "../../header/store";
 
 const defaultState = fromJS({
 	avatar: "",
@@ -14,6 +15,8 @@ export default (state = defaultState, action) => {
 			return state.set("msg", action.data);
 		case settingConstants.ERROR_MSG:
 			return state.set("msg", action.data);
+		case headerConstants.UPDATE_AVATAR:
+			return state.set("avatar", action.data);
 		default:
 			return state;
 	}
