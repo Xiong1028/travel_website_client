@@ -1,12 +1,13 @@
-import React,{Component} from'react';
+import React, {Component} from 'react';
 import {
 	Comment, Avatar, Form, Button, List, Input,
 } from 'antd';
 import moment from 'moment';
+import {connect} from "react-redux";
 
 const TextArea = Input.TextArea;
 
-const CommentList = ({ comments }) => (
+const CommentList = ({comments}) => (
 	<List
 		dataSource={comments}
 		header={`${comments.length} ${comments.length > 1 ? 'replies' : 'reply'}`}
@@ -16,11 +17,11 @@ const CommentList = ({ comments }) => (
 );
 
 const Editor = ({
-									onChange, onSubmit, submitting, value,
-								}) => (
+	                onChange, onSubmit, submitting, value,
+                }) => (
 	<div>
 		<Form.Item>
-			<TextArea rows={4} onChange={onChange} value={value} />
+			<TextArea rows={4} onChange={onChange} value={value}/>
 		</Form.Item>
 		<Form.Item>
 			<Button
@@ -43,6 +44,7 @@ class CommentBox extends Component {
 	}
 
 	handleSubmit = () => {
+		const {avatar, username} = this.props;
 		if (!this.state.value) {
 			return;
 		}
@@ -75,16 +77,17 @@ class CommentBox extends Component {
 	}
 
 	render() {
-		const { comments, submitting, value } = this.state;
+		const {comments, submitting, value} = this.state;
+		const {avatar} = this.props;
 
 		return (
 			<div>
-				{comments.length > 0 && <CommentList comments={comments} />}
+				{comments.length > 0 && <CommentList comments={comments}/>}
 				<Comment
 					avatar={(
 						<Avatar
-							src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-							alt="Han Solo"
+							src={avatar}
+							alt="avatar"
 						/>
 					)}
 					content={(
@@ -101,4 +104,15 @@ class CommentBox extends Component {
 	}
 }
 
-export default CommentBox;
+const mapStateToProps = (state) => {
+	return {
+		avatar: state.getIn(['profile', 'avatar']),
+		username: state.getIn(['login', 'profile'])
+	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentBox);
