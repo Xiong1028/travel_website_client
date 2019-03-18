@@ -15,8 +15,6 @@ class Profile extends Component {
         scale: 1 
     };
     
-    
-
     handleUpload = (file) => {
         console.log(file);
         this.setState({ file: file });
@@ -105,7 +103,7 @@ class Profile extends Component {
                         onChange={this.onChange}
                     />
                 </Col>
-                <Button variant="outline-primary" onClick={this.handleOnClickSave.bind(this)}>Save</Button>
+                <Button variant="outline-primary" onClick={this.props.handleOnClickSave(this)}>Save</Button>
             </div>
         );
     }
