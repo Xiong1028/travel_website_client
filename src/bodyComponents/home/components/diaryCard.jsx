@@ -16,7 +16,7 @@ class DiaryCard extends Component {
 
 		const newDiaryCardList = diaryCardList.toJS();
 
-		console.log(1,newDiaryCardList);
+		console.log(1, newDiaryCardList);
 
 		//diplayed card in each page
 		let cardPerPageList = [];
@@ -83,7 +83,7 @@ class DiaryCard extends Component {
 
 	componentDidMount() {
 		const {diaryCardList, handleGetCard} = this.props;
-			handleGetCard(diaryCardList);
+		handleGetCard();
 	}
 }
 
@@ -99,7 +99,7 @@ const mapStateToProps = state => {
 // data transfer from component to reducer
 const mapDispatchToProps = dispatch => {
 	return {
-		handleGetCard(diaryCardList) {
+		handleGetCard() {
 			dispatch(actionCreators.handleGetCardsAction());
 		},
 		handlePageChange(page, totalPage) {
