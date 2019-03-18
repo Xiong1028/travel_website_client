@@ -16,7 +16,6 @@ class Profile extends Component {
         scale: 1 
     };
     handleUpload = (file) => {
-        console.log(file);
         this.setState({ file: file });
     }
 

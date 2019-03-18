@@ -1,5 +1,14 @@
 import axios from 'axios';
 import {constants} from ".";
+// import Cookie from 'js-cookie';
+
+const renewUserImage = (data)=>{
+    return{
+        type:constants.RENEW_USER_IMG,
+        data
+    }
+}
+
 
 export const handleUploadAction = (blob) => {
     return (dispatch) => {
@@ -16,8 +25,12 @@ export const handleUploadAction = (blob) => {
             },
             data:formData
         }).then(function(res){
+            console.log(res);
             const user_imgUrl = res.data.secure_url;
-            axios("/")
+            axios.post("/profile",{user_imgUrl:user_imgUrl}).then(response=>{
+                const resResult = response.data.data;
+               dispatch(renewUserImage(resResult.avatar));
+            })
         })
 
     }
