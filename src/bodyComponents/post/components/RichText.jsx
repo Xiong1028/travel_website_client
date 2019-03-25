@@ -64,6 +64,7 @@ class RichText extends Component {
   };
 
   handlePostOk = () => {
+    const {diaryCardList} = this.props;
     this.setState({
       showRichText: false
     });
@@ -72,7 +73,7 @@ class RichText extends Component {
       tags: this.props.tagsList,
       content: this.state.postContent,
       postImgUrl: this.state.postImgUrl
-    });
+    },diaryCardList);
     this.props.history.replace("/");
   };
 
@@ -129,12 +130,13 @@ class RichText extends Component {
 }
 
 const mapStateToProps = state => ({
-  tagsList: state.getIn(["post", "tagsList"])
+  tagsList: state.getIn(["post", "tagsList"]),
+  diaryCardList:state.getIn(["home","diaryCardList"])
 });
 
 const mapDispatchToProps = dispatch => ({
-  handlePostOk(postData) {
-    dispatch(actionCreators.handlePostOkAction(postData));
+  handlePostOk(postData,diaryCardList) {
+    dispatch(actionCreators.handlePostOkAction(postData,diaryCardList));
   }
 });
 

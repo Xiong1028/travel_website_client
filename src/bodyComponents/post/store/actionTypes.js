@@ -3,5 +3,5 @@ export const POST_OK = "POST/POST_OK";
 export const POST_CANCEL = "POST/POST_CANCEL";
 export const POST_ARTICLE = "POST/POST_ARTICLE";
 export const RENEW_TAGSLIST = 'POST/RENEW_TAGSLIST';
-
+export const RENEW_CARDLIST = 'POST/RENEW_CARDLIST';
 

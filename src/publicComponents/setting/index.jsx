@@ -6,6 +6,7 @@ import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
 import Profile from './components/profile';
+import PassReset from "./components/passRst";
 
 // react-bootstrap list group
 class Setting extends Component {
@@ -17,7 +18,7 @@ class Setting extends Component {
                         <Col sm={4}>
                             <ListGroup style={{fontSize: "17px"}}>
                                 <ListGroup.Item action href="#profile"><Icon type="user" style={{float: 'left', margin:'2.5%'}} />Update Profile</ListGroup.Item>
-                                <ListGroup.Item action href="#password"><Icon type="unlock" style={{float: 'left', margin:'2.5%'}} />Change Password</ListGroup.Item>
+                                <ListGroup.Item action href="#password"><Icon type="unlock" style={{float: 'left', margin:'2.5%'}} />Reset Password</ListGroup.Item>
                             </ListGroup>
                         </Col>
                         <Col sm={8}>
@@ -26,7 +27,7 @@ class Setting extends Component {
                                     <Profile />
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="#password">
-                                
+                                    <PassReset />
                                 </Tab.Pane>
                             </Tab.Content>
                         </Col>
