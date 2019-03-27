@@ -26,8 +26,8 @@ export const handleGetCardsAction = ()=>{
 		// })
 		axios.get('/fetchAll').then((res)=>{
 			const data = res.data.data;
-			console.log(data);
 			dispatch(renewDiaryCardList(data));
+
 		}).catch((err)=>{
 			console.log(err);
 		})

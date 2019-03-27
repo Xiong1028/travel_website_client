@@ -25,36 +25,32 @@ class DiaryCard extends Component {
         if (newDiaryCardList[i]) {
           cardPerPageList.push(
             <Col className="gutter-row" span={5} offset={2} key={i}>
-              <Link to={"/detail/" + newDiaryCardList[i]["id"]}>
-                <Card
-                  hoverable
-                  style={{
-                    width: 350,
-                    height: 330,
-                    padding: "2.5%",
-                    borderRadius: "8px",
-                    margin: 10
-                  }}
-                  cover={
-                    <MDBView hover zoom>
-                      <img
-                        alt="diary pic"
-                        src={newDiaryCardList[i]["cover_imgURL"]}
-                        style={{ height: 250 }}
-                      />
-                      <MDBMask overlay="stylish-light">
-                        <MDBBtn color="danger" rounded size="xl">
-                          <MDBIcon
-                            fas="true"
-                            icon="thumbtack"
-                            className="left"
-                          />
-                          <b> Save</b>
-                        </MDBBtn>
-                      </MDBMask>
-                    </MDBView>
-                  }
-                >
+              <Card
+                hoverable
+                style={{
+                  width: 350,
+                  height: 330,
+                  padding: "2.5%",
+                  borderRadius: "8px",
+                  margin: 10
+                }}
+                cover={
+                  <MDBView hover zoom>
+                    <img
+                      alt="diary pic"
+                      src={newDiaryCardList[i]["cover_imgURL"]}
+                      style={{ height: 250 }}
+                    />
+                    <MDBMask overlay="stylish-light">
+                      <MDBBtn color="danger" rounded size="xl">
+                        <MDBIcon fas="true" icon="thumbtack" className="left" />
+                        <b> Save</b>
+                      </MDBBtn>
+                    </MDBMask>
+                  </MDBView>
+                }
+              >
+                <Link to={"/detail/" + newDiaryCardList[i]["post_id"]}>
                   <Meta
                     avatar={
                       <img
@@ -76,8 +72,8 @@ class DiaryCard extends Component {
                       </p>
                     }
                   />
-                </Card>
-              </Link>
+                </Link>
+              </Card>
             </Col>
           );
         }
@@ -106,7 +102,7 @@ class DiaryCard extends Component {
   }
 
   componentDidMount() {
-    const { diaryCardList, handleGetCard } = this.props;
+    const { handleGetCard } = this.props;
     handleGetCard();
   }
 }
