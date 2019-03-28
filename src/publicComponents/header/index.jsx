@@ -24,15 +24,8 @@ class Header extends Component {
 		this.props.handleUpdateAvatar(Cookies.get('userid'));
 	}
 
-<<<<<<< HEAD
-
-	handleSearch =function(value){
-		console.log(value);
-		const {handleSearch}= this.props;
-=======
 	handleSearch = function (value) {
 		const {handleSearch} = this.props;
->>>>>>> 50a2bc1a72471aa317fe5f6ab701c44f3edc6d64
 		handleSearch(value);
 		this.props.history.push('/search');
 	}
@@ -44,12 +37,7 @@ class Header extends Component {
 	}
 
 	render() {
-<<<<<<< HEAD
-		const {isLogin, showAccessModal, avatar,handleLogout} = this.props;
-		console.log(avatar);
-=======
 		const {isLogin, showAccessModal, avatar} = this.props;
->>>>>>> 50a2bc1a72471aa317fe5f6ab701c44f3edc6d64
 		return (
 			<Menu mode="horizontal" theme="dark" className="header_menu">
 				<Menu.Item key="logo">
