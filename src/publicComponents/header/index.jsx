@@ -43,28 +43,30 @@ class Header extends Component {
     return (
       <Menu mode="horizontal" theme="dark" className="header_menu">
         <Menu.Item key="logo">
-          <Link to="/">
-            <Logo />
+          <Link to="/" className="logo">
+            Tripinterest
           </Link>
         </Menu.Item>
         <Menu.Item key="home">
-          <Link to="/">Home</Link>
+          <Link className="home" to="/">
+            Home
+          </Link>
         </Menu.Item>
-        <Menu.Item key="car">Book Car</Menu.Item>
+        <Menu.Item key="diary">Daries</Menu.Item>
         <SubMenu
-          title={<span className="submenu-title-wrapper">Navigation</span>}
+          title={<span className="submenu-title-wrapper">Destination</span>}
         >
-          <MenuItemGroup title="Item 1">
-            <Menu.Item key="setting:1">Option 1</Menu.Item>
-            <Menu.Item key="setting:2">Option 2</Menu.Item>
+          <MenuItemGroup title="Americas">
+            <Menu.Item key="canada">Canada</Menu.Item>
+            <Menu.Item key="america">America</Menu.Item>
           </MenuItemGroup>
-          <MenuItemGroup title="Item 2">
-            <Menu.Item key="setting:3">Option 3</Menu.Item>
-            <Menu.Item key="setting:4">Option 4</Menu.Item>
+          <MenuItemGroup title="Asia">
+            <Menu.Item key="china">China</Menu.Item>
+            <Menu.Item key="korea">Korea</Menu.Item>
           </MenuItemGroup>
         </SubMenu>
-        <Menu.Item key="alipay">Link</Menu.Item>
-        <Menu.Item key="searchBox" style={{ marginLeft: "23%" }}>
+        <Menu.Item key="community">Community</Menu.Item>
+        <Menu.Item key="searchBox" style={{ marginLeft: "30%" }}>
           <Search
             placeholder="search"
             style={{ width: 200 }}

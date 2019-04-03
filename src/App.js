@@ -4,6 +4,7 @@ import {Provider} from "react-redux";
 import store from "./store";
 
 import Header from "./publicComponents/header";
+import Footer from "./publicComponents/footer";
 import {BrowserRouter, Route} from "react-router-dom";
 import Home from "./bodyComponents/home/";
 import Login from "./bodyComponents/login/";
@@ -29,6 +30,7 @@ class App extends Component {
 						<Route path="/setting" exact component={Setting}/>
 						<Route path="/search" exact component={Search}/>
             			<Route path="/author" exact component={Author} />
+						<Footer/>
 					</Fragment>
 				</BrowserRouter>
 			</Provider>
