@@ -38,15 +38,6 @@ class Header extends Component {
     this.props.history.push("/login");
   };
 
-  handleMessageDrawer = function() {
-    const { openMessageDrawer, isLogin } = this.props;
-    if (isLogin) {
-      openMessageDrawer(true);
-    } else {
-      this.props.history.push("/login");
-    }
-  };
-
   render() {
     const { isLogin, showAccessModal, avatar } = this.props;
     return (
@@ -88,10 +79,21 @@ class Header extends Component {
           </Link>
         </Menu.Item>
 
-        <Menu.Item key="Message" onClick={this.handleMessageDrawer.bind(this)}>
-          <Icon type="message" style={{ fontSize: 20 }} />
-          Message
-        </Menu.Item>
+        <SubMenu
+          title={
+            <Badge count={8}>
+              <Icon type="message" style={{ fontSize: 20 }} />
+              Message
+            </Badge>
+          }
+        >
+          <MenuItemGroup title="">
+            <Menu.Item key="setting:likes">Likes</Menu.Item>
+            <Menu.Item key="setting:private_message">
+              <Badge count={8}>Message</Badge>
+            </Menu.Item>
+          </MenuItemGroup>
+        </SubMenu>
 
         {!isLogin ? (
           <Menu.Item key="login">
@@ -103,19 +105,13 @@ class Header extends Component {
           <SubMenu
             title={
               <span style={{ marginRight: 24 }}>
-                <Badge count={8}>
-                  <Avatar src={avatar} />
-                </Badge>
+                <Avatar src={avatar} />
               </span>
             }
           >
             <MenuItemGroup title="Article">
               <Menu.Item key="setting:1">My Article</Menu.Item>
               <Menu.Item key="setting:2">My Favorite</Menu.Item>
-            </MenuItemGroup>
-            <MenuItemGroup title="Comment">
-              <Menu.Item key="setting:3">Likes</Menu.Item>
-              <Menu.Item key="setting:4">@Me</Menu.Item>
             </MenuItemGroup>
             <MenuItemGroup title="Setting">
               <Menu.Item key="setting:5">

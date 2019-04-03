@@ -11,7 +11,7 @@ import Post from "./bodyComponents/post";
 import Detail from "./bodyComponents/detail";
 import Setting from "./publicComponents/setting";
 import Search from "./bodyComponents/search";
-import Message from "./bodyComponents/message";
+import Author from "./bodyComponents/author";
 
 import "./testSocketio/socketio_test";
 
@@ -28,7 +28,7 @@ class App extends Component {
 						<Route path="/detail/:id" exact component={Detail}/>
 						<Route path="/setting" exact component={Setting}/>
 						<Route path="/search" exact component={Search}/>
-						<Message/>
+            			<Route path="/author" exact component={Author} />
 					</Fragment>
 				</BrowserRouter>
 			</Provider>
