@@ -41,12 +41,12 @@ class Header extends Component {
     return (
       <Menu mode="horizontal" theme="dark" className="header_menu">
         <Menu.Item key="logo">
-          <Link to="/">
-            <Logo />
+          <Link to="/" className="logo">
+            Tripinterest
           </Link>
         </Menu.Item>
         <Menu.Item key="home">
-          <Link to="/">Home</Link>
+          <Link className="home" to="/">Home</Link>
         </Menu.Item>
         <Menu.Item key="diary">Daries</Menu.Item>
         <SubMenu
