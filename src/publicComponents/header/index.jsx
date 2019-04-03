@@ -6,6 +6,7 @@ import { Link, withRouter } from "react-router-dom";
 import { Menu, Icon, Input, Avatar, Badge } from "antd";
 import { Logo } from "./style";
 import { actionCreators } from "./store";
+import { actionCreators as messageActionCreators } from "../../bodyComponents/message/store";
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
@@ -16,7 +17,7 @@ class Header extends Component {
     searchVal: ""
   };
 
-  componentWillMount() {
+  componentDidMount() {
     if (Cookies.get("userid")) {
       this.props.setLogin();
     }
@@ -33,7 +34,17 @@ class Header extends Component {
   handleLogout = function() {
     const { handleLogout } = this.props;
     handleLogout();
+    Cookies.remove("userid");
     this.props.history.push("/login");
+  };
+
+  handleMessageDrawer = function() {
+    const { openMessageDrawer, isLogin } = this.props;
+    if (isLogin) {
+      openMessageDrawer(true);
+    } else {
+      this.props.history.push("/login");
+    }
   };
 
   render() {
@@ -62,7 +73,7 @@ class Header extends Component {
           </MenuItemGroup>
         </SubMenu>
         <Menu.Item key="alipay">Link</Menu.Item>
-        <Menu.Item key="searchBox" style={{ marginLeft: "30%" }}>
+        <Menu.Item key="searchBox" style={{ marginLeft: "23%" }}>
           <Search
             placeholder="search"
             style={{ width: 200 }}
@@ -76,6 +87,12 @@ class Header extends Component {
             Post
           </Link>
         </Menu.Item>
+
+        <Menu.Item key="Message" onClick={this.handleMessageDrawer.bind(this)}>
+          <Icon type="message" style={{ fontSize: 20 }} />
+          Message
+        </Menu.Item>
+
         {!isLogin ? (
           <Menu.Item key="login">
             <Link to="/login">
@@ -139,6 +156,9 @@ const mapDispatchToProps = dispatch => {
     },
     handleUpdateAvatar(userid) {
       dispatch(actionCreators.handleUpdateAvatarAction(userid));
+    },
+    openMessageDrawer(visible) {
+      dispatch(messageActionCreators.toggleMessageDrawerAction(visible));
     }
   };
 };
