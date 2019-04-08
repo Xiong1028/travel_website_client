@@ -4,6 +4,7 @@ import {Provider} from "react-redux";
 import store from "./store";
 
 import Header from "./publicComponents/header";
+import Footer from "./publicComponents/footer";
 import {BrowserRouter, Route} from "react-router-dom";
 import Home from "./bodyComponents/home/";
 import Login from "./bodyComponents/login/";
@@ -11,6 +12,10 @@ import Post from "./bodyComponents/post";
 import Detail from "./bodyComponents/detail";
 import Setting from "./publicComponents/setting";
 import Search from "./bodyComponents/search";
+import Author from "./bodyComponents/author";
+import Message from "./bodyComponents/message";
+
+import "./testSocketio/socketio_test";
 
 class App extends Component {
 	render() {
@@ -25,6 +30,9 @@ class App extends Component {
 						<Route path="/detail/:id" exact component={Detail}/>
 						<Route path="/setting" exact component={Setting}/>
 						<Route path="/search" exact component={Search}/>
+            <Route path="/author/:user_id" exact component={Author} />
+						<Route path="/message" exact component={Message} />
+						<Footer/>
 					</Fragment>
 				</BrowserRouter>
 			</Provider>
