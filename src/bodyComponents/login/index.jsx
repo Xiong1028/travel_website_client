@@ -3,7 +3,6 @@ import { Tabs } from "antd";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import "./login.css";
-import Footer from "../../publicComponents/footer";
 
 const TabPane = Tabs.TabPane;
 
@@ -19,7 +18,7 @@ export default class Login extends Component {
             <TabPane tab="Sign Up" key="2">
               <SignUp />
             </TabPane>
-          </Tabs>         
+          </Tabs>
         </div>
       </div>
     );

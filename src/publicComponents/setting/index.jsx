@@ -11,7 +11,7 @@ import PassReset from "./components/passRst";
 class Setting extends Component {
   render() {
     return (
-      <div className="container">
+      <div className="container wrap">
         <Tab.Container id="list-group-tabs-example" defaultActiveKey="#profile">
           <Row>
             <Col sm={4}>

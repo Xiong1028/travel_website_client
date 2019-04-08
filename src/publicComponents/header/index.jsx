@@ -21,7 +21,6 @@ class Header extends Component {
     if (Cookies.get("userid")) {
       this.props.setLogin();
     }
-
     this.props.handleUpdateAvatar(Cookies.get("userid"));
   }
 
@@ -38,6 +37,11 @@ class Header extends Component {
     this.props.history.push("/login");
   };
 
+  handleAuthorInfo = function() {
+    console.log(Cookies.get("userid"));
+    // this.props.history.push("/author/" + Cookies.get("userid"));
+  };
+
   render() {
     const { isLogin, showAccessModal, avatar } = this.props;
     return (
@@ -52,7 +56,7 @@ class Header extends Component {
             Home
           </Link>
         </Menu.Item>
-        <Menu.Item key="diary">Daries</Menu.Item>
+        <Menu.Item key="diary">Diary</Menu.Item>
         <SubMenu
           title={<span className="submenu-title-wrapper">Destination</span>}
         >
@@ -66,7 +70,7 @@ class Header extends Component {
           </MenuItemGroup>
         </SubMenu>
         <Menu.Item key="community">Community</Menu.Item>
-        <Menu.Item key="searchBox" style={{ marginLeft: "30%" }}>
+        <Menu.Item key="searchBox" style={{ marginLeft: "10%" }}>
           <Search
             placeholder="search"
             style={{ width: 200 }}
@@ -107,7 +111,9 @@ class Header extends Component {
           <SubMenu
             title={
               <span style={{ marginRight: 24 }}>
-                <Avatar src={avatar} />
+                <Link to={"/author/" + Cookies.get("userid")}>
+                  <Avatar src={avatar} />
+                </Link>
               </span>
             }
           >

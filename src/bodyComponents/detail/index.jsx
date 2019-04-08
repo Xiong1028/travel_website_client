@@ -20,11 +20,11 @@ class Detail extends Component {
       <DetailWrapper>
         <DetailTitle>{article.post_title}</DetailTitle>
         <DetailAuthor>
-          <Link to="/author">
+          <Link to={"/author/" + article.user_id}>
             <Avatar src={article.avatar} size="large" className="icon" />
           </Link>
           <DetailAuthorInfo>
-            <Link to="/author">{article.author} </Link>
+            <Link to={"/author/" + article.user_id}>{article.author} </Link>
             <div>
               {article.post_time}
               <Icon type="eye" className="Icon" />
@@ -46,6 +46,7 @@ class Detail extends Component {
 
   componentDidMount() {
     //if this component is the Router component, we can get the id from this.props.match.params
+    //Get the id from the router
     this.props.getDetail(this.props.match.params.id);
   }
 }

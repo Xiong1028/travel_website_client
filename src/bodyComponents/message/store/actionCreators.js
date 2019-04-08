@@ -8,8 +8,7 @@ const receiveUserList = (userList)=>{
     }
 }
 
-
-export const toggleMessageDrawerAction= (visible)=>{
+export const toggleMessageWindowAction= (visible)=>{
     return dispatch =>{
         dispatch({
             type:constants.CHANGE_DRAWER_STATUS,
@@ -27,6 +26,16 @@ export const getUserListAction = ()=>{
         if(result.code ===1){
             dispatch(receiveUserList(result.data));
         } 
+    }
+}
+
+//action to show the message window
+export const handleMsgWinShowAction = (visible)=>{
+    return dispatch=>{
+        dispatch({
+            type:constants.RENEW_MSGWINMODAL_SHOW,
+            data:visible
+        })
     }
 }
 

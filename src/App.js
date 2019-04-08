@@ -29,7 +29,7 @@ class App extends Component {
 						<Route path="/detail/:id" exact component={Detail}/>
 						<Route path="/setting" exact component={Setting}/>
 						<Route path="/search" exact component={Search}/>
-            			<Route path="/author" exact component={Author} />
+            			<Route path="/author/:user_id" exact component={Author} />
 						<Footer/>
 					</Fragment>
 				</BrowserRouter>
