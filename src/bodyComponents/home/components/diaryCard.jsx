@@ -28,8 +28,8 @@ class DiaryCard extends Component {
               <Card
                 hoverable
                 style={{
-                  width: 350,
-                  height: 330,
+                  width: 250,
+                  height: 230,
                   padding: "2.5%",
                   borderRadius: "8px",
                   margin: 10
