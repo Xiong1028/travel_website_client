@@ -4,6 +4,7 @@ import { actionCreators } from "./store";
 import { Tab, ListGroup, Row, Col } from "react-bootstrap";
 import { Icon } from "antd";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import MessageList from "./components/MessageList";
 
 class Message extends Component {
   componentDidMount() {
@@ -14,7 +15,7 @@ class Message extends Component {
   render() {
     return (
       <div className="container wrap">
-        <Tab.Container id="list-group-tabs-example" defaultActiveKey="#profile">
+        <Tab.Container id="list-group-tabs-example" defaultActiveKey="#message">
           <Row>
             <Col sm={4}>
               <ListGroup style={{ fontSize: "17px" }}>
@@ -47,7 +48,9 @@ class Message extends Component {
             </Col>
             <Col sm={8}>
               <Tab.Content>
-                <Tab.Pane eventKey="#message">Message</Tab.Pane>
+                <Tab.Pane eventKey="#message">
+                  <MessageList />
+                </Tab.Pane>
                 <Tab.Pane eventKey="#likes">Likes</Tab.Pane>
                 <Tab.Pane eventKey="#favorite">Favorite</Tab.Pane>
                 <Tab.Pane eventKey="#watch">Watch</Tab.Pane>

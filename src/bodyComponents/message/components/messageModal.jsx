@@ -5,8 +5,6 @@ import PropTypes from "prop-types";
 import { get } from "immutable";
 import { actionCreators } from "../store";
 
-const { TextArea } = Input;
-
 class MessageModal extends Component {
   static propTypes = {
     articles: PropTypes.array.isRequired
