@@ -1,39 +1,60 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import PropTypes from "prop-types";
-import { List, Avatar } from "antd";
+import {Link} from 'react-router-dom';
 
 export default class MessageList extends Component {
-  static propTypes = {
-    chatData: PropTypes.array.isRequired
-  };
+    static propTypes = {
+        chatData: PropTypes.array.isRequired
+    };
 
-  data = [
-    {
-      title: "Xiong",
-      avatar: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-    }
-  ];
-  render() {
-    return (
-      <List
-        itemLayout="horizontal"
-        dataSource={this.data}
-        renderItem={item => (
-          <List.Item>
-            <List.Item.Meta
-              className="col-sm-8"
-              avatar={<Avatar src={item.avatar} />}
-              title={<a href="https://ant.design">{item.title} </a>}
-              description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-            />
-            <div className="col-sm-4">
-              <span>2019-08-20</span>
-              <button>Reply</button>
-              <button>Delete</button>
+    render() {
+    const {chatData} = this.props;
+
+        return (
+            <div>
+                <div className="card mb-12" style={{maxWidth: '100%',margin: "10px 0"}}>
+                    <div className="row no-gutters">
+                        <div className="col-md-3">
+                            <img
+                                src="https://res.cloudinary.com/xiong1028/image/upload/v1554173545/kq9kf4co9mpxlenvlwky.png"
+                                className="card-img rounded-circle msgAvatar" alt="avartar"
+                                style={{width: 100, height: 100, margin: "30px"}}/>
+
+                        </div>
+                        <div className="col-md-9">
+                            <div className="card-body">
+                                <h5 className="card-title">
+                                    Hui
+                                    <span className="badge badge-primary badge-pill offset-1">14</span>
+
+                                </h5>
+
+
+
+                                <p className="card-text">This is a wider card with supporting text below as a
+                                    natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p className="card-text">
+                                    <small className="text-muted">Last updated 3 mins ago</small>
+                                    <Link to={"/chat/" + "5ca17fb190e7086fd8a5c1ef"}>
+                                    <button type="button" className="btn btn-link offset-2">reply</button>
+                                    </Link>
+                                    <button type="button" className="btn btn-link">delete</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <nav aria-label="Page navigation example">
+                    <ul className="pagination" style={{float:"right"}}>
+                        <li className="page-item"><a className="page-link" href="#">Previous</a></li>
+                        <li className="page-item"><a className="page-link" href="#">1</a></li>
+                        <li className="page-item"><a className="page-link" href="#">2</a></li>
+                        <li className="page-item"><a className="page-link" href="#">3</a></li>
+                        <li className="page-item"><a className="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
             </div>
-          </List.Item>
-        )}
-      />
-    );
-  }
+        )
+    }
 }
