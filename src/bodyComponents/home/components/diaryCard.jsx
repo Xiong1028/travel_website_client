@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Row, Col, Avatar } from "antd";
+import { Row, Col, Avatar, Icon } from "antd";
 import { MDBCard, MDBRow, MDBMask, MDBView, MDBIcon, MDBBtn, MDBCardBody, MDBCardTitle } from "mdbreact";
 import { Button } from "react-bootstrap";
 import { actionCreators } from "../store";
@@ -24,15 +24,15 @@ class DiaryCard extends Component {
             <Col className="gutter-row" span={6} key={i}>
               <MDBCard>
                 <MDBView hover zoom className="cardView">
-                  <img alt="diary pic" src={newDiaryCardList[i]["cover_imgURL"]} style={{ width: "300px", height: "180px" }} />
+                  <img alt="diary pic" src={newDiaryCardList[i]["cover_imgURL"]} style={{ width: "100%", height: "200px" }} />
                   <MDBMask overlay="stylish-light">
                     <MDBBtn color="danger" rounded size="xl" onClick={() => handleLikeArticle()}>
                       <MDBIcon fas="true" icon="thumbtack" className="left" />
                       <b> Save</b>
                     </MDBBtn>
                     <span className="spanIcon">
-                      <MDBIcon icon="heart" size="lg" color="white" className="ml-2" />
-                      {}
+                      <MDBIcon icon="heart" color="white" className="ml-2" />
+                      {newDiaryCardList[i]["likes"]}
                     </span>
                   </MDBMask>
                 </MDBView>
@@ -66,23 +66,19 @@ class DiaryCard extends Component {
     return (
       <Fragment>
         <Row>
-          <Col span="18">
-            <div>
+          <Col span={19}>
+            <div className="diaryCards">
               <Row>
                 {this.getDiaryCardList()}
               </Row>
-              <Row style={{ marginTop: 28 }}>
-                <Button
-                  className="btn btn btn-outline-info"
-                  style={{ display: "block", margin: "0 auto" }}
-                  onClick={() => handlePageChange(page, totalPage)}
-                >
+              <Row className="moreDiaryButtonRow">
+                <Button className="btn btn btn-outline-info" onClick={() => handlePageChange(page, totalPage)}>
                   More Diaries
-                  </Button>
+                </Button>
               </Row>        
             </div>
           </Col>
-          <Col span="6">
+          <Col span={5}>
             <div className="authorRecommend">
               <AuthorRecommend/>
             </div>
@@ -119,10 +115,7 @@ const mapDispatchToProps = dispatch => {
       } else {
         dispatch(actionCreators.pageChangeAction(0));
       }
-    },
-    handleLikeArticle() {
-      dispatch(actionCreators.handleLikeArticleAction());
-    }
+    }    
   };
 };
 
