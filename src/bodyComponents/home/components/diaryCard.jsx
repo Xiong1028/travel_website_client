@@ -1,15 +1,16 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Card, Row, Col, Avatar, Icon } from "antd";
-import { MDBCard, MDBRow, MDBMask, MDBView, MDBIcon, MDBBtn, MDBCardBody, MDBCardTitle, MDBContainer, MDBCol } from "mdbreact";
+import { Row, Col, Avatar } from "antd";
+import { MDBCard, MDBRow, MDBMask, MDBView, MDBIcon, MDBBtn, MDBCardBody, MDBCardTitle } from "mdbreact";
 import { Button } from "react-bootstrap";
 import { actionCreators } from "../store";
+import AuthorRecommend from "./authorRecommend";
 import "../home.css";
 import { Link } from "react-router-dom";
 
 class DiaryCard extends Component {
   getDiaryCardList() {
-    const { diaryCardList, page } = this.props;
+    const { diaryCardList, page, handleLikeArticle } = this.props;
 
     const newDiaryCardList = diaryCardList.toJS();
 
@@ -21,11 +22,11 @@ class DiaryCard extends Component {
         if (newDiaryCardList[i]) {
           cardPerPageList.push(
             <Col className="gutter-row" span={6} key={i}>
-              <MDBCard className="diaryCard">
+              <MDBCard>
                 <MDBView hover zoom className="cardView">
-                  <img alt="diary pic" src={newDiaryCardList[i]["cover_imgURL"]} style={{ width: "320px", height: "220px" }} />
+                  <img alt="diary pic" src={newDiaryCardList[i]["cover_imgURL"]} style={{ width: "300px", height: "180px" }} />
                   <MDBMask overlay="stylish-light">
-                    <MDBBtn color="danger" rounded size="xl">
+                    <MDBBtn color="danger" rounded size="xl" onClick={() => handleLikeArticle()}>
                       <MDBIcon fas="true" icon="thumbtack" className="left" />
                       <b> Save</b>
                     </MDBBtn>
@@ -63,18 +64,31 @@ class DiaryCard extends Component {
   render() {
     const { page, totalPage, handlePageChange } = this.props;
     return (
-      <div>
-        <Row className="mdbRow">{this.getDiaryCardList()}</Row>
-        <Row style={{ marginTop: 28 }}>
-          <Button
-            className="btn btn btn-outline-info"
-            style={{ display: "block", margin: "0 auto" }}
-            onClick={() => handlePageChange(page, totalPage)}
-          >
-            More Diaries
-          </Button>
+      <Fragment>
+        <Row>
+          <Col span="18">
+            <div>
+              <Row>
+                {this.getDiaryCardList()}
+              </Row>
+              <Row style={{ marginTop: 28 }}>
+                <Button
+                  className="btn btn btn-outline-info"
+                  style={{ display: "block", margin: "0 auto" }}
+                  onClick={() => handlePageChange(page, totalPage)}
+                >
+                  More Diaries
+                  </Button>
+              </Row>        
+            </div>
+          </Col>
+          <Col span="6">
+            <div className="authorRecommend">
+              <AuthorRecommend/>
+            </div>
+          </Col>
         </Row>
-      </div>
+      </Fragment>
     );
   }
 
@@ -105,6 +119,9 @@ const mapDispatchToProps = dispatch => {
       } else {
         dispatch(actionCreators.pageChangeAction(0));
       }
+    },
+    handleLikeArticle() {
+      dispatch(actionCreators.handleLikeArticleAction());
     }
   };
 };
