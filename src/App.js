@@ -16,7 +16,6 @@ import Author from "./bodyComponents/author";
 import Message from "./bodyComponents/message";
 import Chat from "./bodyComponents/message/components/chat";
 import {Layout} from 'antd';
-import "./testSocketio/socketio_test";
 
 
 class App extends Component {
