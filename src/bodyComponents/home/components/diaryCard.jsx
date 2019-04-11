@@ -20,10 +20,10 @@ class DiaryCard extends Component {
       for (let i = page * 9; i < (page + 1) * 9; i++) {
         if (newDiaryCardList[i]) {
           cardPerPageList.push(
-            <Col className="gutter-row" span={5} offset={2} key={i}>
+            <Col className="gutter-row" span={6} key={i}>
               <MDBCard className="diaryCard">
                 <MDBView hover zoom className="cardView">
-                  <img alt="diary pic" src={newDiaryCardList[i]["cover_imgURL"]} style={{ height: "220px" }} />
+                  <img alt="diary pic" src={newDiaryCardList[i]["cover_imgURL"]} style={{ width: "320px", height: "220px" }} />
                   <MDBMask overlay="stylish-light">
                     <MDBBtn color="danger" rounded size="xl">
                       <MDBIcon fas="true" icon="thumbtack" className="left" />
@@ -65,7 +65,7 @@ class DiaryCard extends Component {
     return (
       <div>
         <Row className="mdbRow">{this.getDiaryCardList()}</Row>
-        <Row style={{ marginBottom: 28 }}>
+        <Row style={{ marginTop: 28 }}>
           <Button
             className="btn btn btn-outline-info"
             style={{ display: "block", margin: "0 auto" }}

@@ -42,17 +42,17 @@
 }
 
 .carDiary{
-    width: 250px !important; 
+    width: 300 !important; 
 }
 
 .cardView{
-    height: 200px;
+    height: 220px;
     position: relative;
 }
 
 .cardTitle {
     font-family: 'Poppins', sans-serif !important;
-    font-size: 18px !important;
+    font-size: 14px !important;
     font-weight: bold !important;
     margin-top: 8px;
     margin-left: 10px;
@@ -79,6 +79,11 @@
 }
 
 .mdbRow{
+    width: 80%;
+}
+
+.gutter-row{
     margin-top: 5%;
+    margin-left: 5%;
 }
 
