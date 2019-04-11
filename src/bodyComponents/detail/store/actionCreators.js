@@ -33,8 +33,22 @@ export const handleUpdateLikeNumAction = (id, num) => {
 			post_id: id,
 			likes: num
 		}).then((res)=>{
-			const newLikes = res.data;
-			console.log("updateLike", newLikes);
+			const updateArticle = res.data;			
+			dispatch(getDetail(updateArticle));
+			
+		})
+	}
+}
+
+export const handleUpdateViewNumAction = (id, num) => {
+	return (dispatch) => {
+		axios.post("/updateview", {
+			post_id: id,
+			views: num
+		}).then((res)=>{
+			const updateArticle = res.data;			
+			dispatch(getDetail(updateArticle));
+			
 		})
 	}
 }

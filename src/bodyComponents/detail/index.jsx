@@ -4,6 +4,8 @@ import { actionCreators } from "./store";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ListNote } from "./style";
+import {toJS} from "immutable";
+
 import {
   DetailWrapper,
   DetailTitle,
@@ -16,19 +18,13 @@ import CommentBox from "./components/comment";
 
 class Detail extends Component {
 
-  handleUpdateLikeNum(){
-    const { article, handleUpdateLikeNum} = this.props;
-    console.log("haha");
-    // handleUpdateLikeNum(this.props.match.params.id,article.likes);
-  }
-
   render() {
     const { article, handleUpdateLikeNum} = this.props;
     return (
       <DetailWrapper>
         <span>
           <DetailTitle>{article.post_title}</DetailTitle>
-          <Button type="danger" icon="heart" onClick={this.handleUpdateLikeNum} style={{marginBottom: "5%"}}>Like</Button>
+          <Button type="danger" icon="heart" onClick={()=>handleUpdateLikeNum(this.props.match.params.id, article.likes)} style={{marginBottom: "5%"}}>Like</Button>
         </span>
         <DetailAuthor>
           <Link to={"/author/" + article.user_id}>
@@ -56,9 +52,13 @@ class Detail extends Component {
   }
 
   componentDidMount() {
+    const {article, getDetail, handleUpdateViewNum} = this.props;
+
     //if this component is the Router component, we can get the id from this.props.match.params
     //Get the id from the router, here id is post_id
-    this.props.getDetail(this.props.match.params.id);
+    getDetail(this.props.match.params.id);
+
+    handleUpdateViewNum(this.props.match.params.id, article.views);
   }
 }
 
@@ -74,8 +74,10 @@ const mapDispatchToProps = dispatch => {
       dispatch(actionCreators.getDetailAction(id));
     },
     handleUpdateLikeNum(id, num) {
-      console.log(id,num);
       dispatch(actionCreators.handleUpdateLikeNumAction(id, num));
+    },
+    handleUpdateViewNum(id, num) {
+      dispatch(actionCreators.handleUpdateViewNumAction(id, num));
     }
   };
 };
