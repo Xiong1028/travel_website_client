@@ -32,6 +32,11 @@ const clearMsg = () => ({
 	type: constants.CLEAR_MSG
 })
 
+const renewLoginUser = (user)=>({
+	type:constants.RENEW_LOGIN_USER,
+	data:user
+})
+
 export const handleClearMsgAction = () => {
 	return dispatch => {
 		dispatch(clearMsg());
@@ -78,11 +83,12 @@ export const handleLoginAction = (user) => {
 				password: password
 			}).then((res) => {
 				const result = res.data;
-				console.log(result);
+				console.log("USER",result);
 				if (result.code) {					
 					dispatch(loginSuccess(result.data));
 					dispatch(modifyLoginStatus());
 					dispatch(headerActionCreators.handleUpdateAvatarAction(result.data.avatar));
+					dispatch(renewLoginUser(result.data));
 				} else {
 					dispatch(errLoginMsg(result.loginMsg));
 				}

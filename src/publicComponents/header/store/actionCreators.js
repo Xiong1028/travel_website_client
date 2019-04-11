@@ -1,6 +1,8 @@
 import { constants as postConstants } from "../../../bodyComponents/post/store";
 import {constants as headerconstants} from '.';
 import axios from 'axios';
+import {constants} from "../../../bodyComponents/login/store";
+import {constants as loginConstants} from "../../../bodyComponents/login/store";
 // import { fromJS } from "immutable";
 
 const updateAvatar = (data) => {
@@ -9,6 +11,12 @@ const updateAvatar = (data) => {
     data
   }
 }
+
+const renewLoginUser = (user)=>({
+  type:loginConstants.RENEW_LOGIN_USER,
+  data:user
+})
+
 
 const errMsg = (msg) => {
   return {
@@ -57,5 +65,19 @@ export const handleUpdateAvatarAction = (userid)=>{
     })
   }
 }
+
+export const handleUpdateLoginUserAction = (userid)=>{
+  return (dispatch) => {
+    axios.post('/getuser', {
+      userid
+    }).then(response => {
+      const result = response.data;
+      if (result.code){
+        dispatch(renewLoginUser(result.data));
+      }
+    })
+  }
+}
+
 
 
