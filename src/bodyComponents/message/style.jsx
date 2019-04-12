@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const ChatContentWrap = styled.div`
 	width:100%;
 	height:500px;
-	border-bottom:1px solid #7E7C91;
+    border-bottom:1px solid #7E7C91;
+    overflow-y:auto;
 	
 
 
@@ -11,8 +12,9 @@ export const ChatContentWrap = styled.div`
 
 export const ChatWrap = styled.div`
     width: 50%;
- 		border:1px solid #7E7C91;
+ 	border:1px solid #7E7C91;
     margin:3% auto;
+    overflow:auto;
    
 `;
 

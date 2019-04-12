@@ -23,6 +23,16 @@ class Chat extends Component {
 		this.setState({content:''});
 	}
 
+	componentDidMount(){
+		window.scroll(0,document.body.scrollHeight);
+	}
+
+	componentUpdateMount(){
+		window.scroll(0,document.body.scrollHeight);
+	}
+
+
+
 	render() {
 		const {loginUser,msgList} = this.props;
 		
@@ -52,8 +62,10 @@ class Chat extends Component {
 
 		return (
 			<ChatWrap>
+					<ChatHeader>Chat with {Map(tartgetUser).get("username")}</ChatHeader>
 				<ChatContentWrap>
-					<ChatHeader>Message</ChatHeader>
+				
+	
 					{chatMsgs.map(msg=>{
 						if(myId === msg.to){ //msg to me
 						    return (
