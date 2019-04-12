@@ -4,7 +4,6 @@ import { actionCreators } from "./store";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ListNote } from "./style";
-import {toJS} from "immutable";
 
 import {
   DetailWrapper,
@@ -24,7 +23,7 @@ class Detail extends Component {
       <DetailWrapper>
         <span>
           <DetailTitle>{article.post_title}</DetailTitle>
-          <Button type="danger" icon="heart" onClick={()=>handleUpdateLikeNum(this.props.match.params.id, article.likes)} style={{marginBottom: "5%"}}>Like</Button>
+          <Button type="danger" icon="heart" onClick={()=>handleUpdateLikeNum(this.props.match.params.id)} style={{marginBottom: "5%"}}>Like</Button>
         </span>
         <DetailAuthor>
           <Link to={"/author/" + article.user_id}>
@@ -58,7 +57,7 @@ class Detail extends Component {
     //Get the id from the router, here id is post_id
     getDetail(this.props.match.params.id);
 
-    handleUpdateViewNum(this.props.match.params.id, article.views);
+    handleUpdateViewNum(this.props.match.params.id);
   }
 }
 
@@ -73,11 +72,11 @@ const mapDispatchToProps = dispatch => {
     getDetail(id) {
       dispatch(actionCreators.getDetailAction(id));
     },
-    handleUpdateLikeNum(id, num) {
-      dispatch(actionCreators.handleUpdateLikeNumAction(id, num));
+    handleUpdateLikeNum(id) {
+      dispatch(actionCreators.handleUpdateLikeNumAction(id));
     },
-    handleUpdateViewNum(id, num) {
-      dispatch(actionCreators.handleUpdateViewNumAction(id, num));
+    handleUpdateViewNum(id) {
+      dispatch(actionCreators.handleUpdateViewNumAction(id));
     }
   };
 };

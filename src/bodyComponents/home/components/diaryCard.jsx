@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 class DiaryCard extends Component {
   getDiaryCardList() {
-    const { diaryCardList, page, handleLikeArticle } = this.props;
+    const { diaryCardList, page, handleSaveArticle, loginUser } = this.props;
 
     const newDiaryCardList = diaryCardList.toJS();
 
@@ -26,7 +26,7 @@ class DiaryCard extends Component {
                 <MDBView hover zoom className="cardView">
                   <img alt="diary pic" src={newDiaryCardList[i]["cover_imgURL"]} style={{ width: "100%", height: "200px" }} />
                   <MDBMask overlay="stylish-light">
-                    <MDBBtn color="danger" rounded size="xl" onClick={() => handleLikeArticle()}>
+                    <MDBBtn color="danger" rounded size="xl" onClick={() => handleSaveArticle(newDiaryCardList[i]["post_id"], loginUser._id)}>
                       <MDBIcon fas="true" icon="thumbtack" className="left" />
                       <b> Save</b>
                     </MDBBtn>
@@ -99,7 +99,8 @@ const mapStateToProps = state => {
   return {
     diaryCardList: state.getIn(["home", "diaryCardList"]),
     page: state.getIn(["home", "page"]),
-    totalPage: state.getIn(["home", "totalPage"])
+    totalPage: state.getIn(["home", "totalPage"]),
+    loginUser: state.getIn(["login", "loginUser"])    
   };
 };
 
@@ -115,7 +116,10 @@ const mapDispatchToProps = dispatch => {
       } else {
         dispatch(actionCreators.pageChangeAction(0));
       }
-    }    
+    },
+    handleSaveArticle(post_id, user_id) {
+      dispatch(actionCreators.handleSaveArticleAction(post_id, user_id));
+    }  
   };
 };
 
