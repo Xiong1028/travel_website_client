@@ -4,6 +4,10 @@ import { actionCreators } from "./store";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ListNote } from "./style";
+<<<<<<< HEAD
+=======
+
+>>>>>>> b556b4dd763e43bfc631e5bff90ce5224bbcfaa7
 
 import {
   DetailWrapper,
@@ -19,6 +23,7 @@ class Detail extends Component {
 
   render() {
     const { article, handleUpdateLikeNum} = this.props;
+    console.log(article);
     return (
       <DetailWrapper>
         <span>
