@@ -1,6 +1,8 @@
 import {constants} from ".";
 import axios from 'axios';
 import { actionCreators as headerActionCreators } from "../../../publicComponents/header/store";
+import {actionCreators as messageActionCreators} from "../../message/store";
+
 
 //sync the producer
 const errMsg = (msg) => ({
@@ -61,6 +63,7 @@ export const handleRegisterAction = (user) => {
 				if (result.code) {
 					dispatch(authSuccess(result.data));
 					dispatch(modifyLoginStatus());
+					messageActionCreators.getMsgList(dispatch,result.data._id);
 				} else {
 					dispatch(errMsg(result.registerMsg));
 				}
@@ -89,6 +92,7 @@ export const handleLoginAction = (user) => {
 					dispatch(modifyLoginStatus());
 					dispatch(headerActionCreators.handleUpdateAvatarAction(result.data.avatar));
 					dispatch(renewLoginUser(result.data));
+					messageActionCreators.getMsgList(dispatch,result.data._id);
 				} else {
 					dispatch(errLoginMsg(result.loginMsg));
 				}

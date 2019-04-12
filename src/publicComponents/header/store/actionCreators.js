@@ -3,7 +3,8 @@ import {constants as headerconstants} from '.';
 import axios from 'axios';
 import {constants} from "../../../bodyComponents/login/store";
 import {constants as loginConstants} from "../../../bodyComponents/login/store";
-// import { fromJS } from "immutable";
+import {actionCreators as messageActionCreators} from "../../../bodyComponents/message/store";
+
 
 const updateAvatar = (data) => {
   return {
@@ -56,7 +57,6 @@ export const handleUpdateAvatarAction = (userid)=>{
       userid
     }).then(response => {
       const result = response.data;
-      console.log(result);
       if (result.code){
         dispatch(updateAvatar(result.data));
       } else {
@@ -74,7 +74,9 @@ export const handleUpdateLoginUserAction = (userid)=>{
       const result = response.data;
       if (result.code){
         dispatch(renewLoginUser(result.data));
+        messageActionCreators.getMsgList(dispatch,result.data._id);
       }
+      
     })
   }
 }

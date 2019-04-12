@@ -40,11 +40,10 @@ export const handleUpdateLikeNumAction = (id, num) => {
 	}
 }
 
-export const handleUpdateViewNumAction = (id, num) => {
+export const handleUpdateViewNumAction = (id) => {
 	return (dispatch) => {
 		axios.post("/updateview", {
-			post_id: id,
-			views: num
+			post_id: id
 		}).then((res)=>{
 			const updateArticle = res.data;			
 			dispatch(getDetail(updateArticle));
