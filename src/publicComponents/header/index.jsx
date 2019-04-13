@@ -44,7 +44,7 @@ class Header extends Component {
 	};
 
 	render() {
-		const {isLogin, showAccessModal, avatar} = this.props;
+		const {isLogin, showAccessModal, avatar, loginUser} = this.props;
 		return (
 			<Menu mode="horizontal" theme="dark" className="header_menu">
 				<Menu.Item key="logo">
@@ -116,14 +116,18 @@ class Header extends Component {
 					<SubMenu
 						title={
 							<span style={{marginRight: 24}}>
-                <Link to={"/author/" + Cookies.get("userid")}>
+                <Link to={"/author/" + loginUser._id}>
                   <Avatar src={avatar}/>
                 </Link>
               </span>
 						}
 					>
-						<MenuItemGroup title="Article">
-							<Menu.Item key="setting:1">My Article</Menu.Item>
+						<MenuItemGroup title="Article">							
+							<Menu.Item key="setting:1">
+								<Link to={"/author/" + loginUser._id}>My Article</Link>
+							</Menu.Item>
+							
+							
 							<Menu.Item key="setting:2">My Favorite</Menu.Item>
 						</MenuItemGroup>
 						<MenuItemGroup title="Setting">
@@ -145,7 +149,8 @@ const mapStateToProps = state => {
 	return {
 		isLogin: state.getIn(["header", "isLogin"]),
 		accessModalVisible: state.getIn(["post", "accessModalVisible"]),
-		avatar: state.getIn(["setting", "avatar"])
+		avatar: state.getIn(["setting", "avatar"]),
+		loginUser: state.getIn(["login", "loginUser"])
 	};
 };
 
