@@ -11,10 +11,13 @@ export default class MessageList extends Component {
 
     render() {
     const {msgList,loginUser} = this.props;
-    const {chatMsgs,users} = msgList;
-    
-    const  newUsers = Map(users).filter((v,k)=> v != loginUser._id);
-    console.log(newUsers);
+
+    const users = msgList.users;
+
+    //filter the loginUser
+    const newUsers = Map(users).filter((v,k) =>k != loginUser._id);
+
+    newUsers.valueSeq().forEach(v=>console.log(v));
 
         return (
             <div>

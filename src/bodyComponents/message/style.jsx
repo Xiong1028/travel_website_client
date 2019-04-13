@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ChatContentWrap = styled.ul`
+export const ChatContentWrap = styled.div`
 	width:100%;
 	height:40vh;
     border-bottom:1px solid #7E7C91;
@@ -29,7 +29,7 @@ export  const ChatHeader = styled.div`
 `;
 
 
-export const ReceiveMsg = styled.li`
+export const ReceiveMsg = styled.div`
     width:100%;
     flex-basis:auto;
     padding:1%;
@@ -52,7 +52,7 @@ export const ReceiveMsg = styled.li`
     }
 `;
 
-export const SendMsg = styled.li`
+export const SendMsg = styled.div`
     width:100%;
     flex-basis:auto;
     padding:1%;
