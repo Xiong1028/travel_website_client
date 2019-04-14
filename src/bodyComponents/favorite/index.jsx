@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { AuthorComponentWrapper, AuthorDetailWrapper } from "./style";
-import { actionCreators } from "./store";
+import { actionCreators, authorActionCreators } from "./store";
 import { get } from "immutable";
 import { Divider, Icon, Button } from "antd";
 import FavoriteList from "./components/favoriteList";
@@ -61,7 +61,8 @@ class Favorite extends Component {
     }
 
     componentDidMount() {
-        const { getFavArticles } = this.props;
+        const { getFavArticles, handleGetAuthor } = this.props;
+        handleGetAuthor(this.props.match.params.user_id);
         getFavArticles(this.props.match.params.user_id);
     }
 }
@@ -77,6 +78,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        handleGetAuthor(userid) {
+            dispatch(authorActionCreators.handleGetAuthorAction(userid));
+        },
         getFavArticles(userid) {
             dispatch(actionCreators.getFavArticlesAction(userid));
         }

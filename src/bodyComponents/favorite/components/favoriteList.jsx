@@ -3,7 +3,6 @@ import { ListGroup, Figure, Row, Col, Container } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Icon, Tag } from "antd";
 import { Link } from "react-router-dom";
-import { ListInfo } from "../../search/style";
 import { ListNote } from  "../style";
 import "../../search/search.css";
 import {List} from "immutable";
@@ -40,11 +39,21 @@ export default class FavoriteList extends Component {
                                                 dangerouslySetInnerHTML={{ __html: value.post_title }}
                                             />
                                         </Link>
-                                        <ListInfo>
-                                            {value.post_tags.map((item, index) => {
-                                                return <Tag color="#f50">{item}</Tag>;
-                                            })}
-                                        </ListInfo>
+                                        <span>
+                                            <Link to={"/author/" + value.user_id}>
+                                                <img
+                                                    src={value.avatar}
+                                                    alt="author_avatar"
+                                                    className="rounded-circle"
+                                                    style={{ width: 30, height: 30, float: "left", marginRight: "3%" }}
+                                                />
+                                            </Link>
+                                            <Link to={"/author/" + value.user_id}>
+                                                <p style={{fontSize: "16px"}}
+                                                    dangerouslySetInnerHTML={{ __html: value.username }}
+                                                />
+                                            </Link>
+                                        </span>
                                         <ListNote>
                                             <span>
                                                 <Icon type="eye" />
