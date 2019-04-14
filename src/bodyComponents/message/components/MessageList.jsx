@@ -11,12 +11,12 @@ class MessageList extends Component {
 		loginUser: PropTypes.object.isRequired
 	};
 
-	render() {
+	countData(){
 		const {msgList, loginUser} = this.props;
 		const users = msgList.users;
 		const chatMsgs = msgList.chatMsgs;
 		const chatUserList = [];
-		let unReadtotal =  0;
+		let unReadtotal = 0;
 		//filter the loginUser
 		const newUsers = Map(users).filter((v, k) => k != loginUser._id);
 		newUsers.valueSeq().forEach(v => chatUserList.push(v));
@@ -30,17 +30,28 @@ class MessageList extends Component {
 
 
 		//push the latest msg to corresponding user
-		chatUserList.forEach((value,key)=>{
-			const fromMsgList = chatMsgsHistory.filter((v,k)=>{
-				if(v.to ===loginUser._id && !v.read){
+		chatUserList.forEach((value, key) => {
+			const fromMsgList = chatMsgsHistory.filter((v, k) => {
+				if (v.to === loginUser._id && !v.read) {
 					unReadtotal++;
 				}
 				return value.user_id === v.from;
 			})
-			const fromLatestMsg = fromMsgList[fromMsgList.length-1];
+			const fromLatestMsg = fromMsgList[fromMsgList.length - 1];
 			value.fromLatestMsg = fromLatestMsg;
 		})
-		console.log("unread============",unReadtotal);
+
+		return [chatUserList,unReadtotal];
+
+	}
+
+	componentDidMount() {
+		const unReadtotal = this.countData()[1];
+		console.log(unReadtotal);
+	}
+
+	render() {
+		const chatUserList = this.countData()[0];
 
 		return (
 			<div>
@@ -61,15 +72,17 @@ class MessageList extends Component {
 											<h5 className="card-title">
 												{value.username}
 											</h5>
-											<p className="card-text" style={{fontStyle:"italic",fontSize:"120%"}}>{value.fromLatestMsg.content}</p>
+											<p className="card-text"
+												 style={{fontStyle: "italic", fontSize: "120%"}}>{value.fromLatestMsg.content}</p>
 											<p className="card-text">
-												<small className="text-muted">updated at {moment(value.fromLatestMsg.create_time).format('YYYY-MM-DD HH:mm:ss')}</small>
+												<small className="text-muted">updated
+													at {moment(value.fromLatestMsg.create_time).format('YYYY-MM-DD HH:mm:ss')}</small>
 											</p>
 											<p className="card-text">
-											<Link to={"/chat/" + value.user_id}>
-												<span>Reply</span>
-											</Link>
-											<span style={{color:"red",padding:"10px"}}>Delete</span>
+												<Link to={"/chat/" + value.user_id}>
+													<span>Reply</span>
+												</Link>
+												<span style={{color: "red", padding: "10px"}}>Delete</span>
 											</p>
 										</div>
 									</div>
@@ -93,6 +106,6 @@ class MessageList extends Component {
 }
 
 export default connect(
-	(state)=>({}),
+	(state) => ({}),
 	{}
 )(MessageList);

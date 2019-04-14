@@ -5,11 +5,15 @@ import { Tab, ListGroup, Row, Col } from "react-bootstrap";
 import { Icon } from "antd";
 import MessageList from "./components/MessageList";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
+import {Link} from "react-router-dom";
+import {Map} from "immutable";
 
 class Message extends Component {
   
   render() {
+    const {loginUser,msgList} = this.props;
+
+    const unReadCount = Map(msgList).get("unReadCount");
     return (
       <div className="container wrap">
         <Tab.Container id="list-group-tabs-example" defaultActiveKey="#message">
@@ -22,7 +26,7 @@ class Message extends Component {
                     style={{ float: "left", margin: "2.5%" }}
                   />
                   Message
-                  <span className="badge badge-primary badge-pill offset-1">14</span>
+                  <span className="badge badge-primary badge-pill offset-1">{unReadCount?unReadCount:null}</span>
                 </ListGroup.Item>
                 <ListGroup.Item action href="#likes">
                   <Icon
@@ -31,9 +35,11 @@ class Message extends Component {
                   />
                   Likes
                 </ListGroup.Item>
-                <ListGroup.Item action href="#favorite">
-                  <Icon type="star" style={{ float: "left", margin: "2.5%" }} />
-                  Favorite
+                <ListGroup.Item >
+                  <Link to={"/favorite/" + loginUser._id}>
+                    <Icon type="star" style={{ float: "left", margin: "2.5%" }} />
+                    My Favorite
+                  </Link>
                 </ListGroup.Item>
                 <ListGroup.Item action href="#watch">
                   <Icon
@@ -50,7 +56,9 @@ class Message extends Component {
                   <MessageList msgList={this.props.msgList} loginUser={this.props.loginUser}/>
                 </Tab.Pane>
                 <Tab.Pane eventKey="#likes">Likes</Tab.Pane>
-                <Tab.Pane eventKey="#favorite">Favorite</Tab.Pane>
+                <Tab.Pane eventKey="#favorite">
+                  {/*<Favorite/>*/}
+                </Tab.Pane>
                 <Tab.Pane eventKey="#watch">Watch</Tab.Pane>
               </Tab.Content>
             </Col>

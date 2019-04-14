@@ -44,7 +44,7 @@ class Header extends Component {
 	};
 
 	handleMsg(){
-		const {isLogin,loginUset} = this.props;
+		const {isLogin,loginUser} = this.props;
 		if(!isLogin){
 			this.props.history.push("/login");
 		}else{
