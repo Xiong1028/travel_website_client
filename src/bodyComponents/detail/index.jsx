@@ -19,7 +19,6 @@ class Detail extends Component {
 
   render() {
     const { article, handleUpdateLikeNum} = this.props;
-    console.log(article);
     return (
       <DetailWrapper>
         <span>

@@ -42,13 +42,8 @@ export const ReceiveMsg = styled.div`
         margin-right:1%;
     }
     span{
-        background-color:#16466B;
-        color:#fff;
-        padding:1%;
-        font-style:italic;
-        display:inline-block;
-        border:1px solid #000000;
-        border-radius:10%;    
+        display:inline-block; 
+        padding:1%;   
     }
 `;
 
@@ -60,7 +55,12 @@ export const SendMsg = styled.div`
     text-align:right;
     span{
         padding:1%;
-        display:inline-block;        
+        font-style:italic;
+        display:inline-block;
+        border:1px solid #000000;
+        border-radius:10%;  
+        background-color:#6200EE; 
+        color:#fff;     
     }
 `;
 
