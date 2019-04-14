@@ -1,10 +1,10 @@
 import io from "socket.io-client";
 
 //one socket object means one connection to the server
-const socket = io("ws://localhost:3001")
+const socket = io("http://localhost:3001");
 
 //listen the receriveMessage, and receive the msg from the server
-socket.on('receiveMsg',(data)=>{
+socket.on('returnMsg',(data)=>{
     console.log("from the server: ", data);
 })
 

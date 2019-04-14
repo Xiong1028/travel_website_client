@@ -3,8 +3,10 @@ import { ListGroup, Figure, Row, Col, Container, Image } from "react-bootstrap";
 import { Icon, Tag } from "antd";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { ListInfo, ListNote } from "../../search/style";
+import { ListInfo } from "../../search/style";
+import { ListNote } from  "../style";
 import "../../search/search.css";
+
 
 export default class ArticleList extends Component {
   static propTypes = {
@@ -13,7 +15,6 @@ export default class ArticleList extends Component {
 
   render() {
     const { articles } = this.props;
-    console.log(articles);
 
     return (
       <Container className="searchInfo">
@@ -53,7 +54,7 @@ export default class ArticleList extends Component {
                         {value.comments}
                       </span>
                       <span>
-                        <Icon type="like" />
+                        <Icon type="heart" />
                         {value.likes}
                       </span>
                       <span>{value.postTime}</span>

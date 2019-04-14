@@ -1,80 +1,59 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Card, Row, Col } from "antd";
-import { MDBMask, MDBView, MDBIcon, MDBBtn } from "mdbreact";
+import { Row, Col, Avatar, Icon } from "antd";
+import { MDBCard, MDBRow, MDBMask, MDBView, MDBIcon, MDBBtn, MDBCardBody, MDBCardTitle } from "mdbreact";
 import { Button } from "react-bootstrap";
 import { actionCreators } from "../store";
+import AuthorRecommend from "./authorRecommend";
 import "../home.css";
 import { Link } from "react-router-dom";
 
-const { Meta } = Card;
-
 class DiaryCard extends Component {
   getDiaryCardList() {
-    const { diaryCardList, page } = this.props;
+    const { diaryCardList, page, handleSaveArticle, loginUser } = this.props;
 
     const newDiaryCardList = diaryCardList.toJS();
-
-    console.log(1, newDiaryCardList);
 
     //diplayed card in each page
     let cardPerPageList = [];
 
     if (newDiaryCardList.length) {
-      for (let i = page * 6; i < (page + 1) * 6; i++) {
+      for (let i = page * 9; i < (page + 1) * 9; i++) {
         if (newDiaryCardList[i]) {
           cardPerPageList.push(
-            <Col className="gutter-row" span={5} offset={2} key={i}>
-              <Card
-                hoverable
-                style={{
-                  width: 350,
-                  height: 330,
-                  padding: "2.5%",
-                  borderRadius: "8px",
-                  margin: 10
-                }}
-                cover={
-                  <MDBView hover zoom>
-                    <img
-                      alt="diary pic"
-                      src={newDiaryCardList[i]["cover_imgURL"]}
-                      style={{ height: 250 }}
-                    />
-                    <MDBMask overlay="stylish-light">
-                      <MDBBtn color="danger" rounded size="xl">
-                        <MDBIcon fas="true" icon="thumbtack" className="left" />
-                        <b> Save</b>
-                      </MDBBtn>
-                    </MDBMask>
-                  </MDBView>
-                }
-              >
-                <Link to={"/detail/" + newDiaryCardList[i]["post_id"]}>
-                  <Meta
-                    avatar={
-                      <img
+            <Col className="gutter-row" span={6} key={i}>
+              <MDBCard>
+                <MDBView hover zoom className="cardView">
+                  <img alt="diary pic" src={newDiaryCardList[i]["cover_imgURL"]} style={{ width: "100%", height: "200px" }} />
+                  <MDBMask overlay="stylish-light">
+                    <MDBBtn color="danger" rounded size="xl" onClick={() => handleSaveArticle(newDiaryCardList[i]["post_id"], loginUser._id)}>
+                      <MDBIcon fas="true" icon="thumbtack" className="left" />
+                      <b> Save</b>
+                    </MDBBtn>
+                    <span className="spanIcon">
+                      <MDBIcon icon="heart" color="white" className="ml-2" />
+                      {newDiaryCardList[i]["likes"]}
+                    </span>
+                  </MDBMask>
+                </MDBView>
+                <MDBCardBody>
+                  <MDBRow style={{ textAlign: "center" }}>
+                    <Link to={"/author/" + newDiaryCardList[i]["user_id"]}>
+                      <Avatar
                         src={newDiaryCardList[i]["avatar"]}
                         alt="userAvatar"
-                        className="rounded-circle"
-                        style={{ width: "40px" }}
+                        style={{ width: "40px", height: "40px", marginLeft: "15px" }}
                       />
-                    }
-                    style={{
-                      fontFamily: "'Indie Flower', cursive",
-                      fontSize: "18px",
-                      fontWeight: 700,
-                      color: "black"
-                    }}
-                    description={
-                      <p style={{ color: "black" }}>
+                    </Link>
+                    <Link className="titleLink" to={"/detail/" + newDiaryCardList[i]["post_id"]}>
+                      <MDBCardTitle className="cardTitle">
                         {newDiaryCardList[i]["post_title"]}
-                      </p>
-                    }
-                  />
-                </Link>
-              </Card>
-            </Col>
+                      </MDBCardTitle>
+                    </Link>
+                  </MDBRow>
+                </MDBCardBody>
+              </MDBCard >
+            </Col >
           );
         }
       }
@@ -85,19 +64,27 @@ class DiaryCard extends Component {
   render() {
     const { page, totalPage, handlePageChange } = this.props;
     return (
-      <div>
-        <Row className="titleRow">Most Recent Diaries</Row>
-        <Row style={{ marginBottom: 28 }}>
-          <Button
-            className="btn btn btn-outline-info"
-            style={{ display: "block", margin: "0 auto" }}
-            onClick={() => handlePageChange(page, totalPage)}
-          >
-            More Diaries
-          </Button>
+      <Fragment>
+        <Row>
+          <Col span={19}>
+            <div className="diaryCards">
+              <Row>
+                {this.getDiaryCardList()}
+              </Row>
+              <Row className="moreDiaryButtonRow">
+                <Button className="btn btn btn-outline-info" onClick={() => handlePageChange(page, totalPage)}>
+                  More Diaries
+                </Button>
+              </Row>        
+            </div>
+          </Col>
+          <Col span={5}>
+            <div className="authorRecommend">
+              <AuthorRecommend/>
+            </div>
+          </Col>
         </Row>
-        <Row>{this.getDiaryCardList()}</Row>
-      </div>
+      </Fragment>
     );
   }
 
@@ -112,7 +99,8 @@ const mapStateToProps = state => {
   return {
     diaryCardList: state.getIn(["home", "diaryCardList"]),
     page: state.getIn(["home", "page"]),
-    totalPage: state.getIn(["home", "totalPage"])
+    totalPage: state.getIn(["home", "totalPage"]),
+    loginUser: state.getIn(["login", "loginUser"])    
   };
 };
 
@@ -128,7 +116,10 @@ const mapDispatchToProps = dispatch => {
       } else {
         dispatch(actionCreators.pageChangeAction(0));
       }
-    }
+    },
+    handleSaveArticle(post_id, user_id) {
+      dispatch(actionCreators.handleSaveArticleAction(post_id, user_id));
+    }  
   };
 };
 

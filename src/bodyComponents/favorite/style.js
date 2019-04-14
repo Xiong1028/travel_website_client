@@ -43,4 +43,3 @@ export const ListNote = styled.div`
   }
 `;
 
-
