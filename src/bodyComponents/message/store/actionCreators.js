@@ -93,8 +93,12 @@ export async function getMsgList(dispatch,userid){
 
 export const handleRenewReadAction = ({from,to})=>{
     return async dispatch =>{
-        const response  = await axios.post("/readMsg",{from,to});
-        const result = response.result;
+        const response  = await axios.post("/readmsg",{from,to});
+        const result = response.data;
+        dispatch({
+            type:constants.RENEW_UNREAD_NUM,
+            data:result.data
+        })
     }
 }
 

@@ -53,7 +53,7 @@ class Header extends Component {
 	}
 
 	render() {
-		const {isLogin, showAccessModal, avatar, loginUser} = this.props;
+		const {isLogin, showAccessModal, avatar, loginUser,unReadCount} = this.props;
 		return (
 			<Menu mode="horizontal" theme="dark" className="header_menu">
 				<Menu.Item key="logo">
@@ -96,7 +96,7 @@ class Header extends Component {
 				</Menu.Item>
 
 				<Menu.Item key="setting:private_message" onClick={this.handleMsg.bind(this)}>
-						<Badge count={2}>Message</Badge>
+						<Badge count={unReadCount?unReadCount:null}>Message</Badge>
 				</Menu.Item>
 
 
@@ -145,7 +145,8 @@ const mapStateToProps = state => {
 		isLogin: state.getIn(["header", "isLogin"]),
 		accessModalVisible: state.getIn(["post", "accessModalVisible"]),
 		avatar: state.getIn(["setting", "avatar"]),
-		loginUser: state.getIn(["login", "loginUser"])
+		loginUser: state.getIn(["login", "loginUser"]),
+		unReadCount:state.getIn(["message","msgList","unReadCount"])
 	};
 };
 

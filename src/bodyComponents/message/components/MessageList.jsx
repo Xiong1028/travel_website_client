@@ -16,7 +16,6 @@ class MessageList extends Component {
 		const users = msgList.users;
 		const chatMsgs = msgList.chatMsgs;
 		const chatUserList = [];
-		let unReadtotal = 0;
 		//filter the loginUser
 		const newUsers = Map(users).filter((v, k) => k != loginUser._id);
 		newUsers.valueSeq().forEach(v => chatUserList.push(v));
@@ -32,27 +31,18 @@ class MessageList extends Component {
 		//push the latest msg to corresponding user
 		chatUserList.forEach((value, key) => {
 			const fromMsgList = chatMsgsHistory.filter((v, k) => {
-				if (v.to === loginUser._id && !v.read) {
-					unReadtotal++;
-				}
 				return value.user_id === v.from;
 			})
 			const fromLatestMsg = fromMsgList[fromMsgList.length - 1];
 			value.fromLatestMsg = fromLatestMsg;
 		})
-
-		return [chatUserList,unReadtotal];
-
+		return chatUserList;
 	}
 
-	componentDidMount() {
-		const unReadtotal = this.countData()[1];
-		console.log(unReadtotal);
-	}
+
 
 	render() {
-		const chatUserList = this.countData()[0];
-
+		const chatUserList = this.countData();
 		return (
 			<div>
 				{

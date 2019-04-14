@@ -1,13 +1,14 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import "../home.css";
-import { RecommendWrapper } from "../style"; 
+import { RecommendWrapper } from "../style";
+
 
 class AuthorRecommend extends Component {
   render(){
     return(
       <RecommendWrapper>
-        
+
       </RecommendWrapper>
     );
   }
