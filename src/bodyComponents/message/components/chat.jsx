@@ -1,133 +1,152 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {ChatHeader, ChatWrap, ReceiveMsg, SendMsg, ChatContentWrap, SenderWrap} from "../style";
-import {actionCreators} from "../store";
-import {Map, List} from "immutable";
-
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import {
+  ChatHeader,
+  ChatWrap,
+  ReceiveMsg,
+  SendMsg,
+  ChatContentWrap,
+  SenderWrap
+} from "../style";
+import { actionCreators } from "../store";
+import { Map, List } from "immutable";
+import { Icon } from "antd";
 
 class Chat extends Component {
-	state = {
-		content: ""
-	}
+  state = {
+    content: ""
+  };
 
-	handleSend = () => {
-		const {loginUser, sendMsg} = this.props;
-		const from = loginUser._id;
-		const to = this.props.match.params.userid;
-		const content = this.state.content.trim();
+  handleSend = () => {
+    const { loginUser, sendMsg } = this.props;
+    const from = loginUser._id;
+    const to = this.props.match.params.userid;
+    const content = this.state.content.trim();
 
-		//Send msg
-		if (content) {
-			sendMsg({from, to, content});
-		}
-		this.setState({content: ''});
-	}
+    //Send msg
+    if (content) {
+      sendMsg({ from, to, content });
+    }
+    this.setState({ content: "" });
+  };
 
-	scrollToBottom = () => {
-		this.messagesEnd.scrollIntoView({behavior: "smooth"});
-	}
+  scrollToBottom = () => {
+    this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+  };
 
-	componentDidMount() {
-		const {loginUser, renewRead} = this.props;
-		const to = loginUser._id;
-		const from = this.props.match.params.userid;
-		this.scrollToBottom();
-		renewRead({from,to});
+  componentDidMount() {
+    const { loginUser, renewRead } = this.props;
+    const to = loginUser._id;
+    const from = this.props.match.params.userid;
+    this.scrollToBottom();
+    renewRead({ from, to });
+  }
 
-	}
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
 
-	componentDidUpdate() {
-		this.scrollToBottom();
-	}
+  render() {
+    const { loginUser, msgList } = this.props;
 
-	render() {
-		const {loginUser, msgList} = this.props;
+    //calculate the current chat_id
+    const myId = loginUser._id;
 
-		//calculate the current chat_id
-		const myId = loginUser._id;
+    //if no data, nothing is shown
+    // if(!Map(msgList.users).count()){
+    // 	return null;
+    // }
 
-		//if no data, nothing is shown 
-		// if(!Map(msgList.users).count()){
-		// 	return null;
-		// }
+    const targetId = this.props.match.params.userid;
 
-		const targetId = this.props.match.params.userid;
+    const tartgetUser = Map(msgList.users).get(targetId);
 
-		const tartgetUser = Map(msgList.users).get(targetId);
+    const currentchatId = [myId, targetId].sort().join("_");
 
-		const currentchatId = [myId, targetId].sort().join("_");
+    const chatMsgs = List(msgList.chatMsgs);
 
-		const chatMsgs = List(msgList.chatMsgs);
+    //***filter chatMsgs***
+    chatMsgs.filter(msg => msg.chat_id === currentchatId);
 
-		//***filter chatMsgs***
-		chatMsgs.filter(msg => msg.chat_id === currentchatId);
+    //get the target user avatar and make sure the avatar is existed
+    const targetAvatar = Map(tartgetUser).get("avatar") ? (
+      <img
+        src={Map(tartgetUser).get("avatar")}
+        className="card-img rounded-circle msgAvatar"
+        alt="avartar"
+      />
+    ) : null;
 
-		//get the target user avatar and make sure the avatar is existed
-		const targetAvatar = Map(tartgetUser).get("avatar") ? (
-			<img src={Map(tartgetUser).get("avatar")} className="card-img rounded-circle msgAvatar" alt="avartar"/>
-		) : null;
-
-		return (
-			<ChatWrap>
-				<ChatHeader>Chat with {Map(tartgetUser).get("username")}</ChatHeader>
-				<ChatContentWrap>
-					{chatMsgs.map(msg => {
-						if (myId === msg.to) { //msg to me
-							return (
-								<ReceiveMsg key={msg._id}>
-									{targetAvatar}
-									<span>{msg.content}</span>
-								</ReceiveMsg>
-							)
-						} else { //msg from me
-							return (
-								<SendMsg key={msg._id}>
-									<span>{msg.content}</span>
-								</SendMsg>
-							)
-						}
-					})}
-					<div ref={(el) => {
-						this.messagesEnd = el;
-					}}></div>
-				</ChatContentWrap>
-				<SenderWrap className="input-group mb-3">
-					<textarea
-						type="text"
-						className="col-10 form-control"
-						placeholder="Message"
-						rows={1}
-						value={this.state.content}
-						onChange={e => this.setState({content: e.target.value})}
-					/>
-					<div className="input-group-append col-2">
-						<button className="btn btn-outline-default col-12" onClick={this.handleSend.bind(this)}>Send</button>
-					</div>
-				</SenderWrap>
-			</ChatWrap>
-		)
-	}
+    return (
+      <ChatWrap>
+        <ChatHeader>Chat with {Map(tartgetUser).get("username")}</ChatHeader>
+        <ChatContentWrap>
+          {chatMsgs.map(msg => {
+            if (myId === msg.to) {
+              //msg to me
+              return (
+                <ReceiveMsg key={msg._id}>
+                  {targetAvatar}
+                  <span>{msg.content}</span>
+                </ReceiveMsg>
+              );
+            } else {
+              //msg from me
+              return (
+                <SendMsg key={msg._id}>
+                  <span>{msg.content}</span>
+                </SendMsg>
+              );
+            }
+          })}
+          <div
+            ref={el => {
+              this.messagesEnd = el;
+            }}
+          />
+        </ChatContentWrap>
+        <SenderWrap className="input-group mb-3">
+          <textarea
+            type="text"
+            className="col-9 form-control"
+            placeholder="Message"
+            rows={1}
+            value={this.state.content}
+            onChange={e => this.setState({ content: e.target.value })}
+          />
+          <div className="input-control col-3">
+            <button
+              className="btn btn-success col-12"
+              onClick={this.handleSend.bind(this)}
+            >
+              Send
+            </button>
+          </div>
+        </SenderWrap>
+      </ChatWrap>
+    );
+  }
 }
 
-const mapStateToProps = (state) => {
-	return {
-		loginUser: state.getIn(["login", "loginUser"]),
-		msgList: state.getIn(["message", "msgList"])
-	}
-}
+const mapStateToProps = state => {
+  return {
+    loginUser: state.getIn(["login", "loginUser"]),
+    msgList: state.getIn(["message", "msgList"])
+  };
+};
 
 const mapDispatchToProps = dispatch => {
-	return {
-		sendMsg({from, to, content}) {
-			dispatch(actionCreators.handleSendMsgAction({from, to, content}));
-		},
-		renewRead({from,to}) {
-			dispatch(actionCreators.handleRenewReadAction({from,to}));
-		}
-	}
-}
+  return {
+    sendMsg({ from, to, content }) {
+      dispatch(actionCreators.handleSendMsgAction({ from, to, content }));
+    },
+    renewRead({ from, to }) {
+      dispatch(actionCreators.handleRenewReadAction({ from, to }));
+    }
+  };
+};
 
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Chat);
