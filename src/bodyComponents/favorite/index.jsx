@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { AuthorComponentWrapper, AuthorDetailWrapper } from "./style";
-import { actionCreators, authorActionCreators } from "./store";
+import { actionCreators} from "./store";
+import {actionCreators as authorActionCreators} from "../author/store";
 import { get } from "immutable";
 import { Divider, Icon, Button } from "antd";
 import FavoriteList from "./components/favoriteList";
