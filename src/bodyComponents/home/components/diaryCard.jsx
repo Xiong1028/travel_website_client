@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Row, Col, Avatar, Icon } from "antd";
+import { Row, Col, Avatar, Icon,message } from "antd";
 import { MDBCard, MDBRow, MDBMask, MDBView, MDBIcon, MDBBtn, MDBCardBody, MDBCardTitle } from "mdbreact";
 import { Button } from "react-bootstrap";
 import { actionCreators } from "../store";
@@ -113,6 +113,7 @@ const mapDispatchToProps = dispatch => {
       }
     },
     handleSaveArticle(post_id, user_id) {
+      message.info("Save successfully");
       dispatch(actionCreators.handleSaveArticleAction(post_id, user_id));
     }  
   };

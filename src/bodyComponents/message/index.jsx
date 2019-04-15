@@ -18,7 +18,7 @@ class Message extends Component {
     //filter the loginUser
     const newUsers = Map(users).filter((v, k) => k !== loginUser._id);
     newUsers.valueSeq().forEach(v => chatUserList.push(v));
-
+  
     //filter the chatMsg
     const newChatMsgs = List(chatMsgs).filter(v => {
       return Map(v).get("to") === loginUser._id;
