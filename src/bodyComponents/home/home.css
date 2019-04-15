@@ -75,12 +75,6 @@
     margin-right: 10px;
 }
 
-.authorRecommend{
-    margin-right: 40%;
-    margin-top: 18%;
-    border: 1px solid black;
-}
-
 .gutter-row{
     margin-top: 5%;
     margin-left: 5%;
@@ -94,5 +88,11 @@
     text-align: center;
     margin-top: 3%;
     margin-bottom: 3%;
+}
+
+.authorRecommend{
+    margin-right: 40%;
+    margin-top: 18%;
+    border: 1px solid black;
 }
 
