@@ -88,6 +88,7 @@ class RichText extends Component {
           <i>your story on your trip</i>
         </h3>
         <input
+          style={{backgroundColor:"grey"}}
           type="text"
           placeholder="Title"
           className="title"

@@ -39,6 +39,19 @@ export const handleSendMsgAction =({from,to,content})=>{
 
 //================AJAX=======================
 
+const receiveMsgList =({users,chatMsgs,unReadCount})=>{
+    return{
+        type:constants.RECEIVE_MSG_LIST,
+        data:{users,chatMsgs,unReadCount}
+    }
+}
+
+const receiveMsg = (chatMsg)=>{
+    return {
+        type:constants.RECEIVE_MSG,
+        data:chatMsg
+    }
+}
 
 export const toggleMessageWindowAction= (visible)=>{
     return dispatch =>{
@@ -78,17 +91,14 @@ export async function getMsgList(dispatch,userid){
     } 
 }
 
-const receiveMsgList =({users,chatMsgs,unReadCount})=>{
-    return{
-        type:constants.RECEIVE_MSG_LIST,
-        data:{users,chatMsgs,unReadCount}
-    }
-}
-
-const receiveMsg = (chatMsg)=>{
-    return {
-        type:constants.RECEIVE_MSG,
-        data:chatMsg
+export const handleRenewReadAction = ({from,to})=>{
+    return async dispatch =>{
+        const response  = await axios.post("/readmsg",{from,to});
+        const result = response.data;
+        dispatch({
+            type:constants.RENEW_UNREAD_NUM,
+            data:result.data
+        })
     }
 }
 

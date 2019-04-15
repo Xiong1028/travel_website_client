@@ -25,26 +25,35 @@ class Header extends Component {
 
 	}
 
-	handleSearch = function (value) {
+	handleSearch (value) {
 		const {handleSearch} = this.props;
 		handleSearch(value);
 		this.props.history.push("/search");
 	};
 
-	handleLogout = function () {
+	handleLogout () {
 		const {handleLogout} = this.props;
 		handleLogout();
 		Cookies.remove("userid");
 		this.props.history.push("/login");
 	};
 
-	handleAuthorInfo = function () {
-		console.log(Cookies.get("userid"));
-		// this.props.history.push("/author/" + Cookies.get("userid"));
+	handleAuthorInfo(){
+		const {loginUser} = this.props;
+		this.props.history.push("/author/" + loginUser._id);
 	};
 
+	handleMsg(){
+		const {isLogin,loginUser} = this.props;
+		if(!isLogin){
+			this.props.history.push("/login");
+		}else{
+			this.props.history.push("/message");
+		}
+	}
+
 	render() {
-		const {isLogin, showAccessModal, avatar, loginUser} = this.props;
+		const {isLogin, showAccessModal, avatar, loginUser,unReadCount} = this.props;
 		return (
 			<Menu mode="horizontal" theme="dark" className="header_menu">
 				<Menu.Item key="logo">
@@ -86,25 +95,10 @@ class Header extends Component {
 					</Link>
 				</Menu.Item>
 
-				<SubMenu
-					title={
-						<Link to="/message">
-							<Badge count={2}>
-								<Icon type="message" style={{fontSize: 20}}/>
-								Message
-							</Badge>
-						</Link>
-					}
-				>
-					<MenuItemGroup title="">
-						<Menu.Item key="setting:likes">Likes</Menu.Item>
-						<Menu.Item key="setting:private_message">
-							<Link to="/message">
-								<Badge count={2}>Message</Badge>
-							</Link>
-						</Menu.Item>
-					</MenuItemGroup>
-				</SubMenu>
+				<Menu.Item key="setting:private_message" onClick={this.handleMsg.bind(this)}>
+						<Badge count={unReadCount?unReadCount:null}>Message</Badge>
+				</Menu.Item>
+
 
 				{!isLogin ? (
 					<Menu.Item key="login">
@@ -126,8 +120,7 @@ class Header extends Component {
 							<Menu.Item key="setting:1">
 								<Link to={"/author/" + loginUser._id}>My Article</Link>
 							</Menu.Item>
-							
-							
+							<Menu.Item key="setting:likes">Likes</Menu.Item>
 							<Menu.Item key="setting:2">
 								<Link to={"/favorite/" + loginUser._id}>My Favorite</Link>
 							</Menu.Item>
@@ -152,7 +145,8 @@ const mapStateToProps = state => {
 		isLogin: state.getIn(["header", "isLogin"]),
 		accessModalVisible: state.getIn(["post", "accessModalVisible"]),
 		avatar: state.getIn(["setting", "avatar"]),
-		loginUser: state.getIn(["login", "loginUser"])
+		loginUser: state.getIn(["login", "loginUser"]),
+		unReadCount:state.getIn(["message","msgList","unReadCount"])
 	};
 };
 

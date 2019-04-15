@@ -36,6 +36,8 @@ export default (state = defaultMessageState, action) => {
 		case constants.RECEIVE_MSG:
 			const newMsgList = renewMsgList(state,action);
 			return state.set("msgList",newMsgList);
+		case constants.RENEW_UNREAD_NUM:
+			return state.setIn(["msgList","unReadCount"],action.data);
 		default:
 			return state;
 	}

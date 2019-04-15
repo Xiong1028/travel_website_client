@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { AuthorComponentWrapper, AuthorDetailWrapper } from "./style";
 import { actionCreators } from "./store";
 import { get } from "immutable";
-import { Divider, Icon, Button } from "antd";
+import { Divider, Icon, Button,message} from "antd";
 import ArticleList from "./components/articleList";
 import MessageModal from "../message/components/messageModal";
 
@@ -21,11 +21,15 @@ class Author extends Component {
   }
 
   handleMsg() {
-    const { isLogin, handleShowMsgWindow } = this.props;
+    const { isLogin, handleShowMsgWindow,articles,loginUser} = this.props;
     if (!isLogin) {
       this.props.history.push("/login");
     } else {
-      handleShowMsgWindow();
+      if(get(articles[0], "user_id") === loginUser._id){
+        message.info("You can not message to yourself");
+      }else{
+        handleShowMsgWindow();
+      }
     }
   }
 
@@ -102,7 +106,8 @@ const mapStateToProps = state => {
   return {
     articles: state.getIn(["author", "articles"]),
     isLogin: state.getIn(["header", "isLogin"]),
-    msgWindowVisible: state.getIn(["message", "msgWindowVisible"])
+    msgWindowVisible: state.getIn(["message", "msgWindowVisible"]),
+    loginUser:state.getIn(["login","loginUser"])
   };
 };
 
