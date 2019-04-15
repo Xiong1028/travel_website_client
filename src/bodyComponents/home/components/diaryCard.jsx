@@ -66,7 +66,7 @@ class DiaryCard extends Component {
     return (
       <Fragment>
         <Row>
-          <Col span={19}>
+          <Col span={22}>
             <div className="diaryCards">
               <Row>
                 {this.getDiaryCardList()}
@@ -76,11 +76,6 @@ class DiaryCard extends Component {
                   More Diaries
                 </Button>
               </Row>        
-            </div>
-          </Col>
-          <Col span={5}>
-            <div className="authorRecommend">
-              <AuthorRecommend/>
             </div>
           </Col>
         </Row>
