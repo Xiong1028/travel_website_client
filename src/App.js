@@ -16,6 +16,7 @@ import Author from "./bodyComponents/author";
 import Message from "./bodyComponents/message";
 import Chat from "./bodyComponents/message/components/chat";
 import Favorite from "./bodyComponents/favorite/";
+import About from "./bodyComponents/about";
 import {Layout} from 'antd';
 
 
@@ -28,6 +29,7 @@ class App extends Component {
                         <Layout.Header><Header/></Layout.Header>
                         <Layout.Content>
                             <Route path="/" exact component={Home}/>
+                            <Route path="/about" exact component={About}/>
                             <Route path="/login" exact component={Login}/>
                             <Route path="/post" exact component={Post}/>
                             <Route path="/detail/:id" exact component={Detail}/>

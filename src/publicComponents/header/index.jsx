@@ -62,25 +62,16 @@ class Header extends Component {
 					</Link>
 				</Menu.Item>
 				<Menu.Item key="home">
-					<Link className="home" to="/">
+					<Link className="menu" to="/">
 						Home
 					</Link>
 				</Menu.Item>
-				<Menu.Item key="diary">Diary</Menu.Item>
-				<SubMenu
-					title={<span className="submenu-title-wrapper">Destination</span>}
-				>
-					<MenuItemGroup title="Americas">
-						<Menu.Item key="canada">Canada</Menu.Item>
-						<Menu.Item key="america">America</Menu.Item>
-					</MenuItemGroup>
-					<MenuItemGroup title="Asia">
-						<Menu.Item key="china">China</Menu.Item>
-						<Menu.Item key="korea">Korea</Menu.Item>
-					</MenuItemGroup>
-				</SubMenu>
-				<Menu.Item key="community">Community</Menu.Item>
-				<Menu.Item key="searchBox" style={{marginLeft: "10%"}}>
+				<Menu.Item key="about">
+					<Link className="menu" to="/about">
+						About us
+					</Link>
+				</Menu.Item>
+				<Menu.Item key="searchBox" style={{marginLeft: "35%"}}>
 					<Search
 						placeholder="search"
 						style={{width: 200}}
