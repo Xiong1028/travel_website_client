@@ -100,13 +100,6 @@ class Header extends Component {
           </Link>
         </Menu.Item>
 
-        <Menu.Item
-          key="setting:private_message"
-          onClick={this.handleMsg.bind(this)}
-        >
-          <Badge count={unReadCount ? unReadCount : null}>Message</Badge>
-        </Menu.Item>
-
         {!isLogin ? (
           <Menu.Item key="login">
             <Link to="/login">
@@ -127,7 +120,6 @@ class Header extends Component {
               <Menu.Item key="setting:1">
                 <Link to={"/author/" + loginUser._id}>My Article</Link>
               </Menu.Item>
-              <Menu.Item key="setting:likes">Likes</Menu.Item>
               <Menu.Item key="setting:2">
                 <Link to={"/favorite/" + loginUser._id}>My Favorite</Link>
               </Menu.Item>

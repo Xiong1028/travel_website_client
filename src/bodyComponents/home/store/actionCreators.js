@@ -6,7 +6,7 @@ import {fromJS} from "immutable";
 const renewDiaryCardList = (data)=>({
 	type:constants.RENEW_DIARY_CARD_LIST,
 	data:fromJS(data),
-	totalPage: Math.ceil(data.length/6)
+	totalPage: Math.ceil(data.length/9)
 })
 
 const renewPhotoSlideList = (data)=>({

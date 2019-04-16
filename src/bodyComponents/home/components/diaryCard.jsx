@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Row, Col, Avatar, Icon } from "antd";
+import { Row, Col, Avatar, Icon,message } from "antd";
 import { MDBCard, MDBRow, MDBMask, MDBView, MDBIcon, MDBBtn, MDBCardBody, MDBCardTitle } from "mdbreact";
 import { Button } from "react-bootstrap";
 import { actionCreators } from "../store";
@@ -66,7 +66,7 @@ class DiaryCard extends Component {
     return (
       <Fragment>
         <Row>
-          <Col span={19}>
+          <Col span={22}>
             <div className="diaryCards">
               <Row>
                 {this.getDiaryCardList()}
@@ -76,11 +76,6 @@ class DiaryCard extends Component {
                   More Diaries
                 </Button>
               </Row>        
-            </div>
-          </Col>
-          <Col span={5}>
-            <div className="authorRecommend">
-              <AuthorRecommend/>
             </div>
           </Col>
         </Row>
@@ -118,6 +113,7 @@ const mapDispatchToProps = dispatch => {
       }
     },
     handleSaveArticle(post_id, user_id) {
+      message.info("Save successfully");
       dispatch(actionCreators.handleSaveArticleAction(post_id, user_id));
     }  
   };
