@@ -91,7 +91,6 @@ class Header extends Component {
             Post
           </Link>
         </Menu.Item>
-
         <Menu.Item
           key="setting:private_message"
           onClick={this.handleMsg.bind(this)}
