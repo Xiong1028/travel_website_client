@@ -11,7 +11,7 @@ const renewDiaryCardList = (data)=>({
 
 const renewPhotoSlideList = (data)=>({
 	type: constants.RENEW_PHOTO_SLIDE_LIST,
-	data: fromJS(data)
+	data
 })
 
 export const handleGetCardsAction = ()=>{
@@ -44,6 +44,7 @@ export const handleGetSlideAction = () => {
 	return (dispatch) =>{
 		axios.get('/slides').then((res)=>{
 			const data = res.data.data;
+			console.log("========",data);
 			dispatch(renewPhotoSlideList(data));
 		}).catch((err)=>{
 			console.log(err);

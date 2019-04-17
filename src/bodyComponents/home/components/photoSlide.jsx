@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 class PhotoSlide extends Component {
   getPhotoSlideList() {
     const { photoSlideList } = this.props;
-    const newPhotoSlideList = photoSlideList.toJS();
+    const newPhotoSlideList = photoSlideList;
 
     let photoSlidePageList = [];
 
@@ -37,8 +37,8 @@ class PhotoSlide extends Component {
   }
 
   componentDidMount() {
-    const { photoSlideList, handleGetPhotoSlide } = this.props;
-    handleGetPhotoSlide(photoSlideList);
+    const { handleGetPhotoSlide } = this.props;
+    handleGetPhotoSlide();
   }
 }
 
@@ -50,7 +50,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleGetPhotoSlide(photoSlideList) {
+    handleGetPhotoSlide() {
       dispatch(actionCreators.handleGetSlideAction());
     }
   };
