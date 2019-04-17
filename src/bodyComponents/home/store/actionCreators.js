@@ -6,14 +6,13 @@ import {fromJS} from "immutable";
 const renewDiaryCardList = (data)=>({
 	type:constants.RENEW_DIARY_CARD_LIST,
 	data:fromJS(data),
-	totalPage: Math.ceil(data.length/6)
+	totalPage: Math.ceil(data.length/9)
 })
 
 const renewPhotoSlideList = (data)=>({
 	type: constants.RENEW_PHOTO_SLIDE_LIST,
 	data: fromJS(data)
 })
-
 
 export const handleGetCardsAction = ()=>{
 	return (dispatch) =>{
@@ -43,7 +42,7 @@ export const pageChangeAction = (page)=>{
 
 export const handleGetSlideAction = () => {
 	return (dispatch) =>{
-		axios.get('api/photoSlide.json').then((res)=>{
+		axios.get('/slides').then((res)=>{
 			const data = res.data.data;
 			dispatch(renewPhotoSlideList(data));
 		}).catch((err)=>{
@@ -63,3 +62,11 @@ export const handleSaveArticleAction = (post_id, user_id) => {
 		})
 	}
 }
+
+export const handleRenewSlideAction = ()=>{
+	return async dispatch=>{
+	  const result = await axios.get('/slides');
+		dispatch(renewPhotoSlideList(result.data));
+	}
+  }
+  

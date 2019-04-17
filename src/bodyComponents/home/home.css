@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 
-.titleRow{
+.titleRow {
     padding-top: 3%;
     padding-bottom: 1%;
     font-family: 'Poppins', sans-serif;
@@ -15,8 +15,8 @@
 }
 
 
-.home_ps_caption{
-    position: absolute !important; 
+.home_ps_caption {
+    position: absolute !important;
     right: 5% !important;
     z-index: 8 !important;
 }
@@ -41,7 +41,7 @@
     right: 5%;
 }
 
-.cardView{
+.cardView {
     height: 200px;
     position: relative;
 }
@@ -54,47 +54,38 @@
     margin-left: 10px;
 }
 
-.cardTitle:hover{
+.cardTitle:hover {
     text-decoration: none !important;
     color: #62A431;
 }
 
-.titleLink:hover{
+.titleLink:hover {
     text-decoration: none !important;
 }
 
-.spanIcon{
+.spanIcon {
     position: absolute;
     bottom: 5%;
     right: 5%;
     color: white;
 }
 
-.spanIcon .ml-2{
+.spanIcon .ml-2 {
     color: #fff !important;
     margin-right: 10px;
 }
 
-.authorRecommend{
-    margin-right: 40%;
-    margin-top: 18%;
-    border: 1px solid black;
-}
-
-.gutter-row{
+.gutter-row {
     margin-top: 5%;
     margin-left: 5%;
 }
 
-.diaryCards{
-    margin-left: 3%;
+.diaryCards {
+    margin-left: 10%;
 }
 
-.moreDiaryButtonRow{
+.moreDiaryButtonRow {
     text-align: center;
     margin-top: 3%;
     margin-bottom: 3%;
 }
-
-
-
