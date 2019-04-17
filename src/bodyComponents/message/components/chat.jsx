@@ -10,7 +10,6 @@ import {
 } from "../style";
 import { actionCreators } from "../store";
 import { Map, List } from "immutable";
-import { Icon } from "antd";
 
 class Chat extends Component {
   state = {

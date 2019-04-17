@@ -1,35 +1,25 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../home.css";
 import { RecommendWrapper } from "../style";
 
-
 class AuthorRecommend extends Component {
-  render(){
-    return(
-      <RecommendWrapper>
-
-      </RecommendWrapper>
-    );
+  render() {
+    return <RecommendWrapper />;
   }
 }
 
-
 // data transfer from reducer to component
 const mapStateToProps = state => {
-    return {
-      
-    };
+  return {};
 };
 
 // data transfer from component to reducer
 const mapDispatchToProps = dispatch => {
-    return {
-      
-    };
-  };
+  return {};
+};
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(AuthorRecommend);
+  mapStateToProps,
+  mapDispatchToProps
+)(AuthorRecommend);
