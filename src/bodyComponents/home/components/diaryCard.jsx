@@ -1,7 +1,16 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Row, Col, Avatar, Icon,message } from "antd";
-import { MDBCard, MDBRow, MDBMask, MDBView, MDBIcon, MDBBtn, MDBCardBody, MDBCardTitle } from "mdbreact";
+import { Row, Col, Avatar, Icon, message } from "antd";
+import {
+  MDBCard,
+  MDBRow,
+  MDBMask,
+  MDBView,
+  MDBIcon,
+  MDBBtn,
+  MDBCardBody,
+  MDBCardTitle
+} from "mdbreact";
 import { Button } from "react-bootstrap";
 import { actionCreators } from "../store";
 import AuthorRecommend from "./authorRecommend";
@@ -16,7 +25,6 @@ class DiaryCard extends Component {
 
     //diplayed card in each page
     let cardPerPageList = [];
-
     if (newDiaryCardList.length) {
       for (let i = page * 9; i < (page + 1) * 9; i++) {
         if (newDiaryCardList[i]) {
@@ -24,9 +32,23 @@ class DiaryCard extends Component {
             <Col className="gutter-row" span={6} key={i}>
               <MDBCard>
                 <MDBView hover zoom className="cardView">
-                  <img alt="diary pic" src={newDiaryCardList[i]["cover_imgURL"]} style={{ width: "100%", height: "200px" }} />
+                  <img
+                    alt="diary pic"
+                    src={newDiaryCardList[i]["cover_imgURL"]}
+                    style={{ width: "100%", height: "200px" }}
+                  />
                   <MDBMask overlay="stylish-light">
-                    <MDBBtn color="danger" rounded size="xl" onClick={() => handleSaveArticle(newDiaryCardList[i]["post_id"], loginUser._id)}>
+                    <MDBBtn
+                      color="danger"
+                      rounded
+                      size="xl"
+                      onClick={() =>
+                        handleSaveArticle(
+                          newDiaryCardList[i]["post_id"],
+                          loginUser._id
+                        )
+                      }
+                    >
                       <MDBIcon fas="true" icon="thumbtack" className="left" />
                       <b> Save</b>
                     </MDBBtn>
@@ -42,18 +64,25 @@ class DiaryCard extends Component {
                       <Avatar
                         src={newDiaryCardList[i]["avatar"]}
                         alt="userAvatar"
-                        style={{ width: "40px", height: "40px", marginLeft: "15px" }}
+                        style={{
+                          width: "40px",
+                          height: "40px",
+                          marginLeft: "15px"
+                        }}
                       />
                     </Link>
-                    <Link className="titleLink" to={"/detail/" + newDiaryCardList[i]["post_id"]}>
+                    <Link
+                      className="titleLink"
+                      to={"/detail/" + newDiaryCardList[i]["post_id"]}
+                    >
                       <MDBCardTitle className="cardTitle">
                         {newDiaryCardList[i]["post_title"]}
                       </MDBCardTitle>
                     </Link>
                   </MDBRow>
                 </MDBCardBody>
-              </MDBCard >
-            </Col >
+              </MDBCard>
+            </Col>
           );
         }
       }
@@ -68,14 +97,15 @@ class DiaryCard extends Component {
         <Row>
           <Col span={22}>
             <div className="diaryCards">
-              <Row>
-                {this.getDiaryCardList()}
-              </Row>
+              <Row>{this.getDiaryCardList()}</Row>
               <Row className="moreDiaryButtonRow">
-                <Button className="btn btn btn-outline-info" onClick={() => handlePageChange(page, totalPage)}>
+                <Button
+                  className="btn btn btn-outline-info"
+                  onClick={() => handlePageChange(page, totalPage)}
+                >
                   More Diaries
                 </Button>
-              </Row>        
+              </Row>
             </div>
           </Col>
         </Row>
@@ -95,7 +125,7 @@ const mapStateToProps = state => {
     diaryCardList: state.getIn(["home", "diaryCardList"]),
     page: state.getIn(["home", "page"]),
     totalPage: state.getIn(["home", "totalPage"]),
-    loginUser: state.getIn(["login", "loginUser"])    
+    loginUser: state.getIn(["login", "loginUser"])
   };
 };
 
@@ -115,7 +145,7 @@ const mapDispatchToProps = dispatch => {
     handleSaveArticle(post_id, user_id) {
       message.info("Save successfully");
       dispatch(actionCreators.handleSaveArticleAction(post_id, user_id));
-    }  
+    }
   };
 };
 

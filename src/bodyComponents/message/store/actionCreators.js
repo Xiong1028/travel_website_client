@@ -14,6 +14,7 @@ import chat from "../components/chat";
 const initIO = (dispatch,userid)=>{
     if(!io.socket){
         //one socket object means one connection to the server
+        //io.socket = io("http://tripinterest.tk");
         io.socket = io("http://localhost:3001");
 
         //listen the receriveMessage, and receive the msg from the server

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Carousel } from "react-bootstrap";
 import "../home.css";
 import { actionCreators } from "../store";
+import { Link } from "react-router-dom";
 
 class PhotoSlide extends Component {
   getPhotoSlideList() {
@@ -16,15 +17,17 @@ class PhotoSlide extends Component {
         if (newPhotoSlideList[i]) {
           photoSlidePageList.push(
             <Carousel.Item>
-              <img
-                className="d-block w-100 home_ps_img"
-                src={newPhotoSlideList[i]["slide_imgUrl"]}
-                alt="photo slide"
-              />
-              <Carousel.Caption className="home_ps_caption">
-                <h3>{newPhotoSlideList[i]["slide_title"]}</h3>
-                <p>{newPhotoSlideList[i]["user_name"]}</p>
-              </Carousel.Caption>
+              <Link to={"/detail/" + newPhotoSlideList[i]["post_id"]}>
+                <img
+                  className="d-block w-100 home_ps_img"
+                  src={newPhotoSlideList[i]["cover_imgURL"]}
+                  alt="photo slide"
+                />
+                <Carousel.Caption className="home_ps_caption">
+                  <h3>{newPhotoSlideList[i]["post_title"]}</h3>
+                  <p>{newPhotoSlideList[i]["username"]}</p>
+                </Carousel.Caption>
+              </Link>
             </Carousel.Item>
           );
         }

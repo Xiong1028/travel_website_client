@@ -9,31 +9,38 @@ import { Link } from "react-router-dom";
 import { Map, List } from "immutable";
 
 class Message extends Component {
-  countData() {
+  getChatUsersList() {
     const { msgList, loginUser } = this.props;
     const users = Map(msgList).get("users");
     const chatMsgs = Map(msgList).get("chatMsgs");
 
     const chatUserList = [];
+
     //filter the loginUser
     const newUsers = Map(users).filter((v, k) => k !== loginUser._id);
     newUsers.valueSeq().forEach(v => chatUserList.push(v));
-  
+
     //filter the chatMsg
     const newChatMsgs = List(chatMsgs).filter(v => {
       return Map(v).get("to") === loginUser._id;
     });
 
-    const chatMsgsHistory = List(newChatMsgs).toArray();
+    const chatMsgsHistory = List(newChatMsgs).toJS();
+
+    console.log(chatMsgsHistory);
 
     //push the latest msg to corresponding user
     chatUserList.forEach((value, key) => {
-      const fromMsgList = chatMsgsHistory.filter((v, k) => {
-        return value.user_id === v.from;
-      });
+      if (chatMsgsHistory.length) {
+        const fromMsgList = chatMsgsHistory.filter((v, k) => {
+          return value.user_id === v.from;
+        });
 
-      const fromLatestMsg = fromMsgList[fromMsgList.length - 1];
-      value.fromLatestMsg = fromLatestMsg;
+        const fromLatestMsg = fromMsgList[fromMsgList.length - 1];
+        value["fromLatestMsg"] = fromLatestMsg;
+      } else {
+        value["fromLatestMsg"] = "";
+      }
     });
     console.log(chatUserList);
     return chatUserList;
@@ -41,7 +48,7 @@ class Message extends Component {
 
   render() {
     const { loginUser, msgList } = this.props;
-    const chatUserList = this.countData();
+    const chatUserList = this.getChatUsersList();
 
     const unReadCount = Map(msgList).get("unReadCount");
     return (
@@ -60,13 +67,6 @@ class Message extends Component {
                     {unReadCount ? unReadCount : null}
                   </span>
                 </ListGroup.Item>
-                <ListGroup.Item action href="#likes">
-                  <Icon
-                    type="heart"
-                    style={{ float: "left", margin: "2.5%" }}
-                  />
-                  Likes
-                </ListGroup.Item>
                 <ListGroup.Item>
                   <Link to={"/favorite/" + loginUser._id}>
                     <Icon
@@ -75,13 +75,6 @@ class Message extends Component {
                     />
                     My Favorite
                   </Link>
-                </ListGroup.Item>
-                <ListGroup.Item action href="#watch">
-                  <Icon
-                    type="user-add"
-                    style={{ float: "left", margin: "2.5%" }}
-                  />
-                  Watch
                 </ListGroup.Item>
               </ListGroup>
             </Col>
@@ -94,9 +87,7 @@ class Message extends Component {
                     "No Message"
                   )}
                 </Tab.Pane>
-                <Tab.Pane eventKey="#likes">Likes</Tab.Pane>
                 <Tab.Pane eventKey="#favorite">{/*<Favorite/>*/}</Tab.Pane>
-                <Tab.Pane eventKey="#watch">Watch</Tab.Pane>
               </Tab.Content>
             </Col>
           </Row>

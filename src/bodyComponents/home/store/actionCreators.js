@@ -14,7 +14,6 @@ const renewPhotoSlideList = (data)=>({
 	data: fromJS(data)
 })
 
-
 export const handleGetCardsAction = ()=>{
 	return (dispatch) =>{
 		// axios.get('api/diaryCard.json').then((res)=>{
@@ -43,7 +42,7 @@ export const pageChangeAction = (page)=>{
 
 export const handleGetSlideAction = () => {
 	return (dispatch) =>{
-		axios.get('api/photoSlide.json').then((res)=>{
+		axios.get('/slides').then((res)=>{
 			const data = res.data.data;
 			dispatch(renewPhotoSlideList(data));
 		}).catch((err)=>{
@@ -63,3 +62,11 @@ export const handleSaveArticleAction = (post_id, user_id) => {
 		})
 	}
 }
+
+export const handleRenewSlideAction = ()=>{
+	return async dispatch=>{
+	  const result = await axios.get('/slides');
+		dispatch(renewPhotoSlideList(result.data));
+	}
+  }
+  

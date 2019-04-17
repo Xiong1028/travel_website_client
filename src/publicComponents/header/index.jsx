@@ -71,20 +71,7 @@ class Header extends Component {
             Home
           </Link>
         </Menu.Item>
-        <Menu.Item key="diary">Diary</Menu.Item>
-        <SubMenu
-          title={<span className="submenu-title-wrapper">Destination</span>}
-        >
-          <MenuItemGroup title="Americas">
-            <Menu.Item key="canada">Canada</Menu.Item>
-            <Menu.Item key="america">America</Menu.Item>
-          </MenuItemGroup>
-          <MenuItemGroup title="Asia">
-            <Menu.Item key="china">China</Menu.Item>
-            <Menu.Item key="korea">Korea</Menu.Item>
-          </MenuItemGroup>
-        </SubMenu>
-        <Menu.Item key="community">Community</Menu.Item>
+        <Menu.Item key="about_Us">about Us</Menu.Item>
         <Menu.Item key="searchBox" style={{ marginLeft: "10%" }}>
           <Search
             placeholder="search"
@@ -98,6 +85,13 @@ class Header extends Component {
             <Icon type="edit" />
             Post
           </Link>
+        </Menu.Item>
+
+        <Menu.Item
+          key="setting:private_message"
+          onClick={this.handleMsg.bind(this)}
+        >
+          <Badge count={unReadCount ? unReadCount : null}>Message</Badge>
         </Menu.Item>
 
         {!isLogin ? (
@@ -120,6 +114,7 @@ class Header extends Component {
               <Menu.Item key="setting:1">
                 <Link to={"/author/" + loginUser._id}>My Article</Link>
               </Menu.Item>
+              <Menu.Item key="setting:likes">Likes</Menu.Item>
               <Menu.Item key="setting:2">
                 <Link to={"/favorite/" + loginUser._id}>My Favorite</Link>
               </Menu.Item>
