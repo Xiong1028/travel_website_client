@@ -71,8 +71,10 @@ class Header extends Component {
             Home
           </Link>
         </Menu.Item>
-        <Menu.Item key="about_Us">about Us</Menu.Item>
-        <Menu.Item key="searchBox" style={{ marginLeft: "10%" }}>
+        <Link className="menu" to="/about">
+          About us
+        </Link>
+        <Menu.Item key="searchBox" style={{ marginLeft: "35%" }}>
           <Search
             placeholder="search"
             style={{ width: 200 }}
