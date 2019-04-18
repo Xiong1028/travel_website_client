@@ -10,9 +10,7 @@ class PhotoSlide extends Component {
     const { photoSlideList } = this.props;
 
     let photoSlidePageList = [];
-
-    console.log("*******Slides*********", photoSlideList);
-
+    
     if (photoSlideList.length) {
       photoSlideList.forEach((v, k) => {
         photoSlidePageList.push(
@@ -40,8 +38,8 @@ class PhotoSlide extends Component {
   }
 
   componentDidMount() {
-    //const { handleGetPhotoSlide } = this.props;
-    //handleGetPhotoSlide();
+    const { handleGetPhotoSlide } = this.props;
+    handleGetPhotoSlide();
   }
 }
 
@@ -53,9 +51,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // handleGetPhotoSlide() {
-    //   dispatch(actionCreators.handleGetSlideAction());
-    // }
+    handleGetPhotoSlide() {
+      dispatch(actionCreators.handleGetSlideAction());
+    }
   };
 };
 
