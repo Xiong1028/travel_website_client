@@ -39,7 +39,7 @@ class PhotoSlide extends Component {
 
   componentDidMount() {
     const { handleGetPhotoSlide } = this.props;
-    handleGetPhotoSlide();
+    // handleGetPhotoSlide();
   }
 }
 
@@ -51,9 +51,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleGetPhotoSlide() {
-      dispatch(actionCreators.handleGetSlideAction());
-    }
+    // handleGetPhotoSlide() {
+    //   dispatch(actionCreators.handleGetSlideAction());
+    // }
   };
 };
 

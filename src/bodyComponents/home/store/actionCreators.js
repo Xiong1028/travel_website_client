@@ -26,6 +26,9 @@ export const handleGetCardsAction = ()=>{
 		axios.get('/fetchAll').then((res)=>{
 			const data = res.data.data;
 			dispatch(renewDiaryCardList(data));
+			console.log(data);
+			dispatch(renewPhotoSlideList([data[0],data[1],data[2]]));
+			
 
 		}).catch((err)=>{
 			console.log(err);
@@ -40,17 +43,17 @@ export const pageChangeAction = (page)=>{
 	}
 }
 
-export const handleGetSlideAction = () => {
-	return (dispatch) =>{
-		axios.get('/slides').then((res)=>{
-			console.log(res);
-			const data = res.data.data;
-			dispatch(renewPhotoSlideList(data));
-		}).catch((err)=>{
-			console.log(err);
-		})
-	}
-}
+// export const handleGetSlideAction = () => {
+// 	return (dispatch) =>{
+// 		axios.get('/slides').then((res)=>{
+// 			console.log(res);
+// 			const data = res.data.data;
+// 			dispatch(renewPhotoSlideList(data));
+// 		}).catch((err)=>{
+// 			console.log(err);
+// 		})
+// 	}
+// }
 
 export const handleSaveArticleAction = (post_id, user_id) => {
 	return (dispatch) => {
