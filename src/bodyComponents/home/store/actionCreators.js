@@ -11,7 +11,7 @@ const renewDiaryCardList = (data)=>({
 
 const renewPhotoSlideList = (data)=>({
 	type: constants.RENEW_PHOTO_SLIDE_LIST,
-	data: fromJS(data)
+	data
 })
 
 export const handleGetCardsAction = ()=>{
@@ -63,11 +63,3 @@ export const handleSaveArticleAction = (post_id, user_id) => {
 		})
 	}
 }
-
-export const handleRenewSlideAction = ()=>{
-	return async dispatch=>{
-	  const result = await axios.get('/slides');
-		dispatch(renewPhotoSlideList(result.data));
-	}
-  }
-  
