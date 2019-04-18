@@ -44,7 +44,7 @@ export const handleGetSlideAction = () => {
 	return (dispatch) =>{
 		axios.get('/slides').then((res)=>{
 			const data = res.data.data;
-			console.log("========",data);
+			console.log("====SLIDES====",data);
 			dispatch(renewPhotoSlideList(data));
 		}).catch((err)=>{
 			console.log(err);

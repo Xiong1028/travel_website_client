@@ -8,22 +8,26 @@ import { Link } from "react-router-dom";
 class PhotoSlide extends Component {
   getPhotoSlideList() {
     const { photoSlideList } = this.props;
-    const newPhotoSlideList = photoSlideList;
 
     let photoSlidePageList = [];
 
-    console.log(newPhotoSlideList);
+    console.log("*******Slides*********", photoSlideList);
 
-    if (newPhotoSlideList.length) {
-      newPhotoSlideList.forEach((v, k) => {
+    if (photoSlideList.length) {
+      photoSlideList.forEach((v, k) => {
         photoSlidePageList.push(
           <Carousel.Item>
             <Link to={"/detail/" + v.post_id}>
-              <img className="d-block w-100 home_ps_img" src={v.cover_imgURL} />
+              <img
+                className="d-block w-100 home_ps_img"
+                src={v.cover_imgURL}
+                alt="coverImg"
+              />
               <Carousel.Caption className="home_ps_caption">
                 <h3>{v.post_title}</h3>
                 <p>{v.username}</p>
               </Carousel.Caption>
+              hahahahahaha
             </Link>
           </Carousel.Item>
         );

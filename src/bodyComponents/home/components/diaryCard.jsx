@@ -13,7 +13,6 @@ import {
 } from "mdbreact";
 import { Button } from "react-bootstrap";
 import { actionCreators } from "../store";
-import AuthorRecommend from "./authorRecommend";
 import "../home.css";
 import { Link } from "react-router-dom";
 
