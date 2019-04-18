@@ -30,6 +30,14 @@ export const handleGetCardsAction = ()=>{
 		}).catch((err)=>{
 			console.log(err);
 		})
+
+		axios.get('/slides').then((res)=>{
+			const data = res.data.data;
+			console.log("====SLIDES====",data);
+			dispatch(renewPhotoSlideList(data));
+		}).catch((err)=>{
+			console.log(err);
+		})
 	}
 }
 
@@ -40,17 +48,17 @@ export const pageChangeAction = (page)=>{
 	}
 }
 
-export const handleGetSlideAction = () => {
-	return (dispatch) =>{
-		axios.get('/slides').then((res)=>{
-			const data = res.data.data;
-			console.log("====SLIDES====",data);
-			dispatch(renewPhotoSlideList(data));
-		}).catch((err)=>{
-			console.log(err);
-		})
-	}
-}
+// export const handleGetSlideAction = () => {
+// 	return (dispatch) =>{
+// 		axios.get('/slides').then((res)=>{
+// 			const data = res.data.data;
+// 			console.log("====SLIDES====",data);
+// 			dispatch(renewPhotoSlideList(data));
+// 		}).catch((err)=>{
+// 			console.log(err);
+// 		})
+// 	}
+// }
 
 export const handleSaveArticleAction = (post_id, user_id) => {
 	return (dispatch) => {

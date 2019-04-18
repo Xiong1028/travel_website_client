@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Row, Col, Avatar, Icon, message } from "antd";
+import { Row, Col, Avatar, message } from "antd";
 import {
   MDBCard,
   MDBRow,

@@ -27,7 +27,6 @@ class PhotoSlide extends Component {
                 <h3>{v.post_title}</h3>
                 <p>{v.username}</p>
               </Carousel.Caption>
-              hahahahahaha
             </Link>
           </Carousel.Item>
         );
@@ -41,8 +40,8 @@ class PhotoSlide extends Component {
   }
 
   componentDidMount() {
-    const { handleGetPhotoSlide } = this.props;
-    handleGetPhotoSlide();
+    //const { handleGetPhotoSlide } = this.props;
+    //handleGetPhotoSlide();
   }
 }
 
@@ -54,9 +53,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleGetPhotoSlide() {
-      dispatch(actionCreators.handleGetSlideAction());
-    }
+    // handleGetPhotoSlide() {
+    //   dispatch(actionCreators.handleGetSlideAction());
+    // }
   };
 };
 
