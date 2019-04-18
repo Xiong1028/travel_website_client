@@ -43,6 +43,7 @@ export const pageChangeAction = (page)=>{
 export const handleGetSlideAction = () => {
 	return (dispatch) =>{
 		axios.get('/slides').then((res)=>{
+			console.log(res);
 			const data = res.data.data;
 			dispatch(renewPhotoSlideList(data));
 		}).catch((err)=>{

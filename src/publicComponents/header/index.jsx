@@ -67,13 +67,15 @@ class Header extends Component {
           </Link>
         </Menu.Item>
         <Menu.Item key="home">
-          <Link className="home" to="/">
+          <Link className="menu" to="/">
             Home
           </Link>
         </Menu.Item>
-        <Link className="menu" to="/about">
-          About us
-        </Link>
+        <Menu.Item key="about">
+          <Link className="menu" to="/about">
+            About us
+          </Link>
+        </Menu.Item>
         <Menu.Item key="searchBox" style={{ marginLeft: "35%" }}>
           <Search
             placeholder="search"
@@ -116,7 +118,6 @@ class Header extends Component {
               <Menu.Item key="setting:1">
                 <Link to={"/author/" + loginUser._id}>My Article</Link>
               </Menu.Item>
-              <Menu.Item key="setting:likes">Likes</Menu.Item>
               <Menu.Item key="setting:2">
                 <Link to={"/favorite/" + loginUser._id}>My Favorite</Link>
               </Menu.Item>
