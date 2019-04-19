@@ -35,6 +35,36 @@ export default class About extends Component {
               width: "18rem",
               marginBottom: "10%",
               height: "50%",
+              marginRight: "1%"
+            }}
+          >
+            <Card.Img
+              src="https://res.cloudinary.com/xiong1028/image/upload/v1555541672/xiong.jpg"
+              alt="Xiong Li"
+              className="rounded-circle"
+              style={{ width: "70%", height: "70%", margin: "10% auto 2%" }}
+            />
+            <Card.Body
+              style={{
+                textAlign: "center",
+                fontFamily: "'Montserrat', sans-serif",
+                color: "#797979"
+              }}
+            >
+              <Card.Title style={{ fontWeight: "bolder" }}>Xiong Li</Card.Title>
+              <Card.Text>
+                <MDBIcon far icon="envelope" />
+                <Email href="mailto: lixiong1124@gmail.com">
+                  &nbsp;&nbsp;lixiong1124@gmail.com
+                </Email>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+          <Card
+            style={{
+              width: "18rem",
+              marginBottom: "10%",
+              height: "50%",
               marginRight: "5%"
             }}
           >
@@ -56,30 +86,6 @@ export default class About extends Component {
                 <MDBIcon far icon="envelope" />
                 <Email href="mailto: hui.sun1926@gmail.com">
                   &nbsp;&nbsp;hui.sun1926@gmail.com
-                </Email>
-              </Card.Text>
-            </Card.Body>
-          </Card>
-
-          <Card style={{ width: "18rem", marginBottom: "10%", height: "50%" }}>
-            <Card.Img
-              src="https://res.cloudinary.com/xiong1028/image/upload/v1555541672/xiong.jpg"
-              alt="Xiong Li"
-              className="rounded-circle"
-              style={{ width: "70%", height: "70%", margin: "10% auto 2%" }}
-            />
-            <Card.Body
-              style={{
-                textAlign: "center",
-                fontFamily: "'Montserrat', sans-serif",
-                color: "#797979"
-              }}
-            >
-              <Card.Title style={{ fontWeight: "bolder" }}>Xiong Li</Card.Title>
-              <Card.Text>
-                <MDBIcon far icon="envelope" />
-                <Email href="mailto: lixiong1124@gmail.com">
-                  &nbsp;&nbsp;lixiong1124@gmail.com
                 </Email>
               </Card.Text>
             </Card.Body>
