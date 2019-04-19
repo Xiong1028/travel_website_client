@@ -39,5 +39,7 @@ export const Email = styled.a`
 export const CardWrapper = styled.div`
   width: 75%; 
   margin: 1% auto 5%;  
+  display:flex;
+  justify-content:space-between;
 `;
 
