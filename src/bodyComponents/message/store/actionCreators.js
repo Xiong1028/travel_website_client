@@ -13,7 +13,7 @@ import io from "socket.io-client";
 const initIO = (dispatch,userid)=>{
     if(!io.socket){
         //one socket object means one connection to the server
-        io.socket = io("https://tripinterest.ga");
+        io.socket = io("https://tripinterest.tk");
 
         //listen the receriveMessage, and receive the msg from the server
         io.socket.on('returnMsg',(chatMsg)=>{

@@ -35,7 +35,7 @@ export default class About extends Component {
               width: "18rem",
               marginBottom: "10%",
               height: "50%",
-              marginRight: "1%"
+              marginRight: "2%"
             }}
           >
             <Card.Img
