@@ -34,13 +34,13 @@ export default class MessageList extends Component {
                       className="card-text"
                       style={{ fontStyle: "italic", fontSize: "120%" }}
                     >
-                      {value.fromLatestMsg !== ""
+                      {value.hasOwnProperty("fromLatestMsg")
                         ? value.fromLatestMsg.content
                         : ""}
                     </p>
                     <p className="card-text">
                       <small className="text-muted">
-                        {value["fromLatestMsg"] !== ""
+                        {value.hasOwnProperty("fromLatestMsg")
                           ? "updated at" +
                             moment(value.fromLatestMsg.create_time).format(
                               "YYYY-MM-DD HH:mm:ss"

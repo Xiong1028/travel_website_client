@@ -10,7 +10,7 @@ class PhotoSlide extends Component {
     const { photoSlideList } = this.props;
 
     let photoSlidePageList = [];
-    
+
     if (photoSlideList.length) {
       photoSlideList.forEach((v, k) => {
         photoSlidePageList.push(
@@ -52,7 +52,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     handleGetPhotoSlide() {
-      console.log("haha");
       dispatch(actionCreators.handleGetSlideAction());
     }
   };
