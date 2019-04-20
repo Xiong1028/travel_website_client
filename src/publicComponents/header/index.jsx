@@ -6,7 +6,6 @@ import { Link, withRouter } from "react-router-dom";
 import { Menu, Icon, Input, Avatar, Badge } from "antd";
 import { actionCreators } from "./store";
 import { actionCreators as messageActionCreators } from "../../bodyComponents/message/store";
-import MenuItem from "antd/lib/menu/MenuItem";
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
