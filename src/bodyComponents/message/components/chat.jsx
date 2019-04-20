@@ -62,10 +62,10 @@ class Chat extends Component {
 
     const currentchatId = [myId, targetId].sort().join("_");
 
-    const chatMsgs = List(msgList.chatMsgs);
+    let chatMsgs = List(msgList.chatMsgs).toArray();
 
     //***filter chatMsgs***
-    chatMsgs.filter(msg => msg.chat_id === currentchatId);
+    chatMsgs = chatMsgs.filter(msg => msg.chat_id === currentchatId);
 
     //get the target user avatar and make sure the avatar is existed
     const targetAvatar = Map(tartgetUser).get("avatar") ? (
