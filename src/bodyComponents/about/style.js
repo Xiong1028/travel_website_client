@@ -20,7 +20,7 @@ export const Text = styled.div`
   width: 80%; 
   margin: 1% auto;
   font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bolder;
   line-height: 180%;
   color: #797979;
@@ -28,7 +28,7 @@ export const Text = styled.div`
 
 export const Email = styled.a`
   text-align: left;
-  fontSize: 14px;
+  fontSize: 12px;
   color: #797979;
   :hover{
     text-decoration: none;
