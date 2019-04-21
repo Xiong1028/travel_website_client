@@ -28,21 +28,25 @@ class Message extends Component {
 
     //filter the chatMsList to me
     const toMeChatMsgs = chatMsgs.filter(v => {
-      return v.to === loginUser._id;
+      return v.to === loginUser._id && v.content !== "";
     });
 
-    //push the latest msg to corresponding user
-    chatUserList.forEach((value, key) => {
-      if (toMeChatMsgs.length) {
-        //all Msg from specific user
-        const fromMsgList = toMeChatMsgs.filter((v, k) => {
-          return value.user_id === v.from;
-        });
-        value["fromLatestMsg"] = fromMsgList.reverse()[0];
-      } else {
-        value["fromLatestMsg"] = "";
-      }
+    console.log(toMeChatMsgs);
+
+    let toMeUserListID = [];
+    toMeChatMsgs.map(v => {
+      toMeUserListID.push(v.from);
     });
+
+    console.log(toMeChatMsgs);
+
+    //push the latest msg to corresponding user
+    chatUserList = chatUserList.filter((value, key) => {
+      return toMeUserListID.includes(value.user_id);
+    });
+
+    console.log("chatUserList====>", chatUserList);
+
     return chatUserList;
   }
 
