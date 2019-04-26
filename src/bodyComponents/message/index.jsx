@@ -6,51 +6,55 @@ import { Icon } from "antd";
 import MessageList from "./components/MessageList";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-import { Map, List } from "immutable";
+import { Map } from "immutable";
 
 class Message extends Component {
   getChatUsersList() {
     const { msgList, loginUser } = this.props;
-    const users = Map(msgList).get("users");
-    const chatMsgs = Map(msgList).get("chatMsgs");
 
-    const chatUserList = [];
+    const newMsgList = Map(msgList).toJS();
 
-    //filter the loginUser
-    const newUsers = Map(users).filter((v, k) => k !== loginUser._id);
-    newUsers.valueSeq().forEach(v => chatUserList.push(v));
+    const users = newMsgList.users;
+    const chatMsgs = newMsgList.chatMsgs;
 
-    //filter the chatMsg
-    const newChatMsgs = List(chatMsgs).filter(v => {
-      return Map(v).get("to") === loginUser._id;
+    //filter the chatUserList
+    let chatUserList = [];
+
+    for (let key in users) {
+      if (key !== loginUser._id) {
+        chatUserList.push(users[key]);
+      }
+    }
+
+    //filter the chatMsList to me
+    const toMeChatMsgs = chatMsgs.filter(v => {
+      return v.to === loginUser._id && v.content !== "";
     });
 
-    const chatMsgsHistory = List(newChatMsgs).toJS();
+    console.log(toMeChatMsgs);
 
-    console.log(chatMsgsHistory);
+    let toMeUserListID = [];
+    toMeChatMsgs.map(v => {
+      toMeUserListID.push(v.from);
+    });
+
+    console.log(toMeChatMsgs);
 
     //push the latest msg to corresponding user
-    chatUserList.forEach((value, key) => {
-      if (chatMsgsHistory.length) {
-        const fromMsgList = chatMsgsHistory.filter((v, k) => {
-          return value.user_id === v.from;
-        });
-
-        const fromLatestMsg = fromMsgList[fromMsgList.length - 1];
-        value["fromLatestMsg"] = fromLatestMsg;
-      } else {
-        value["fromLatestMsg"] = "";
-      }
+    chatUserList = chatUserList.filter((value, key) => {
+      return toMeUserListID.includes(value.user_id);
     });
-    console.log(chatUserList);
+
+    console.log("chatUserList====>", chatUserList);
+
     return chatUserList;
   }
 
   render() {
     const { loginUser, msgList } = this.props;
     const chatUserList = this.getChatUsersList();
-
     const unReadCount = Map(msgList).get("unReadCount");
+
     return (
       <div className="container wrap">
         <Tab.Container id="list-group-tabs-example" defaultActiveKey="#message">

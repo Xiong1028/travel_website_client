@@ -51,19 +51,19 @@ class Footer extends Component {
           <br />
 
           <div style={{ width: "100%", textAlign: "center" }}>
-            <a href="#" className="icon">
+            <a href="www.linklein.com" className="icon">
               <MDBIcon fab icon="linkedin-in" size="2x" />
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </a>
-            <a href="#" className="icon">
+            <a href="www.instagram.com" className="icon">
               <MDBIcon fab icon="instagram" size="2x" />
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </a>
-            <a href="#" className="icon">
+            <a href="www.facebook.com" className="icon">
               <MDBIcon fab icon="facebook-f" size="2x" />
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </a>
-            <a href="#" className="icon">
+            <a href="www.twitter.ca" className="icon">
               <MDBIcon fab icon="twitter" size="2x" />
             </a>
           </div>

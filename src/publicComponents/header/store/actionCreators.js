@@ -1,7 +1,6 @@
 import { constants as postConstants } from "../../../bodyComponents/post/store";
 import {constants as headerconstants} from '.';
 import axios from 'axios';
-import {constants} from "../../../bodyComponents/login/store";
 import {constants as loginConstants} from "../../../bodyComponents/login/store";
 import {actionCreators as messageActionCreators} from "../../../bodyComponents/message/store";
 

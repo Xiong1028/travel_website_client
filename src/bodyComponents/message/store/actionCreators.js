@@ -1,7 +1,6 @@
 import {constants} from ".";
 import axios from 'axios';
 import io from "socket.io-client";
-import chat from "../components/chat";
 
 
 //==================SocketIO====================
@@ -14,8 +13,8 @@ import chat from "../components/chat";
 const initIO = (dispatch,userid)=>{
     if(!io.socket){
         //one socket object means one connection to the server
-        io.socket = io("http://tripinterest.tk");
-        //io.socket = io("http://localhost:3001");
+        //io.socket = io("localhost:3001");
+        io.socket = io("https://tripinterest.tk");
 
         //listen the receriveMessage, and receive the msg from the server
         io.socket.on('returnMsg',(chatMsg)=>{
@@ -23,7 +22,6 @@ const initIO = (dispatch,userid)=>{
             
             //only if the chatMsgs is to me or from me, save the msg to the databases
             if(userid===chatMsg.from || userid===chatMsg.to){
-                console.log(chatMsg);
                 dispatch(receiveMsg (chatMsg));
             }
         })
