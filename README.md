@@ -1,68 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Travel website client
 
-## Available Scripts
+![](<https://img.shields.io/badge/Build-passing-green.svg>)![](<https://img.shields.io/badge/FrontEnd-React-brightgreen.svg>)![](<https://img.shields.io/badge/BackEnd-Express-yellow.svg>)![](<https://img.shields.io/badge/DataBase-MongoDB-blue.svg>)![](<https://img.shields.io/badge/Licence-GPL-orange.svg>)
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> The travel forum website has already been deployed at [https://tripinterest.tk](https://tripinterest.tk)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Introduction
 
-### `npm run build`
+------
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+***The travel website project*** consists of the following two repositories: 
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- **travel_website_client**
+- **travel_website_server**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Here is <u>*the client side*</u>, which is created by create-app-react and responsible to manage the source code in production phase.
 
-### `npm run eject`
+Travel website project is built by MERN stack. React is one of the main techniques to build the client side.  Many libraries such as redux, axios, immutable, antd, bootstrap, styled-component,socketIO are widely utilized throughtout the whole project.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Tavel website project is dedicated to build a platform for users to share their trip experiences and stories. Many features can be explored here. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [x] Reading users diaries		
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- [x] Posting articles
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- [x] Authentication
 
-## Learn More
+- [x] Users registration
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [x] Searching 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [x] Comments
 
-### Code Splitting
+- [x] Profile setting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- [x] Resetting password
 
-### Analyzing the Bundle Size
+- [x] Uploading avatar
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- [x] Instant message
 
-### Making a Progressive Web App
+  ... ...
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-### Advanced Configuration
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
