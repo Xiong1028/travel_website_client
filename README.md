@@ -1,4 +1,4 @@
-## ![](<https://github.com/Xiong1028/pictures/blob/master/tripinterestLogo.png>)Travel website client
+## ![](https://github.com/Xiong1028/pictures/blob/master/tripinterestLogo.png?raw=true)Travel website client
 
 ![](<https://img.shields.io/badge/Build-passing-green.svg>)![](<https://img.shields.io/badge/FrontEnd-React-brightgreen.svg>)![](<https://img.shields.io/badge/BackEnd-Express-yellow.svg>)![](<https://img.shields.io/badge/DataBase-MongoDB-blue.svg>)![](<https://img.shields.io/badge/Licence-GPL-orange.svg>)
 
@@ -82,7 +82,7 @@ $ npm run-script build
 
 explorations Using the above command, it will create a build directory.
 
-![](<https://github.com/Xiong1028/pictures/blob/master/build.png>)
+![](https://github.com/Xiong1028/pictures/blob/master/build.png?raw=true)
 
 Move the whole build directory to the  [travel_website_server](https://github.com/Xiong1028/travel_website_server) project. 
 
@@ -90,7 +90,7 @@ Move the whole build directory to the  [travel_website_server](https://github.co
 
 ### Demo
 
-![MainPage](<https://github.com/Xiong1028/pictures/blob/master/mainPage.png>)
+![MainPage](https://github.com/Xiong1028/pictures/blob/master/mainPage.png?raw=true)
 
 
 
