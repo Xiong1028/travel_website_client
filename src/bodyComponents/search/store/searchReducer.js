@@ -1,5 +1,5 @@
 import {fromJS} from "immutable";
-import {constants} from ".";
+
 
 const defaultSearchState = fromJS({
 

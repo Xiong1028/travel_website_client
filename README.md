@@ -1,68 +1,102 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ![](<https://github.com/Xiong1028/pictures/blob/master/tripinterestLogo.png>)Travel website client
 
-## Available Scripts
+![](<https://img.shields.io/badge/Build-passing-green.svg>)![](<https://img.shields.io/badge/FrontEnd-React-brightgreen.svg>)![](<https://img.shields.io/badge/BackEnd-Express-yellow.svg>)![](<https://img.shields.io/badge/DataBase-MongoDB-blue.svg>)![](<https://img.shields.io/badge/Licence-GPL-orange.svg>)
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> This project has already been deployed at [https://tripinterest.tk](https://tripinterest.tk)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**The travel website project** is dedicated to build a platform for users to share their trip experiences and stories, which consists of the following two repositories: 
 
-### `npm run build`
+- **travel_website_client**
+- **travel_website_server**
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+*It provides main **Features** below:*
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- Reading users diaries		
+- Posting article
+- Authentication
+- Users registration
+- Searching
+- Comments
+- Profile setting
+- Resetting password
+- Uploading avatar
+- Instant message
+- and more
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Here is <u>*the client side*</u>, which is built by MERN stack, and ***built with***
 
-### `npm run eject`
+- [React](https://reactjs.org/docs/getting-started.html)  ^16.7.0
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- *[react-redux](https://react-redux.js.org/introduction/quick-start)* ^6.0.0
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [axios](https://github.com/axios/axios)  ^0.18.0
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- [immutable](https://devdocs.io/immutable/)  ^4.0.0
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- [antd](https://ant.design/docs/react/introduce)  ^3.13.0
 
-## Learn More
+- [bootstrap](https://react-bootstrap.github.io/getting-started/introduction) ^4.3.1
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [styled-component](https://www.styled-components.com/docs/api) ^4.1.3
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- *[socket.io-client](https://socket.io/docs/)* ^2.2.0 
 
-### Code Splitting
+  More *dependencies* is seen at the Package.JSON file
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### Getting Started
 
-### Making a Progressive Web App
+------
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+##### Prerequisites
 
-### Advanced Configuration
+The project runs in [Nodejs](<https://nodejs.org/en/>) environment. it requires:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+-  [Nodejs](https://nodejs.org/en/)  v 10.0 or later
+-  [npm](https://www.npmjs.com/)  v 6.0 or later
+- [MongoDB](https://www.mongodb.com/) v 3.0 or later
 
-### Deployment
+##### Installing
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+> Note: The client project needs to work with [travel_website_server](https://github.com/Xiong1028/travel_website_server) project, make sure the [travel_website_server](https://github.com/Xiong1028/travel_website_server) and MongoDB service are running.
 
-### `npm run build` fails to minify
+```linux
+$ git clone git@github.com:Xiong1028/travel_website_client.git
+$ cd travel_website_client
+$ npm install
+$ npm run 
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+the development mode will be running at localhost:3000
+
+##### Building
+
+```linux
+$ npm run-script build
+```
+
+explorations Using the above command, it will create a build directory.
+
+![](<https://github.com/Xiong1028/pictures/blob/master/build.png>)
+
+Move the whole build directory to the  [travel_website_server](https://github.com/Xiong1028/travel_website_server) project. 
+
+
+
+### Demo
+
+![MainPage](<https://github.com/Xiong1028/pictures/blob/master/mainPage.png>)
+
+
+
+### Licensing
+
+------
+
+This project is using GPL license.
+
