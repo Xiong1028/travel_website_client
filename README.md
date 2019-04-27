@@ -4,7 +4,7 @@
 
 
 
-> This project has already been deployed at [https://tripinterest.tk](https://tripinterest.tk)
+> This project version as private project was originally contrtolled by GitLab. Now it becomes open-source repository in GitHub. It has already been deployed at [https://tripinterest.tk](https://tripinterest.tk)
 
 
 
@@ -59,11 +59,11 @@ The project runs in [Nodejs](<https://nodejs.org/en/>) environment. it requires:
 
 -  [Nodejs](https://nodejs.org/en/)  v 10.0 or later
 -  [npm](https://www.npmjs.com/)  v 6.0 or later
-- [MongoDB](https://www.mongodb.com/) v 3.0 or later
+-  [MongoDB](https://www.mongodb.com/) v 3.0 or later
 
 ##### Installing
 
-> Note: The client project needs to work with [travel_website_server](https://github.com/Xiong1028/travel_website_server) project, make sure the [travel_website_server](https://github.com/Xiong1028/travel_website_server) and MongoDB service are running.
+> Note: The `client` project needs to work with [travel website server](https://github.com/Xiong1028/travel_website_server) project, make sure the [travel website server](https://github.com/Xiong1028/travel_website_server) and `MongoDB` service are running.
 
 ```linux
 $ git clone git@github.com:Xiong1028/travel_website_client.git
@@ -72,7 +72,7 @@ $ npm install
 $ npm run 
 ```
 
-the development mode will be running at localhost:3000
+the development mode will be running at `localhost:3000`
 
 ##### Building
 
@@ -84,7 +84,7 @@ explorations Using the above command, it will create a build directory.
 
 ![](https://github.com/Xiong1028/pictures/blob/master/build.png?raw=true)
 
-Move the whole build directory to the  [travel_website_server](https://github.com/Xiong1028/travel_website_server) project. 
+Move the whole `build` directory to the  [travel website server](https://github.com/Xiong1028/travel_website_server) project. 
 
 
 
@@ -98,5 +98,5 @@ Move the whole build directory to the  [travel_website_server](https://github.co
 
 ------
 
-This project is using GPL license.
+This project is under `GNU/GPL` license.
 
