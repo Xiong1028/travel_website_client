@@ -90,7 +90,7 @@ Move the whole `build` directory to the  [travel website server](https://github.
 
 ### Demo
 
-![MainPage](https://github.com/Xiong1028/pictures/blob/master/mainPage.png?raw=true)
+![MainPage](https://github.com/Xiong1028/pictures/blob/master/demo.gif?raw=true)
 
 
 
